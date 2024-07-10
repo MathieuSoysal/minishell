@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.c": "c",
+        "test_double_linked_list_essentials.h": "c",
+        "test_double_linked_list_tail.h": "c",
+        "double_linked_list_essentials.h": "c",
+        "test_double_linked_list_head.h": "c",
+        "acutest.h": "c"
+    }
+}
