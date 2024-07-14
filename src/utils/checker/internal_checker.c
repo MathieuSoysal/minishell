@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 15:38:02 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/14 21:15:27 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/14 21:55:15 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ t_syntax_error	get_syntax_error_from_two_chars(char current_char, char next_c)
 		return (SE_UNEXPECTED_TOKEN_OUTFILE);
 	if (current_char == '<' && next_c == '<')
 		return (SE_UNEXPECTED_TOKEN_INFILE_HEREDOC);
-	return (SE_UNEXPECTED_TOKEN_INFILE_HEREDOC);
 	if (current_char == '<')
 		return (SE_UNEXPECTED_TOKEN_INFILE);
 	return (NO_ERROR);
