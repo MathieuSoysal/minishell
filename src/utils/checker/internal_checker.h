@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 14:54:01 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/14 22:00:41 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/14 23:17:01 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef enum e_syntax_mode
 	SM_DOUBLE_OUTFILE = SM_SIMPLE_OUTFILE | UN_OUTFILE | UN_PIPE,
 	SM_SIMPLE_PIPE = UN_NEWLINE,
 	SM_DOUBLE_PIPE = SM_SIMPLE_PIPE | UN_PIPE | UN_AND,
-	SM_SIMPLE_INFILE = UN_PIPE | UN_OUTFILE | UN_NEWLINE,
+	SM_SIMPLE_INFILE = UN_PIPE | UN_NEWLINE,
 	SM_DOUBLE_INFILE = SM_SIMPLE_INFILE | UN_INFILE,
 	SM_STANDARD = 0,
 	SM_SIMPLE_QUOTE = 0b100000,
