@@ -12,7 +12,7 @@ void	test_check_syntax_pipe_no_error(void)
 
 	error = check_syntax("ls -l");
 	TEST_CHECK(error == NO_ERROR);
-	error = check_syntax("ls | cat");
+	error = check_syntax("ls echo \"|||| hola ceta\" | cat | cat");
 	TEST_CHECK(error == NO_ERROR);
 	error = check_syntax("ls | cat | cat");
 	TEST_CHECK(error == NO_ERROR);

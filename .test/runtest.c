@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 00:45:31 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/14 21:00:10 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/14 21:35:14 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "structures/double_linked_list/test_double_linked_list_essentials.h"
 #include "structures/double_linked_list/test_double_linked_list_head.h"
 #include "structures/double_linked_list/test_double_linked_list_tail.h"
+#include "utils/checker/test_checker_double_pipe.h"
 #include "utils/checker/test_checker_pipe.h"
 #include <stdio.h>
 
@@ -24,5 +25,6 @@ TEST_LIST = {
 	{"Double Linked List Head", test_double_linked_list_head},
 	{"Double Linked List Tail", test_double_linked_list_tail},
 	{"Checker Pipe", test_check_syntax_pipe_all},
+	{"Checker Double Pipe", test_check_syntax_double_pipe_all},
 	{NULL, NULL} //
 };
