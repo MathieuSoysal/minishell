@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:42:01 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/15 20:00:01 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/15 22:06:11 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	test_split_by_pipe1(void)
 	assert_equals("ls ", result[0]);
 	assert_equals(" cat ", result[1]);
 	assert_equals(" wc", result[2]);
-    free_all(result);
+	free_all(result);
 }
 
 void	test_split_by_pipe2(void)
@@ -50,7 +50,7 @@ void	test_split_by_pipe2(void)
 	assert_equals(" cat ", result[1]);
 	assert_equals(" wc ", result[2]);
 	assert_equals(" grep", result[3]);
-    free_all(result);
+	free_all(result);
 }
 
 void	test_split_by_pipe3(void)
@@ -62,7 +62,7 @@ void	test_split_by_pipe3(void)
 	assert_equals(" cat ", result[1]);
 	assert_equals(" wc ", result[2]);
 	assert_equals(" grep", result[3]);
-    free_all(result);
+	free_all(result);
 }
 
 void	test_split_by_pipe4(void)
@@ -74,15 +74,67 @@ void	test_split_by_pipe4(void)
 	assert_equals(" cat ", result[1]);
 	assert_equals(" wc ", result[2]);
 	assert_equals(" grep", result[3]);
-    free_all(result);
+	free_all(result);
 }
 
 void	test_split_by_pipe(void)
 {
 	test_split_by_pipe1();
 	test_split_by_pipe2();
-    test_split_by_pipe3();
-    test_split_by_pipe4();
+	test_split_by_pipe3();
+	test_split_by_pipe4();
+}
+
+void	test_split_by_space1(void)
+{
+	char	**result;
+
+	result = split_by_space("ls -l");
+	assert_equals("ls", result[0]);
+	assert_equals("-l", result[1]);
+	free_all(result);
+}
+
+void	test_split_by_space2(void)
+{
+	char	**result;
+
+	result = split_by_space("ls echo \"|||| hola ceta\" | cat | cat");
+	assert_equals("ls", result[0]);
+	assert_equals("echo", result[1]);
+	assert_equals("\"|||| hola ceta\"", result[2]);
+	assert_equals("|", result[3]);
+	assert_equals("cat", result[4]);
+	assert_equals("|", result[5]);
+	assert_equals("cat", result[6]);
+	free_all(result);
+}
+
+void	test_split_by_space3(void)
+{
+	char	**result;
+
+	result = split_by_space("ls echo\"|||| hola ceta\" | cat | cat");
+	assert_equals("ls", result[0]);
+	assert_equals("echo\"|||| hola ceta\"", result[1]);
+	assert_equals("|", result[2]);
+	assert_equals("cat", result[3]);
+	assert_equals("|", result[4]);
+	assert_equals("cat", result[5]);
+	free_all(result);
+}
+
+void	test_split_by_space(void)
+{
+	test_split_by_space1();
+	test_split_by_space2();
+    test_split_by_space3();
+}
+
+void	test_split_internal_parser(void)
+{
+	test_split_by_pipe();
+	test_split_by_space();
 }
 
 #endif // TEST_INTERNAL_PARSER_H
