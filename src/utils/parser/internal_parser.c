@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:50:53 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/15 17:22:42 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/15 17:42:55 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ static char	**double_linked_list_to_array(t_double_linked_list *list)
 	while (++i < list->size)
 		result[i] = double_linked_list_pop_first(list);
 	result[i] = NULL;
+	free(list);
+	list = NULL;
 	return (result);
 }
 
