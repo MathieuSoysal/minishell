@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   internal_parser.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 16:51:13 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/15 17:19:20 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/07/15 14:42:49 by hsoysal           #+#    #+#             */
+/*   Updated: 2024/07/15 17:21:28 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#ifndef INTERNAL_PARSER_H
+# define INTERNAL_PARSER_H
 
-# include "../structures/commande/commande.h"
 
-/**
- * @brief Parse the command line and create a array of commandes,
-	the array is NULL terminated
- * @param command_line The command line to parse
- * @return The list of commandes
- */
-t_commande	**parse_command_line(char *command_line);
+char	**split_by_pipe(char const *command_line);
 
-#endif // PARSER_H
+#endif // INTERNAL_PARSER_H

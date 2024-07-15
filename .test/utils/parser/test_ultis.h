@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   test_ultis.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 16:51:13 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/15 17:19:20 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
+/*   Updated: 2024/07/15 16:35:42 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#ifndef TEST_ULTIS_H
+# define TEST_ULTIS_H
 
-# include "../structures/commande/commande.h"
+# include "../../acutest.h"
+# include <stdio.h>
 
-/**
- * @brief Parse the command line and create a array of commandes,
-	the array is NULL terminated
- * @param command_line The command line to parse
- * @return The list of commandes
- */
-t_commande	**parse_command_line(char *command_line);
+void	assert_equals(char const *expected, char const *actual)
+{
+	TEST_CHECK(strcmp(expected, actual) == 0);
+	if (strcmp(expected, actual) != 0)
+	{
+		dprintf(2, "           \033[31mExpected:\033[0m %s\n", expected);
+		dprintf(2, "           \033[31mActual:\033[0m %s\n", actual);
+	}
+}
 
-#endif // PARSER_H
+#endif // TEST_ULTIS_H

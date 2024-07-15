@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   test_internal_parser.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 16:51:13 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/15 17:19:20 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/07/15 16:42:01 by hsoysal           #+#    #+#             */
+/*   Updated: 2024/07/15 16:50:30 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#ifndef TEST_INTERNAL_PARSER_H
+# define TEST_INTERNAL_PARSER_H
 
-# include "../structures/commande/commande.h"
+# include "../../acutest.h"
+# include "internal_parser.h"
+# include "test_ultis.h"
 
-/**
- * @brief Parse the command line and create a array of commandes,
-	the array is NULL terminated
- * @param command_line The command line to parse
- * @return The list of commandes
- */
-t_commande	**parse_command_line(char *command_line);
+void	test_split_by_pipe(void)
+{
+	char	**result;
 
-#endif // PARSER_H
+	result = split_by_pipe("ls | cat | wc");
+	assert_equals("ls ", result[0]);
+	assert_equals(" cat ", result[1]);
+	assert_equals(" wc", result[2]);
+}
+
+#endif // TEST_INTERNAL_PARSER_H
