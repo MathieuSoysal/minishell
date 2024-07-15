@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:42:01 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/15 17:28:20 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/15 18:23:43 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,23 @@ void	test_split_by_pipe2(void)
     free_all(result);
 }
 
+void	test_split_by_pipe3(void)
+{
+	char	**result;
+
+	result = split_by_pipe("   echo \"Salut || test\"  | cat | wc | grep");
+	assert_equals("   echo \"Salut || test\"  ", result[0]);
+	assert_equals(" cat ", result[1]);
+	assert_equals(" wc ", result[2]);
+	assert_equals(" grep", result[3]);
+    free_all(result);
+}
+
 void	test_split_by_pipe(void)
 {
 	test_split_by_pipe1();
 	test_split_by_pipe2();
+    test_split_by_pipe3();
 }
 
 #endif // TEST_INTERNAL_PARSER_H
