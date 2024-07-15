@@ -44,6 +44,8 @@ void	test_check_syntax_pipe(void)
 	TEST_CHECK(error == SE_UNEXPECTED_TOKEN_PIPE);
 	error = check_syntax(">>|><\n");
 	TEST_CHECK(error == SE_UNEXPECTED_TOKEN_PIPE);
+	error = check_syntax("echo salut\n| echo Salut\n");
+	TEST_CHECK(error == SE_UNEXPECTED_TOKEN_PIPE);
 }
 
 void	test_check_syntax_pipe_all(void)

@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 00:45:31 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/14 23:07:59 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/15 14:04:27 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include "utils/checker/test_checker_outfile.h"
 #include "utils/checker/test_checker_outfile_append.h"
 #include "utils/checker/test_checker_pipe.h"
+#include "utils/checker/test_checker_all.h"
 #include <stdio.h>
 
 // Run TESTs
@@ -36,5 +37,6 @@ TEST_LIST = {
 	{"Checker Outfile", test_check_syntax_outfile_all},
 	{"Checker Outfile Append", test_check_syntax_outfile_append_all},
 	{"Checker New Line", test_check_syntax_new_line_all},
+	{"Checker All", test_check_syntax_no_error_all},
 	{NULL, NULL} //
 };
