@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 15:38:02 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/14 21:55:15 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/15 14:28:40 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ static t_syntax_mode	get_syntax_mode_from_current_char(char current_char)
 		return (SM_SIMPLE_INFILE);
 	if (current_char == '\'')
 		return (SM_SIMPLE_QUOTE);
+	if (current_char == '\n')
+		return (SM_START_LINE);
 	return (SM_STANDARD);
 }
 
