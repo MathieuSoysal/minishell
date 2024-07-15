@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:50:53 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/15 18:44:59 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/15 20:01:23 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ char	**split_by_pipe(char const *command_line)
 	{
 		double_linked_list_add_last(list, get_word(command_line, &i));
 		i++;
+		if (command_line[i] == '|')
+			i++;
 	}
 	return (double_linked_list_to_array(list));
 }
