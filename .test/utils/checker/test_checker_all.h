@@ -33,9 +33,9 @@ void	test_check_syntax_no_error(void)
 									"export HOLA=\"   -n bonjour   \"\necho $HOLA\n",                       //
 									"export HOLA=\"bonjour   \"/\necho $HOLA\n",                       //
 									"export HOLA=\'\"\'\necho \" $HOLA \" | cat -e\n",                       //
-									"export A=a B=b C=c\necho $A $B $C",                       //
-									"export A=a B=b C=c\necho $A $B $C",                       //
-									"export A=a B=b C=c\necho $A $B $C",                       //
+									"echo oui | echo non | echo hola | grep oui\n",                       //
+									"echo hola|cat\n",                       //
+									"echo hola > hello\necho hola >> hello >> hello >> hello\necho hola >> hello\ncat < hello\n",                       //
 									"export A=a B=b C=c\necho $A $B $C",                       //
 									"export A=a B=b C=c\necho $A $B $C",                       //
 									"export A=a B=b C=c\necho $A $B $C",                       //
