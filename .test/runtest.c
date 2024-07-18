@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 00:45:31 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/18 03:20:53 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/19 01:25:04 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #include "utils/checker/test_checker_pipe.h"
 #include "utils/parser/test_internal_dollar.h"
 #include "utils/parser/test_internal_parser.h"
+#include "utils/parser/test_internal_string.h"
 #include <stdio.h>
 
 // Run TESTs
@@ -42,5 +43,6 @@ TEST_LIST = {
 	{"Checker All", test_check_syntax_no_error_all},
 	{"Parser Internal", test_split_internal_parser},
 	{"Parser Internal with dollars", test_apply_dollars_all},
+	{"Parser Internal with string", test_apply_strings_all},
 	{NULL, NULL} //
 };
