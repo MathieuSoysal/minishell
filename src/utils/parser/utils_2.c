@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 03:03:27 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/18 03:14:18 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/18 05:07:55 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	result[i + j] = '\0';
 	return (result);
+}
+
+char	*get_word_until(char const *command_line, size_t *i,
+		char const delimiter)
+{
+	char	*word;
+	size_t	j;
+
+	j = *i;
+	while (command_line[j] && command_line[j] != delimiter)
+		j++;
+	word = ft_strndup(command_line + *i, j - *i);
+	*i = j;
+	return (word);
 }
 
 char	*concatenate(t_double_linked_list *list)

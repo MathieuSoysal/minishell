@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 20:20:18 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/18 05:04:23 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/18 05:04:42 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,27 @@ void	test_apply_dollars3(void)
 	free(actual);
 }
 
+void	test_apply_dollars4(void)
+{
+	char	*command_line;
+	char	*expected;
+	char	*actual;
+	char	*env[] = {"USER=hsoysal", NULL};
+
+	command_line = ft_strdup("\"$USER\"");
+	expected = ft_strdup("\"hsoysal\"");
+	actual = apply_dollars(command_line, env);
+	assert_equals(expected, actual);
+	free(expected);
+	free(actual);
+}
 
 void	test_apply_dollars_all(void)
 {
 	test_apply_dollars1();
 	test_apply_dollars2();
 	test_apply_dollars3();
+	test_apply_dollars4();
 }
 
 #endif // TEST_INTERNAL_DOLLAR_H

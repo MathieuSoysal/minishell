@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:42:49 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/18 04:59:31 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/18 05:08:05 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int		ft_strlen(const char *s);
 char	*get_from_env(char **env, char *word);
 char	*concatenate(t_double_linked_list *list);
 char	*apply_dollars(char *command_line, char **env);
+char	*get_word_until(char const *command_line, size_t *i,
+			char const delimiter);
 
 #endif // INTERNAL_PARSER_H
