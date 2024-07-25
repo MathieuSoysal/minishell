@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:22:32 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/25 13:11:12 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/07/25 17:59:32 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct s_variables
 	struct s_variables	*previous;
 	struct s_variables	*next;
 	char				*value;
-	// int					index;
-	// int					id;
+	int					index;
+	int					id;
 }						t_variables;
 
 typedef struct s_adress
