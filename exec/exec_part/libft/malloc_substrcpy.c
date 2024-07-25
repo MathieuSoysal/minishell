@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   malloc_substrcpy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/05 19:00:54 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/25 15:28:14 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/22 14:49:05 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/07/22 14:49:32 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-
-#include "builtins.h"
-
-
-int cd(t_cmd *cmd, t_adress *env)
+char	*malloc_substrcpy(char *origin, int start, int end)
 {
-    t_adress *adress;
-        
-    if(!cmd->arg)
-    {
-            preror("No such file or directory\n");
-            return(1);
-    }
-    adress -> adress_for_path = take_adresse_of_path(adress);
-    adress -> adress_for_new_path = take_adress_of_path(env);
-    
-    return(0);
+	char	*new;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = (end - start) + 1;
+	new = malloc(sizeof(char) * len + 1);
+	if (!new)
+		return (NULL);
+	while (i < len)
+	{
+		new[i] = origin[start + i];
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
 }

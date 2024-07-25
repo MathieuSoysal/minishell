@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   change_env_value_with_name.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/05 19:00:54 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/25 15:28:14 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/22 15:48:33 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/07/24 16:23:06 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "builtins.h"
 
-
-int cd(t_cmd *cmd, t_adress *env)
-{
-    t_adress *adress;
-        
-    if(!cmd->arg)
-    {
-            preror("No such file or directory\n");
-            return(1);
-    }
-    adress -> adress_for_path = take_adresse_of_path(adress);
-    adress -> adress_for_new_path = take_adress_of_path(env);
+ void   change_env_value_with_name(t_adress *env, char *name, char *value)
+  {
+    t_adress  *var;
     
-    return(0);
-}
+    var =  get_env_var_with_name(env, name);
+    if(!var)
+        return;
+        change_env_var_value(var, value);
+  }
+  

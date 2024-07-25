@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   change_or_create_var.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/05 19:00:54 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/25 15:28:14 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/22 15:38:37 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/07/23 17:13:46 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "builtins.h"
 
-
-int cd(t_cmd *cmd, t_adress *env)
+void change_or_create_var(t_adress *env,  char *name, char *value, int id)
 {
-    t_adress *adress;
-        
-    if(!cmd->arg)
+    t_variables *var;
+
+    if(variable_exist(env, name))
     {
-            preror("No such file or directory\n");
-            return(1);
+        change_env_value_with_name(env,  name, value);
+        free(name);
     }
-    adress -> adress_for_path = take_adresse_of_path(adress);
-    adress -> adress_for_new_path = take_adress_of_path(env);
-    
-    return(0);
+    else
+    {
+        var =  init_variable(name, value, id);
+        add_new_env_variable(env, var);
+    }
 }

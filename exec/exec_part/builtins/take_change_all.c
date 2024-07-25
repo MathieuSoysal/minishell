@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:12:41 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/11 18:45:37 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/07/21 19:52:50 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char *take_adress_of_new_path(t_adress *adress)
 
 char *take_var_for_adress(t_adress *adress, char *name)
 {
-    t_variables *variable = take_var_for_value(adress, name);
+    t_variables *variable = take_var_for_next_value(adress, name);
     if (variable)
     {
         return variable->value;
@@ -39,7 +39,7 @@ char *take_var_for_adress(t_adress *adress, char *name)
     return NULL;
 }
 
-t_variables *take_var_for_value(t_adress *adress, char *name)
+t_variables *take_var_for_next_value(t_adress *adress, char *name)
 {
     t_variables *variables_env = adress->variable;
 
@@ -56,7 +56,7 @@ t_variables *take_var_for_value(t_adress *adress, char *name)
 
 void changing_var_name(t_adress *adresse, char *name, char *value)
 {
-    t_variables *variable = take_var_for_value(adresse, name);
+    t_variables *variable = take_var_for_next_value(adresse, name);
 
     if (variable)
     {
@@ -72,3 +72,13 @@ void changing_var_name(t_adress *adresse, char *name, char *value)
         adresse->variable = variable;
     }
 }
+
+t_variables *take_first_variable(t_adress *env)
+{
+    if(env ->variable)
+        return (env->variable);
+    return(NULL);    
+}
+
+
+

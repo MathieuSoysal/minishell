@@ -6,7 +6,7 @@
 #    By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:04:44 by kahoumou          #+#    #+#              #
-#    Updated: 2024/07/11 19:15:24 by kahoumou         ###   ########.fr        #
+#    Updated: 2024/07/25 14:49:15 by kahoumou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,17 +15,28 @@ CC  =  gcc
 CFLAGS = -Werror -Wextra -Wall -g3
 RM =  rm  -rf 
 #road for libft 
-LIBFT_PATH =  ../../libft/libft
+LIBFT_PATH =  exec_part/libft/
 LIBFT =  $(LIBFT_PATH)/libft.a
 
 # #liste des sources principales
-SRCS = exec_part/builtins/cd.c \
-       exec_part/builtins/echo.c \
-       exec_part/builtins/mem_malloc_str.c \
-       exec_part/builtins/take_change_all.c\
-       exec_part/builtins/testeur.c
-
-
+SRCS =	exec_part/builtins/cd.c\
+		exec_part/builtins/echo.c \
+		exec_part/builtins/mem_malloc_str.c \
+		exec_part/builtins/take_change_all.c\
+		exec_part/builtins/testeur.c\
+		exec_part/builtins/print_all_adress_fd.c\
+		exec_part/builtins/ get_env_var_with_name.c\
+		exec_part/builtins/ get_export_variable_name.c\
+		exec_part/builtins/add_new_variable.c\
+		exec_part/builtins/assign_env_var_id.c\
+		exec_part/builtins/change_env_value_with_name.c\
+		exec_part/builtins/change_or_create_var.c\
+		exec_part/builtins/export_testeur.c\
+		exec/exec_part/builtins/export.c\
+		exec_part/builtins/get_env_varible_value.c\
+		exec_part/builtins/get_last_env_var.c\
+		exec_part/builtins/is_blank.c
+		
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS) $(LIBFT)
@@ -46,7 +57,7 @@ all: $(NAME)
 
 # Nettoyage des fichiers objets et des executables
 clean : 
-		$(RM) $(SRCS:.c=.o)
+		$(RM) $(OBJS)
 #clean all file
 fclean : clean
 		$(RM) $(NAME) 

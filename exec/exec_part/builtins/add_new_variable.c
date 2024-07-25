@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   add_new_variable.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/05 19:00:54 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/25 15:28:14 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/23 11:45:19 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/07/23 13:43:43 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "builtins.h"
 
-
-int cd(t_cmd *cmd, t_adress *env)
+void add_new_env_variable(t_adress *env, t_variables *new) 
 {
-    t_adress *adress;
-        
-    if(!cmd->arg)
+    t_variables *last_var;
+
+    last_var = get_last_env_var(env);
+    if (!last_var) 
     {
-            preror("No such file or directory\n");
-            return(1);
+        env->variable = new;
+    } 
+    else
+    {
+        last_var->next = new;
+        new->previous = last_var;
     }
-    adress -> adress_for_path = take_adresse_of_path(adress);
-    adress -> adress_for_new_path = take_adress_of_path(env);
-    
-    return(0);
+    new->index = (last_var) ? last_var->index + 1 : 0;
+    new->next = NULL;
 }

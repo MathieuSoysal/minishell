@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/05 19:00:54 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/25 15:28:14 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/20 16:37:06 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/07/24 17:48:30 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "builtins.h"
 
-
-int cd(t_cmd *cmd, t_adress *env)
+int export(t_cmd *cmd,  t_adress *env)
 {
-    t_adress *adress;
-        
-    if(!cmd->arg)
-    {
-            preror("No such file or directory\n");
-            return(1);
+    char *name;
+    char *value;
+    int id;
+
+    if(!cmd->arg){
+     print_all_adress_fd(env, cmd->fd_out);
+        return(0);
     }
-    adress -> adress_for_path = take_adresse_of_path(adress);
-    adress -> adress_for_new_path = take_adress_of_path(env);
+    name =  get_export_variable_name(cmd->arg);
+    if(!name)
+    {
+        ft_putstr_fd("export : not a valid identifier\n", 1);
+        return(1);
+    }
+     value =  get_env_variable_value(cmd -> arg);
+     id =  assign_env_var_id(value);
+     change_or_create_var(env, name, value, id);
     
     return(0);
 }

@@ -1,0 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*    get_export_variable_name.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/20 19:21:08 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/07/23 13:40:59 by kahoumou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "builtins.h"
+
+void ft_variable(int start, int end)
+{
+    start = 0;
+    end = 0;
+}
+
+
+char * get_export_variable_name(char *variable)
+{
+    int index;
+    int start;
+    int end;
+    ft_variable(index, start);
+    if(!variable)
+        return(NULL);
+    while(variable[index])
+    {
+        if(is_blank(variable[index]))
+                return(NULL);
+        else if (variable[index] ==  '=')
+        {
+             end =  index - 1;
+             return(malloc_substrcpy(variable, start, end));
+        }
+        index ++;
+    }
+    end =  index;
+        return malloc_substrcpy(variable, start, end);
+      
+}
