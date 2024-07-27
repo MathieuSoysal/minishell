@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 20:20:18 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/18 05:09:45 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/25 15:19:44 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../../acutest.h"
 # include "internal_parser.h"
-# include "test_ultis.h"
+# include "test_utils.h"
 
 void	test_apply_dollars1(void)
 {

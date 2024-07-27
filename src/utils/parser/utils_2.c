@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 03:03:27 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/18 05:07:55 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/25 14:18:16 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,9 @@ char	*concatenate(t_double_linked_list *list)
 	}
 	free(temp);
 	return (result);
+}
+
+bool	equals(const char *s1, const char *s2)
+{
+	return (ft_strncmp(s1, s2, ft_strlen(s2)) == 0);
 }

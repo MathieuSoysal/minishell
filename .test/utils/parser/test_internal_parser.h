@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:42:01 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/15 22:06:11 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/25 15:20:21 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,7 @@
 
 # include "../../acutest.h"
 # include "internal_parser.h"
-# include "test_ultis.h"
-
-static void	free_all(char **result)
-{
-	int	i;
-
-	i = 0;
-	while (result[i])
-	{
-		free(result[i]);
-		i++;
-	}
-	free(result);
-}
+# include "test_utils.h"
 
 void	test_split_by_pipe1(void)
 {

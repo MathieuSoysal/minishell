@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:38:26 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/10 16:45:28 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/22 02:43:33 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ t_commande	*commande_create(char *name, char **args, char *infile_name,
 		return (NULL);
 	new_commande->name = name;
 	new_commande->args = args;
-	new_commande->infile_name = infile_name;
-	new_commande->outfile_name = outfile_name;
+	new_commande->infile_names = infile_name;
+	new_commande->outfile_names = outfile_name;
 	return (new_commande);
 }
 
 bool	commande_has_infile(t_commande *commande)
 {
-	return (commande->infile_name != NULL);
+	return (commande->infile_names != NULL);
 }
 
 bool	commande_has_outfile(t_commande *commande)
 {
-	return (commande->outfile_name != NULL);
+	return (commande->outfile_names != NULL);
 }
 
 void	commande_free(t_commande *commande)
@@ -55,10 +55,10 @@ void	commande_free(t_commande *commande)
 	}
 	free(commande->args);
 	commande->args = NULL;
-	free(commande->infile_name);
-	commande->infile_name = NULL;
-	free(commande->outfile_name);
-	commande->outfile_name = NULL;
+	free(commande->infile_names);
+	commande->infile_names = NULL;
+	free(commande->outfile_names);
+	commande->outfile_names = NULL;
 	free(commande);
 	commande = NULL;
 }

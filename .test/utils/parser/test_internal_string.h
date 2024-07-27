@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 22:09:06 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/19 01:26:33 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/25 15:19:26 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../../acutest.h"
 # include "internal_parser.h"
-# include "test_ultis.h"
+# include "test_utils.h"
 
 void	test_apply_strings1(void)
 {

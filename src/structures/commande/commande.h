@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:36:50 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/10 17:17:56 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/19 01:34:58 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_commande
 {
 	char	*name;
 	char	**args;
-	char	*infile_name;
-	char	*outfile_name;
+	char	*infile_names;
+	char	*outfile_names;
 }			t_commande;
 
 t_commande	*commande_create(char *name, char **args, char *infile_name,
