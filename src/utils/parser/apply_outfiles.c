@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:08:14 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/27 11:07:01 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/27 11:08:55 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,32 @@ char	**extract_outfiles(char **command_line)
 			i++;
 	}
 	return (double_linked_list_to_array(outfiles));
+}
+
+bool	has_outfiles(char **command_line)
+{
+	int	i;
+
+	i = 0;
+	while (command_line[i])
+	{
+		if (equals(command_line[i], ">") || equals(command_line[i], ">>"))
+			return (true);
+		i++;
+	}
+	return (false);
+}
+
+bool	has_outfiles_append(char **command_line)
+{
+	int	i;
+
+	i = 0;
+	while (command_line[i])
+	{
+		if (equals(command_line[i], ">>"))
+			return (true);
+		i++;
+	}
+	return (false);
 }
