@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   apply_outfiles.h                                   :+:      :+:    :+:   */
+/*   apply_infiles.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:04:52 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/27 11:49:29 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/27 11:28:07 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef APPLY_OUTFILES_H
-# define APPLY_OUTFILES_H
+#ifndef APPLY_INFILES_H
+# define APPLY_INFILES_H
 
 # include <stdbool.h>
 
-char	**extract_outfiles(char **command_line);
-bool	has_outfiles(char **command_line);
-int		heredoc(char *end_file);
-bool	has_outfiles_append(char **command_line);
+char	**extract_infiles(char **command_line);
+int		extract_heredoc(char **command_line);
+bool	has_infiles(char **command_line);
+bool	has_heredoc(char **command_line);
 
-#endif // APPLY_OUTFILES_H
+#endif // APPLY_INFILES_H
