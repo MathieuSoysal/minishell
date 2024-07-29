@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:03:59 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/25 14:19:11 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/07/29 15:02:24 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,7 +271,7 @@ int main()
 {
     t_cmd cmd;
     t_adress adress;
-    t_variables var1 = {"USER", "john", NULL, NULL, NULL};
+    t_variables var1 = {"USER", "john", NULL, NULL, NULL, 0, 0};
     // t_variables var2 = {"PATH", "/usr/bin:/bin", &var1, NULL, NULL}; // Commented out since it is unused
     t_adress env = {NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, &var1};
 

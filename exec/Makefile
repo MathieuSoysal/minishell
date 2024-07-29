@@ -6,7 +6,7 @@
 #    By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:04:44 by kahoumou          #+#    #+#              #
-#    Updated: 2024/07/25 14:49:15 by kahoumou         ###   ########.fr        #
+#    Updated: 2024/07/29 15:01:51 by kahoumou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ LIBFT =  $(LIBFT_PATH)/libft.a
 # #liste des sources principales
 SRCS =	exec_part/builtins/cd.c\
 		exec_part/builtins/echo.c \
-		exec_part/builtins/mem_malloc_str.c \
 		exec_part/builtins/take_change_all.c\
 		exec_part/builtins/testeur.c\
 		exec_part/builtins/print_all_adress_fd.c\
