@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:07:26 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/23 12:17:50 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:30:14 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,7 @@ t_adress *init_env(char **env_variable)
     env -> variable = NULL;
     env -> first_token = NULL;
     env -> first_line = NULL;  
+    create_chained_var(env, env_variable);
+      add_signal_env_var(env);
+      void add_signal_env_var(env);
 }
