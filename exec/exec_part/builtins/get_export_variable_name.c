@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    get_export_variable_name.c                        :+:      :+:    :+:   */
+/*   get_export_variable_name.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/20 19:21:08 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/23 13:40:59 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/29 16:04:27 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/07/29 16:04:28 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "builtins.h"
 
@@ -26,7 +27,9 @@ char * get_export_variable_name(char *variable)
     int end;
     ft_variable(index, start);
     if(!variable)
+    {
         return(NULL);
+    }
     while(variable[index])
     {
         if(is_blank(variable[index]))
