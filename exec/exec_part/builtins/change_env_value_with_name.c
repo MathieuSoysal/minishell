@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 15:48:33 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/29 16:11:32 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/07/29 16:12:35 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@
     {
         return;
     }
-        change_env_var_value(var, value);
+    change_env_var_value(var, value);
   }
   
