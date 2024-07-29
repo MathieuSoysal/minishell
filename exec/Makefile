@@ -6,7 +6,7 @@
 #    By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:04:44 by kahoumou          #+#    #+#              #
-#    Updated: 2024/07/29 18:44:55 by kahoumou         ###   ########.fr        #
+#    Updated: 2024/07/29 18:54:00 by kahoumou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ LIBFT = $(LIBFT_PATH)/libft.a
 SRCS =  exec_part/builtins/cd.c \
         exec_part/builtins/echo.c \
         exec_part/builtins/take_change_all.c \
-        exec_part/builtins/testeur.c \
         exec_part/builtins/print_all_adress_fd.c \
         exec_part/builtins/get_env_var_with_name.c \
         exec_part/builtins/get_export_variable_name.c \
@@ -30,11 +29,12 @@ SRCS =  exec_part/builtins/cd.c \
         exec_part/builtins/assign_env_var_id.c \
         exec_part/builtins/change_env_value_with_name.c \
         exec_part/builtins/change_or_create_var.c \
-        exec_part/builtins/export_testeur.c \
         exec_part/builtins/export.c \
-        exec_part/builtins/create_chained_var.c"\
-        exec_part/builtins/add_signal_env_var.c"\
-        exec_part/builtins/free_array.c
+        exec_part/builtins/create_chained_var.c\
+        exec_part/builtins/add_signal_env_var.c\
+        exec_part/builtins/free_array.c\
+        exec_part/builtins/testeur.c \
+        exec_part/builtins/variable_init-init_env_variable.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:03:59 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/29 15:02:24 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:50:35 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -365,7 +365,7 @@ int main()
 
     close(fd2);
     print_all_adress_fd(&env, 1);
-    test_export_built_in();
+    // test_export_built_in();
     return 0;
 }
     

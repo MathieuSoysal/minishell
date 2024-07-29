@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:22:32 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/29 18:33:59 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:52:25 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ t_variables				*get_last_env_var(t_adress *env);
 char					*get_env_variable_value(char *variable);
 void					change_env_value_with_name(t_adress *env, char *name, char *value);
 void 					create_chained_var(t_adress *env, char **env_variable);
+t_variables				*init_variable(char *name, char *value, int id);
 void					add_signal_env_var(t_adress *env);
 int						assign_env_var_id(char *value);
 void					free_array(char **array); 
