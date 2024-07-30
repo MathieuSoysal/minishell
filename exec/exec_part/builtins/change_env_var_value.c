@@ -1,14 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_last_variable.c                                :+:      :+:    :+:   */
+/*   change_env_var_value.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 13:48:03 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/23 13:49:14 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/30 15:32:27 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/07/30 15:32:51 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
+
+void	change_env_var_value(t_variables *var, char *new_value)
+{
+	if (var->value)
+		free(var->value);
+	var->value = new_value;
+	var->id = VALUE;
+}
