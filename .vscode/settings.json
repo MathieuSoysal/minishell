@@ -16,6 +16,8 @@
         "double_linked_list.h": "c",
         "test_ultis.h": "c",
         "internal_parser.h": "c",
-        "apply_outfiles.h": "c"
+        "apply_outfiles.h": "c",
+        "stdbool.h": "c",
+        "apply_infiles.h": "c"
     }
 }

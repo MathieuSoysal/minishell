@@ -6,11 +6,11 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 03:03:27 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/25 14:18:18 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/30 15:26:26 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "internal_parser.h"
+#include "mini_libft.h"
 #include <stdbool.h>
 #include <stdlib.h>
 
