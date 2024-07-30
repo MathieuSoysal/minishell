@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:12:41 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/21 19:52:50 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/07/30 14:25:34 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,7 @@ void changing_var_name(t_adress *adresse, char *name, char *value)
     }
 }
 
-t_variables *take_first_variable(t_adress *env)
-{
-    if(env ->variable)
-        return (env->variable);
-    return(NULL);    
-}
+
 
 
 

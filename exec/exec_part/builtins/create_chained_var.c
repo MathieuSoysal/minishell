@@ -6,13 +6,14 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:25:05 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/29 18:27:03 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/07/30 14:20:07 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
-void create_chained_var(t_adress *env, char **env_variable) {
+void create_chained_var(t_adress *env, char **env_variable) 
+{
     int index = 0;
     char *name;
     char *value;

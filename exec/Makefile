@@ -6,7 +6,7 @@
 #    By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 16:04:44 by kahoumou          #+#    #+#              #
-#    Updated: 2024/07/29 18:54:00 by kahoumou         ###   ########.fr        #
+#    Updated: 2024/07/30 15:05:31 by kahoumou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS =  exec_part/builtins/cd.c \
         exec_part/builtins/change_env_value_with_name.c \
         exec_part/builtins/change_or_create_var.c \
         exec_part/builtins/export.c \
+        exec/exec_part/builtins/is_blank.c\
         exec_part/builtins/create_chained_var.c\
         exec_part/builtins/add_signal_env_var.c\
         exec_part/builtins/free_array.c\
@@ -54,11 +55,11 @@ all: $(NAME)
 
 # Nettoyage des fichiers objets et des executables
 clean:
-		$(RM) $(OBJS)
+	$(RM) $(OBJS)
 
 # Nettoyer tous les fichiers objets et l'exécutable principal
 fclean: clean
-		$(RM) $(NAME)
-
+	$(RM) $(NAME)
+        
 # Recompiler tous les fichiers
 re: fclean all
