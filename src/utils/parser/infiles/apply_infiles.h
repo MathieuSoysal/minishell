@@ -6,14 +6,14 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:04:52 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/30 15:24:05 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/30 17:40:38 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef APPLY_INFILES_H
 # define APPLY_INFILES_H
 
-# include "../../structures/double_linked_list/double_linked_list.h"
+# include "../../../structures/double_linked_list/double_linked_list.h"
 # include <stdbool.h>
 
 typedef enum e_infile_type

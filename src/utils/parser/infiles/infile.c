@@ -6,12 +6,12 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:18:04 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/30 15:59:50 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/30 17:44:45 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "apply_infiles.h"
-#include "internal_parser.h"
+#include "../internal_parser.h"
 #include <stdlib.h>
 
 t_infile	*create_infile_with_filename(char *file_name)

@@ -16,7 +16,7 @@ mag = `tput setaf 5; `
 reset=`tput sgr0`
 
 
-SRC_GENERAL = 	./src/*.c ./src/**/*.c 
+SRC_GENERAL = 	./src/*.c ./src/**/*.c ./src/**/**/*.c 
 
 
 BUILD: 
@@ -35,11 +35,11 @@ MERGETEST:
 	rm test_TEMP/main.c
 
 GCOV: MERGETEST  
-	gcc -g3 -fprofile-arcs -ftest-coverage -O0 -o $(testbuild)/test.out test_TEMP/**/*.c test_TEMP/**/**/*.c test_TEMP/*.c
+	gcc -g3 -fprofile-arcs -ftest-coverage -O0 -o $(testbuild)/test.out test_TEMP/**/*.c test_TEMP/**/**/*.c test_TEMP/**/**/**/*.c test_TEMP/*.c
 	./$(testbuild)/test.out 
 
 RUNTEST: MERGETEST  
-	gcc -g3 -o $(testbuild)/test.out test_TEMP/**/*.c test_TEMP/**/**/*.c test_TEMP/*.c
+	gcc -g3 -o $(testbuild)/test.out test_TEMP/**/*.c test_TEMP/**/**/*.c test_TEMP/**/**/**/*.c test_TEMP/*.c
 	./$(testbuild)/test.out 
 
 TEST: MERGETEST RUNTEST cleantest

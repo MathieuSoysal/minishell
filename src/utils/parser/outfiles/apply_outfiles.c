@@ -6,12 +6,12 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:08:14 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/27 11:08:55 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/30 17:40:51 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "apply_outfiles.h"
-#include "internal_parser.h"
+#include "../internal_parser.h"
 #include <stdlib.h>
 
 static inline void	move_cell_i_to_last(char **array, int i)

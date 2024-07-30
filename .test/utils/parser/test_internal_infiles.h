@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:12:09 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/30 17:28:45 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/30 17:41:29 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define TEST_INTERNAL_INFILES_H
 
 # include "../../acutest.h"
-# include "apply_infiles.h"
+# include "infiles/apply_infiles.h"
 # include "internal_parser.h"
 # include "test_utils.h"
 # include <stdlib.h>
