@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 11:46:58 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/30 15:23:46 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/30 17:20:16 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ t_infile	**extract_infiles(char **command_line)
 	{
 		if (equals(command_line[i], "<") || equals(command_line[i], "<<"))
 		{
-			if (equals(command_line[i], "<"))
-				double_linked_list_add_last(infiles,
-					create_infile_with_filename(command_line[i + 1]));
-			else
+			if (equals(command_line[i], "<<"))
 				double_linked_list_add_last(infiles,
 					create_infile_with_fd(heredoc(command_line[i + 1])));
+			else
+				double_linked_list_add_last(infiles,
+					create_infile_with_filename(command_line[i + 1]));
 			move_cell_i_to_last(command_line, i);
 			move_cell_i_to_last(command_line, i);
 		}
