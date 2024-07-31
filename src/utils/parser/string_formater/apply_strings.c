@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 05:26:30 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 09:58:36 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 12:30:14 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ char	*apply_strings(char *str)
 			new_str[++i_dest] = str[i_src];
 	}
 	new_str[++i_dest] = '\0';
+	free(str);
 	return (new_str);
 }

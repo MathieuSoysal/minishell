@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 09:37:33 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 12:18:36 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 12:21:52 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_double_linked_list	*convert_list_of_args(char *command_line,
 	int						i;
 	t_commande				*commande;
 
-	commands_brut = split_by_pipe(command_line); // need to be free
+	commands_brut = split_by_pipe(command_line);
 	commands = double_linked_list_create();
 	i = -1;
 	while (commands_brut[++i])

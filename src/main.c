@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 12:14:51 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 12:32:33 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "utils/checker/checker.h"
 #include "utils/mini_libft/mini_libft.h"
 #include "utils/parser/parser.h"
+#include <stdlib.h>
 #include <unistd.h>
 
 int	main(int argc, char const *argv[], char const *envp[])
@@ -43,6 +44,7 @@ int	main(int argc, char const *argv[], char const *envp[])
 				i++;
 			}
 		}
+		free(command_line);
 	}
 	return (0);
 }
