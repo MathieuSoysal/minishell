@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 21:43:56 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 09:36:44 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 21:23:10 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,22 @@ char	**split_by_space(char const *command_line)
 	size_t					i;
 	char					*word;
 
+	word = NULL;
 	list = double_linked_list_create();
+	if (!list)
+		return (NULL);
 	i = 0;
-	while (command_line[i])
+	while (command_line && command_line[i] != '\0' && command_line[i] != '\n')
 	{
 		if (command_line[i] != ' ')
 		{
 			word = get_word(command_line, &i, ' ');
+			if (word == NULL)
+				return (NULL);
 			double_linked_list_add_last(list, word);
 		}
-		i++;
+		else
+			i++;
 	}
 	return (double_linked_list_to_array(list));
 }

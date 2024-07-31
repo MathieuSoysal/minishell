@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 12:32:33 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 18:33:30 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int	main(int argc, char const *argv[], char const *envp[])
 				commande_free(commands[i]);
 				i++;
 			}
+			free(commands);
+			commands = NULL;
 		}
 		free(command_line);
+		command_line = NULL;
 	}
 	return (0);
 }

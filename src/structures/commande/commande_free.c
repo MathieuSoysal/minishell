@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 15:45:31 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 15:47:39 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 17:41:16 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	commande_free(t_commande *commande)
 {
 	if (commande == NULL)
 		return ;
-	free(commande->name);
+	if (commande->name != NULL)
+		free(commande->name);
 	commande->name = NULL;
 	free_strings(commande->args);
 	free(commande->args);

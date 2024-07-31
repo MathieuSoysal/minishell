@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 09:37:33 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 12:21:52 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 17:43:10 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_double_linked_list	*convert_list_of_args(char *command_line,
 	{
 		args = split_by_space(commands_brut[i]);
 		apply_dollars_for_args(args, env);
-		commande = commande_create(args[0], args, NULL, NULL);
+		commande = commande_create(apply_strings(args[0]), args, NULL, NULL);
 		commande->infiles = extract_infiles(args);
 		commande->outfile_names = extract_outfiles(args);
 		apply_strings_for_args(args);

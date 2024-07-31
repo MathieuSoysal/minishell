@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:50:53 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 16:01:26 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 18:28:45 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strndup(const char *s, size_t n)
 	char	*str;
 	size_t	i;
 
-	str = (char *)malloc(sizeof(char) * (n + 1));
+	str = (char *)malloc(sizeof(char) * (n + 3));
 	if (!str)
 		return (NULL);
 	i = 0;
