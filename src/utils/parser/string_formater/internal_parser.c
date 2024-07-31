@@ -6,12 +6,12 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:50:53 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/25 15:09:33 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 09:36:37 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../structures/double_linked_list/double_linked_list.h"
-#include "internal_parser.h"
+#include "../../../structures/double_linked_list/double_linked_list.h"
+#include "../internal_parser.h"
 #include <stdlib.h>
 
 char	*ft_strndup(const char *s, size_t n)

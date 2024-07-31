@@ -6,11 +6,11 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 05:26:30 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/18 22:07:55 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 09:36:29 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "internal_parser.h"
+#include "../internal_parser.h"
 #include <stdlib.h>
 
 char	*apply_strings(char *str)

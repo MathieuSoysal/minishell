@@ -6,12 +6,12 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 21:43:56 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/18 04:59:42 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 09:36:44 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../structures/double_linked_list/double_linked_list.h"
-#include "internal_parser.h"
+#include "../../../structures/double_linked_list/double_linked_list.h"
+#include "../internal_parser.h"
 
 char	**split_by_space(char const *command_line)
 {

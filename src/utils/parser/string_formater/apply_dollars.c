@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   apply_dollers.c                                    :+:      :+:    :+:   */
+/*   apply_dollars.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 00:18:36 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/18 05:08:20 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 09:36:23 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../structures/double_linked_list/double_linked_list.h"
-#include "internal_parser.h"
+#include "../../../structures/double_linked_list/double_linked_list.h"
+#include "../internal_parser.h"
 #include <stdbool.h>
 #include <stdlib.h>
 
