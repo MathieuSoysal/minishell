@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:12:09 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/30 17:41:43 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 13:31:02 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	test_extract_outfiles1(void)
 	command_line = clone((char *[]){"ls", ">", "file", NULL});
 	result = extract_outfiles(command_line);
 	assert_equals("file", result[0]);
-	free_all(result);
 }
 
 void	test_extract_outfiles2(void)
@@ -56,7 +55,6 @@ void	test_extract_outfiles2(void)
 	result = extract_outfiles(command_line);
 	assert_equals("file", result[0]);
 	assert_equals("file2", result[1]);
-	free_all(result);
 }
 
 void	test_extract_outfiles3(void)
@@ -70,7 +68,6 @@ void	test_extract_outfiles3(void)
 	assert_equals("file", result[0]);
 	assert_equals("file2", result[1]);
 	assert_equals("file3", result[2]);
-	free_all(result);
 }
 
 void	test_outfiles_all(void)

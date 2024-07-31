@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 05:26:30 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 12:30:14 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 14:04:06 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 
 void	apply_strings_for_args(char **args)
 {
-	int	i;
+	int		i;
+	char	*temp;
 
 	i = -1;
 	while (args[++i])
+	{
+		temp = args[i];
 		args[i] = apply_strings(args[i]);
+		free(temp);
+		temp = NULL;
+	}
 }
 
 char	*apply_strings(char *str)
@@ -43,6 +49,5 @@ char	*apply_strings(char *str)
 			new_str[++i_dest] = str[i_src];
 	}
 	new_str[++i_dest] = '\0';
-	free(str);
 	return (new_str);
 }
