@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:50:53 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 09:36:37 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 16:01:26 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ char	**split_by_pipe(char const *command_line)
 	while (command_line[i] && command_line[i] != '\n')
 	{
 		double_linked_list_add_last(list, get_word(command_line, &i, '|'));
+		if (command_line[i] == '\0')
+			break ;
 		i++;
 		if (command_line[i] == '|')
 			i++;
