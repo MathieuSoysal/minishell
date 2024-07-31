@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2023/11/06 16:44:00 by kahoumou          #+#    #+#             */
+/*   Updated: 2023/11/06 19:44:49 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
+#include<ctype.h>
 
-# include "../../acutest.h"
-# include <stdio.h>
-
-void	free_all(char **result)
+int	ft_isdigit(int character)
 {
-	int	i;
-
-	i = 0;
-	while (result[i])
-	{
-		free(result[i]);
-		i++;
-	}
-	free(result);
+	if (character >= '0' && character <= '9')
+		return (2048);
+	else
+		return (0);
 }
-
-#endif // TEST_UTILS_H

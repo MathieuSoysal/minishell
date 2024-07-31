@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/06/04 13:31:02 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/06/04 13:34:44 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
+#include "libft.h"
 
-# include "../../acutest.h"
-# include <stdio.h>
-
-void	free_all(char **result)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (result[i])
+	if (!s1)
+		return (1);
+	while (s1[i] || s2[i])
 	{
-		free(result[i]);
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
 	}
-	free(result);
+	return (0);
 }
-
-#endif // TEST_UTILS_H

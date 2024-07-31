@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2023/11/06 14:11:41 by kahoumou          #+#    #+#             */
+/*   Updated: 2023/11/06 16:18:40 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include<ctype.h>
+#include<stdio.h>
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
-
-# include "../../acutest.h"
-# include <stdio.h>
-
-void	free_all(char **result)
+int	ft_isalpha(int character)
 {
-	int	i;
-
-	i = 0;
-	while (result[i])
-	{
-		free(result[i]);
-		i++;
-	}
-	free(result);
+	if (character >= 'a' && character <= 'z')
+		return (1024);
+	else if (character >= 'A' && character <= 'Z')
+		return (1024);
+	else
+		return (0);
 }
-
-#endif // TEST_UTILS_H

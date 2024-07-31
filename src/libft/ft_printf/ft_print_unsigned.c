@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2023/11/29 17:10:53 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/05/30 13:48:50 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
+#include "ft_printf.h"
 
-# include "../../acutest.h"
-# include <stdio.h>
-
-void	free_all(char **result)
+void	ft_print_unsigned(unsigned int nb, int *lenght)
 {
-	int	i;
+	int	c;
 
-	i = 0;
-	while (result[i])
+	c = 0;
+	if (nb < 0)
 	{
-		free(result[i]);
-		i++;
+		c = '0' + nb;
+		ft_putchar_lenght(c, lenght);
 	}
-	free(result);
+	else if (nb > 9)
+		ft_print_putnbr((nb / 10), lenght);
+	ft_print_putnbr(nb % 10, lenght);
 }
-
-#endif // TEST_UTILS_H

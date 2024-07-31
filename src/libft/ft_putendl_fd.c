@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2023/11/16 19:38:15 by kahoumou          #+#    #+#             */
+/*   Updated: 2023/11/16 19:51:45 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include"libft.h"
+#include <unistd.h>
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
-
-# include "../../acutest.h"
-# include <stdio.h>
-
-void	free_all(char **result)
+void	ft_putendl_fd(char *s, int fd)
 {
 	int	i;
 
 	i = 0;
-	while (result[i])
+	if (!s)
+		return ;
+	while (s[i])
 	{
-		free(result[i]);
+		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-	free(result);
+	write(fd, "\n", 1);
 }
-
-#endif // TEST_UTILS_H

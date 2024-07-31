@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2023/11/08 16:32:11 by kahoumou          #+#    #+#             */
+/*   Updated: 2023/11/11 19:15:26 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
+#include <string.h>
+#include<stdio.h>
 
-# include "../../acutest.h"
-# include <stdio.h>
-
-void	free_all(char **result)
+void	*ft_memset(void *pointer, int value, size_t count)
 {
-	int	i;
+	unsigned char	*ptr;
 
-	i = 0;
-	while (result[i])
+	ptr = (unsigned char *)pointer;
+	while (count)
 	{
-		free(result[i]);
-		i++;
+		*ptr = value;
+		ptr++;
+		count --;
 	}
-	free(result);
+	return (pointer);
 }
-
-#endif // TEST_UTILS_H

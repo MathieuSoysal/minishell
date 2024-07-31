@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   same_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/07/30 17:14:32 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/07/30 17:14:56 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
+#include "builtins.h"
 
-# include "../../acutest.h"
-# include <stdio.h>
 
-void	free_all(char **result)
+
+int	same_str(char *first, char *second, int size)
 {
 	int	i;
 
+	if (size < 0)
+		size = ft_strlen(first);
 	i = 0;
-	while (result[i])
+	while (first[i] && second[i] && i < size)
 	{
-		free(result[i]);
-		i++;
+		if (first[i] != second[i])
+			return (0);
+		++i;
 	}
-	free(result);
+	if (i == size)
+		return (1);
+	return (0);
 }
-
-#endif // TEST_UTILS_H

@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2023/11/12 15:33:05 by kahoumou          #+#    #+#             */
+/*   Updated: 2023/11/25 17:18:09 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
+#include "libft.h"
+#include <string.h>
 
-# include "../../acutest.h"
-# include <stdio.h>
-
-void	free_all(char **result)
+char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	char	*chr;
 
-	i = 0;
-	while (result[i])
+	chr = (char *)s;
+	while (*chr != (char)c)
 	{
-		free(result[i]);
-		i++;
+		if (*chr == '\0')
+		{
+			return (NULL);
+		}
+		chr++;
 	}
-	free(result);
+	return (chr);
 }
-
-#endif // TEST_UTILS_H

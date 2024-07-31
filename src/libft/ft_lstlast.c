@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2023/11/17 14:06:22 by kahoumou          #+#    #+#             */
+/*   Updated: 2023/11/17 19:35:27 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include<stdlib.h>
+#include<stdio.h>
+#include"libft.h"
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
-
-# include "../../acutest.h"
-# include <stdio.h>
-
-void	free_all(char **result)
+t_list	*ft_lstlast(t_list *lst)
 {
-	int	i;
-
-	i = 0;
-	while (result[i])
+	while (lst)
 	{
-		free(result[i]);
-		i++;
+		if (!lst->next)
+			return (lst);
+		lst = lst->next;
 	}
-	free(result);
+	return (lst);
 }
-
-#endif // TEST_UTILS_H

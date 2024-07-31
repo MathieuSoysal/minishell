@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   mem_malloc_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/07/06 13:28:52 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/07/06 13:32:25 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
+#include "libft.h"
 
-# include "../../acutest.h"
-# include <stdio.h>
-
-void	free_all(char **result)
+char	*mem_malloc_str(char *tab_for_mlc)
 {
-	int	i;
+	size_t	i;
+	char	*str;
 
+	str = malloc(sizeof(char) * (ft_strlen(tab_for_mlc) + 1));
 	i = 0;
-	while (result[i])
+	while (tab_for_mlc[i])
 	{
-		free(result[i]);
+		str[i] = tab_for_mlc[i];
 		i++;
 	}
-	free(result);
+	str[i] = 0;
+	return (str);
 }
-
-#endif // TEST_UTILS_H

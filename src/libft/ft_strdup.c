@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2023/11/14 16:00:44 by kahoumou          #+#    #+#             */
+/*   Updated: 2023/11/22 14:41:06 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
+#include <stdlib.h>
+#include "libft.h"
 
-# include "../../acutest.h"
-# include <stdio.h>
-
-void	free_all(char **result)
+char	*ft_strdup(char *src)
 {
-	int	i;
+	int		len;
+	int		i;
+	char	*dup;
 
 	i = 0;
-	while (result[i])
+	len = ft_strlen(src);
+	dup = malloc(sizeof(char) * (len + 1));
+	if (!dup)
+		return (NULL);
+	while (src[i])
 	{
-		free(result[i]);
+		dup[i] = src[i];
 		i++;
 	}
-	free(result);
+	dup[i] = '\0';
+	return (dup);
 }
-
-#endif // TEST_UTILS_H

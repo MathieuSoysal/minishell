@@ -162,6 +162,7 @@
 #endif  /* #ifdef __cplusplus */
 
 
+
 /* Sometimes it is useful to split execution of more complex unit tests to some
  * smaller parts and associate those parts with some names.
  *
@@ -1790,5 +1791,17 @@ main(int argc, char** argv)
 #ifdef __cplusplus
     }  /* extern "C" */
 #endif
+
+void	assert_equals(char const *expected, char const *actual)
+{
+
+	TEST_CHECK(expected != NULL && actual != NULL);
+	TEST_CHECK(strcmp(expected, actual) == 0);
+	if (strcmp(expected, actual) != 0)
+	{
+		dprintf(2, "           \033[31mExpected:\033[0m %s\n", expected);
+		dprintf(2, "           \033[31mActual:\033[0m %s\n", actual);
+	}
+}
 
 #endif  /* #ifndef ACUTEST_H */

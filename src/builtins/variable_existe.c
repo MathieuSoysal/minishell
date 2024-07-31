@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   variable_existe.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/07/30 15:44:58 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/07/30 15:50:46 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
+#include "builtins.h"
 
-# include "../../acutest.h"
-# include <stdio.h>
 
-void	free_all(char **result)
+int	variable_exist(t_adress *env, char *name)
 {
-	int	i;
+	t_variables	*var;
 
-	i = 0;
-	while (result[i])
-	{
-		free(result[i]);
-		i++;
-	}
-	free(result);
+	var = get_env_var_with_name(env, name);
+	if (!var)
+		return (0);
+	if (ft_same_name(var->name, name))
+		return (1);
+	return (0);
 }
-
-#endif // TEST_UTILS_H

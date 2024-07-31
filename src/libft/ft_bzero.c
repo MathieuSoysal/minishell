@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2023/11/09 16:12:00 by kahoumou          #+#    #+#             */
+/*   Updated: 2023/11/09 16:35:35 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stddef.h>
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
-
-# include "../../acutest.h"
-# include <stdio.h>
-
-void	free_all(char **result)
+void	ft_bzero(void *s, size_t n)
 {
-	int	i;
+	unsigned char	*tab;
+	int				i;
 
+	tab = (unsigned char *)s;
 	i = 0;
-	while (result[i])
+	while (n)
 	{
-		free(result[i]);
-		i++;
+		tab[i] = '\0';
+		i ++;
+		n --;
 	}
-	free(result);
 }
-
-#endif // TEST_UTILS_H

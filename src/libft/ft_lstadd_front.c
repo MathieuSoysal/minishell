@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/31 13:45:08 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 12:00:52 by hsoysal          ###   ########.fr       */
+/*   Created: 2023/11/23 14:31:31 by kahoumou          #+#    #+#             */
+/*   Updated: 2023/11/23 14:44:04 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_libft.h"
-#include <unistd.h>
+#include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	int	i;
-
-	i = ft_strlen(s);
-	while (i >= 0)
+	if (alst && new)
 	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
-		i--;
+		new->next = *alst;
+		*alst = new;
 	}
-	return (NULL);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	write(fd, s, ft_strlen(s));
 }

@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 00:45:31 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/30 15:53:51 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 15:08:50 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 #include "utils/parser/test_internal_infiles.h"
 #include "utils/parser/test_internal_parser.h"
 #include "utils/parser/test_internal_string.h"
+
 #include <stdio.h>
 
 // Run TESTs
@@ -48,5 +49,6 @@ TEST_LIST = {
 	{"Parser Internal with string", test_apply_strings_all},
 	{"Parser Internal with outfiles", test_outfiles_all},
 	{"Parser Internal with infiles", test_infiles_all},
+	
 	{NULL, NULL} //
 };

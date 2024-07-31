@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.h                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:32:17 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:57:02 by hsoysal          ###   ########.fr       */
+/*   Created: 2023/11/29 17:28:40 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/05/30 13:48:13 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_UTILS_H
-# define TEST_UTILS_H
+#include "ft_printf.h"
+#include <stdlib.h>
 
-# include "../../acutest.h"
-# include <stdio.h>
-
-void	free_all(char **result)
+void	ft_print_putstr(char *str, int *lenght)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (result[i])
+	if (!str)
 	{
-		free(result[i]);
+		write(1, "(null)", 6);
+		(*lenght) += 6;
+		return ;
+	}
+	i = 0;
+	while (str[i])
+	{
+		ft_putchar_lenght(str[i], lenght);
 		i++;
 	}
-	free(result);
 }
-
-#endif // TEST_UTILS_H
