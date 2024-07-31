@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:22:32 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/30 15:47:59 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:52:36 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ void					changing_var_name(t_adress *adresse, char *name,
 char					*take_var_for_adress(t_adress *adress, char *name);
 t_variables				*take_var_for_next_value(t_adress *adress, char *name);
 int						export(t_cmd *cmd, t_adress *env);
-t_variables				*take_first_variable(t_adress *env);
+t_variables				*my_first_variable(t_adress *env);
 void					print_env_var_fd(t_variables *var, int fd);
 void					print_all_adress_fd(t_adress *env, int fd);
-char					*get_export_variable_name(char *variable);
+char					*my_export_var_name(char *variable);
 void					change_or_create_var(t_adress *env, char *name,
 							char *value, int id);
 int						ft_same_name(char *name1, char *name2);
@@ -106,13 +106,15 @@ int						variable_exist(t_adress *env, char *name);
 t_variables				*init_variable(char *name, char *value, int id);
 void					add_new_env_variable(t_adress *env, t_variables *new);
 t_variables				*get_last_env_var(t_adress *env);
-char					*get_env_variable_value(char *variable);
+char					*take_var_value(char *variable);
 void					change_env_value_with_name(t_adress *env, char *name, char *value);
 void 					create_chained_var(t_adress *env, char **env_variable);
 t_variables				*init_variable(char *name, char *value, int id);
 void					add_signal_env_var(t_adress *env);
-int						assign_env_var_id(char *value);
+int						is_var_id(char *value);
 int						variable_exist(t_adress *env, char *name);
+int						same_name(char *first, char *second);
+int						same_str(char *first, char *second, int size);
 void					free_array(char **array); 
 void					test_export_built_in(); 
 int						is_blank(char c);
@@ -121,5 +123,6 @@ int						check_args(t_cmd *cmd);
 int						check_flag(t_cmd *cmd);
 int						echo(t_cmd *cmd);
 int						pwd(t_cmd *cmd);
+void					test_export_built_in();
 
 #endif

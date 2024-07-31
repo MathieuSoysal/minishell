@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 18:19:09 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/21 19:36:11 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:29:09 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 
-t_variables  *take_first_variable(t_adress  *env)
+t_variables  *my_first_variable(t_adress  *env)
 {
     if(env -> variable)
         return(env -> variable);
@@ -34,7 +34,7 @@ void print_env_var_fd(t_variables  *var, int fd)
 
 void print_all_adress_fd(t_adress *env, int fd)
 {
-    t_variables  *var  = take_first_variable(env); 
+    t_variables  *var  = my_first_variable(env); 
    
     if(!var)  
         return;

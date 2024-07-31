@@ -1,5 +1,5 @@
 {
     "files.associations": {
-        "get_export_variable_name": "c"
+        "my_export_var_name": "c"
     }
 }
