@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 00:18:36 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 09:36:23 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 12:04:03 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ static char	*get_dollar(char const *command_line, size_t *i,
 	result = get_from_env(env, ft_strndup(command_line + *i, j - *i));
 	*i = j;
 	return (result);
+}
+
+void	apply_dollars_for_args(char **args, char **env)
+{
+	int	i;
+
+	i = -1;
+	while (args[++i])
+		args[i] = apply_dollars(args[i], env);
 }
 
 char	*apply_dollars(char *command_line, char **env)

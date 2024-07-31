@@ -16,12 +16,12 @@ mag = `tput setaf 5; `
 reset=`tput sgr0`
 
 
-SRC_GENERAL = 	./src/*.c ./src/**/*.c ./src/**/**/*.c 
+SRC_GENERAL = ./src/*.c ./src/**/*.c  ./src/**/**/*.c ./src/**/**/**/*.c
 
 
 BUILD: 
 	mkdir -p  $(build_folder)
-	$(CC) -o $(build_folder)/minishell $(SRC_GENERAL) src/main.c
+	$(CC) -o $(build_folder)/minishell $(SRC_GENERAL) 
 	echo "$(green)Built and deploy at $ \(mag) $(build_folder)/$(outfile)$(reset)";
 
 

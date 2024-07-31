@@ -6,11 +6,43 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/10 14:47:05 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 12:14:51 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char const *argv[])
+#include "structures/commande/commande.h"
+#include "utils/checker/checker.h"
+#include "utils/mini_libft/mini_libft.h"
+#include "utils/parser/parser.h"
+#include <unistd.h>
+
+int	main(int argc, char const *argv[], char const *envp[])
 {
+	char			*command_line;
+	t_syntax_error	error;
+	t_commande		**commands;
+	int				i;
+
+	while (1)
+	{
+		write(1, "minishell$ ", 11);
+		command_line = ft_get_next_line(0);
+		error = check_syntax(command_line);
+		if (error != NO_ERROR)
+			print_error(error);
+		else
+		{
+			commands = parse_command_line(command_line, (char **)envp);
+			if (!commands)
+				return (1);
+			i = 0;
+			while (commands[i])
+			{
+				print_commande(commands[i]);
+				commande_free(commands[i]);
+				i++;
+			}
+		}
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 20:46:38 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/05/03 13:49:27 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 10:15:29 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DOUBLE_LINKED_LIST_H
 
 # include "double_linked_list_essentials.h"
+# include <stdbool.h>
 
 /**
  * @brief Add a content at the head of the linked list
@@ -78,5 +79,11 @@ void	*double_linked_list_pop_last(t_double_linked_list *obj);
  */
 void	double_linked_list_remove_last(t_double_linked_list *obj,
 			void (*free_content)(void *));
+
+/**
+ * @brief If the linked list is empty, return false, else return true
+ * @return true if the linked list is empty, else false
+ */
+bool	double_linked_list_has_next(t_double_linked_list *obj);
 
 #endif // DOUBLE_LINKED_LIST_H

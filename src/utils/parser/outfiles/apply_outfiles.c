@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:08:14 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/30 17:40:51 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 10:02:40 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	**extract_outfiles(char **command_line)
 	{
 		if (equals(command_line[i], ">") || equals(command_line[i], ">>"))
 		{
-			double_linked_list_add_last(outfiles, ft_strdup(command_line[i
+			double_linked_list_add_last(outfiles, apply_strings(command_line[i
 					+ 1]));
 			move_cell_i_to_last(command_line, i);
 			move_cell_i_to_last(command_line, i);

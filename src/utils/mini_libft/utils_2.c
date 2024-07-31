@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 03:03:27 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/30 15:26:38 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 12:03:56 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,28 @@ char	*get_word_until(char const *command_line, size_t *i,
 char	*concatenate(t_double_linked_list *list)
 {
 	char	*result;
+	char	*new_word;
 	char	*temp;
 
-	temp = NULL;
+	new_word = NULL;
 	result = ft_strdup("");
 	if (!result)
 		return (NULL);
 	while (list->size > 0)
 	{
-		free(temp);
-		temp = double_linked_list_pop_first(list);
-		if (!temp)
+		free(new_word);
+		new_word = double_linked_list_pop_first(list);
+		if (!new_word)
 			return (free(result), NULL);
-		result = ft_strjoin(result, temp);
+		temp = result;
+		result = ft_strjoin(temp, new_word);
+		free(temp);
 		if (!result)
 			return (NULL);
 	}
-	free(temp);
+	free(new_word);
+	free(list);
+	list = NULL;
 	return (result);
 }
 

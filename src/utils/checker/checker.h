@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 19:56:24 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/14 16:10:12 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 11:19:06 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ typedef enum e_syntax_error
  * @return The syntax error
  */
 t_syntax_error	check_syntax(const char *command_line);
+void			print_error(t_syntax_error error);
 
 #endif // CHECKER_H

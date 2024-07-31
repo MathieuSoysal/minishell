@@ -6,10 +6,11 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 20:53:59 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/14 21:02:14 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 11:21:24 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../mini_libft/mini_libft.h"
 #include "internal_checker.h"
 #include <aio.h>
 
@@ -34,4 +35,27 @@ t_syntax_error	check_syntax(const char *command_line)
 		i++;
 	}
 	return (NO_ERROR);
+}
+
+void	print_error(t_syntax_error error)
+{
+	if (error == SE_UNEXPECTED_TOKEN_NEWLINE)
+		ft_putstr_fd("minishell: syntax error near unexpected token `newline'\n",
+			2);
+	if (error == SE_UNEXPECTED_TOKEN_DOUBLE_AND)
+		ft_putstr_fd("minishell: syntax error near unexpected token `&&'\n", 2);
+	if (error == SE_UNEXPECTED_TOKEN_AND)
+		ft_putstr_fd("minishell: syntax error near unexpected token `&'\n", 2);
+	if (error == SE_UNEXPECTED_TOKEN_DOUBLE_PIPE)
+		ft_putstr_fd("minishell: syntax error near unexpected token `||'\n", 2);
+	if (error == SE_UNEXPECTED_TOKEN_PIPE)
+		ft_putstr_fd("minishell: syntax error near unexpected token `|'\n", 2);
+	if (error == SE_UNEXPECTED_TOKEN_OUTFILE_APPEND)
+		ft_putstr_fd("minishell: syntax error near unexpected token `>>'\n", 2);
+	if (error == SE_UNEXPECTED_TOKEN_OUTFILE)
+		ft_putstr_fd("minishell: syntax error near unexpected token `>'\n", 2);
+	if (error == SE_UNEXPECTED_TOKEN_INFILE_HEREDOC)
+		ft_putstr_fd("minishell: syntax error near unexpected token `<<'\n", 2);
+	if (error == SE_UNEXPECTED_TOKEN_INFILE)
+		ft_putstr_fd("minishell: syntax error near unexpected token `<'\n", 2);
 }

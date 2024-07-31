@@ -6,12 +6,21 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 05:26:30 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 09:36:29 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 09:58:36 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../internal_parser.h"
 #include <stdlib.h>
+
+void	apply_strings_for_args(char **args)
+{
+	int	i;
+
+	i = -1;
+	while (args[++i])
+		args[i] = apply_strings(args[i]);
+}
 
 char	*apply_strings(char *str)
 {

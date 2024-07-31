@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:04:52 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/30 17:40:38 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/07/31 09:45:39 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ t_infile			*create_infile_with_filename(char *file_name);
 t_infile			*create_infile_with_fd(int fd);
 t_infile			**double_linked_list_to_array_infiles(
 						t_double_linked_list *list);
+void				free_infiles(t_infile **infiles);
+void				free_infile(t_infile *infiles);
 
 #endif // APPLY_INFILES_H
