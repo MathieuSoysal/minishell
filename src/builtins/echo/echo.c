@@ -6,11 +6,11 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:40:20 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/15 19:25:41 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:00:11 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
 int check_args(t_cmd  *cmd)
 {

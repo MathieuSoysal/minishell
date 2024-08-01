@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 16:44:24 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/01 14:53:21 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:08:57 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "builtins.h"
+#include "../builtins.h"
 
 void test_export_built_in() {
     t_adress env;

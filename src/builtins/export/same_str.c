@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_new_variable.c                                 :+:      :+:    :+:   */
+/*   same_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 11:45:19 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/23 13:43:43 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/30 17:14:32 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/08/01 15:07:58 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
-void add_new_env_variable(t_adress *env, t_variables *new) 
+int	same_str(char *first, char *second, int size)
 {
-    t_variables *last_var;
+	int	i;
 
-    last_var = get_last_env_var(env);
-    if (!last_var) 
-    {
-        env->variable = new;
-    } 
-    else
-    {
-        last_var->next = new;
-        new->previous = last_var;
-    }
-    new->index = (last_var) ? last_var->index + 1 : 0;
-    new->next = NULL;
+	if (size < 0)
+		size = ft_strlen(first);
+	i = 0;
+	while (first[i] && second[i] && i < size)
+	{
+		if (first[i] != second[i])
+			return (0);
+		++i;
+	}
+	if (i == size)
+		return (1);
+	return (0);
 }

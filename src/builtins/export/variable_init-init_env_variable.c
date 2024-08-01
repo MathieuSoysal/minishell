@@ -6,11 +6,11 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:07:26 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/01 14:32:26 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:09:23 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
 t_variables *init_variable(char *name, char *value, int id) {
     t_variables *var = (t_variables *)malloc(sizeof(t_variables));

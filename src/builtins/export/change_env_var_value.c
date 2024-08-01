@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_var_id.c                                :+:      :+:    :+:   */
+/*   change_env_var_value.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 14:58:24 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/29 16:09:58 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/30 15:32:27 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/08/01 15:05:43 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
-int is_var_id(char *value)
+
+void	change_env_var_value(t_variables *var, char *new_value)
 {
-    if(!value)
-    {
-        return(NONE_VALUE);
-    }
-        return (VALUE);       
+	if (var->value)
+		free(var->value);
+	var->value = new_value;
+	var->id = VALUE;
 }

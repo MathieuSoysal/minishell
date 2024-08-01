@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_blank.c                                         :+:      :+:    :+:   */
+/*   get_last_env_var.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 11:53:04 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/01 14:30:16 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/23 13:51:14 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/08/01 15:06:45 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
-
-int is_blank(char c) {
-    return (c == ' ' || c == '\t' || c == '\n');
+t_variables *get_last_env_var(t_adress  *env)
+{
+    t_variables *var =   env ->variable;
+    
+    if(!var)
+    {
+            return NULL;
+    }
+    while(var)
+    {                      
+        if(var -> next)
+        {
+            return(var);
+        }
+        var = var -> next;
+    }
+    return(0);
 }

@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_array.c                                       :+:      :+:    :+:   */
+/*   same_name.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 18:33:14 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/29 18:33:39 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/23 11:25:45 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/08/01 15:07:47 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
-
-void free_array(char **array) 
+int	same_name(char *first, char *second)
 {
-    int i;
-
-    if (!array)
-        return;
-
-    i = 0;
-    while (array[i]) {
-        free(array[i]);
-        array[i] = NULL;
-        i++;
-    }
-    free(array);
+	if (same_str(first, second, ft_strlen(second)))
+	{
+		return (1);
+	}
+	return (0);
 }
