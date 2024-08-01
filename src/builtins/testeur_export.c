@@ -6,54 +6,68 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 16:44:24 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/30 17:07:12 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/01 14:53:21 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "builtins.h"
 
+void test_export_built_in() {
+    t_adress env;
+    t_cmd cmd;
+    char *arg1 = "TEST1=value1";
+    char *arg2 = "TEST2=value2";
 
-
-void test_export_built_in() 
-{
-    t_adress env = {0};
-    t_cmd cmd = {0};
-
-    // Initialisation de l'environnement et de la commande
+   
     env.variable = NULL;
-    cmd.fd_out = 1; // sortie standard
+    env.verbose = 0;
+    env.error_parsing = 0;
+    env.error_processing = 0;
+    env.env_vars = NULL;
+    env.first_line = NULL;
+    env.first_token = NULL;
 
-    // Test 1: Ajouter une nouvelle variable
-    cmd.arg = "NEW_VAR=test_value";
-    export(&cmd, &env);
-    printf("Test 1: Ajouter NEW_VAR=test_value\n");
-    print_all_adress_fd(&env, 1);
+  
+    cmd.arg = arg1;
+    cmd.fd_out = 1;  
 
-    // Test 2: Ajouter une variable sans valeur
-    cmd.arg = "EMPTY_VAR=";
-    export(&cmd, &env);
-    printf("Test 2: Ajouter EMPTY_VAR=\n");
-    print_all_adress_fd(&env, 1);
-
-    // Test 3: Modifier une variable existante
-    cmd.arg = "NEW_VAR=new_value";
-    export(&cmd, &env);
-    printf("Test 3: Modifier NEW_VAR=new_value\n");
-    print_all_adress_fd(&env, 1);
-
-    // Test 4: Afficher toutes les variables
-    cmd.arg = NULL;
-    printf("Test 4: Afficher toutes les variables\n");
+    
+    printf("Testing export function for TEST1=value1...\n");
     export(&cmd, &env);
 
-    // Nettoyage de la mémoire allouée
-    t_variables *var = env.variable;
-    t_variables *next_var;
-    while (var) {
-        next_var = var->next;
-        free(var->name);
-        free(var->value);
-        free(var);
-        var = next_var;
+ 
+    t_variables *var1 = get_env_var_with_name(&env, "TEST1");
+    if (var1 && strcmp(var1->value, "value1") == 0) {
+        printf("Test passed: Variable 'TEST1' with value 'value1' added successfully.\n");
+    } else {
+        printf("Test failed: Variable 'TEST1' was not added correctly.\n");
     }
+
+
+    cmd.arg = arg2;
+
+
+    printf("Testing export function for TEST2=value2...\n");
+    export(&cmd, &env);
+
+
+    t_variables *var2 = get_env_var_with_name(&env, "TEST2");
+    if (var2 && strcmp(var2->value, "value2") == 0) {
+        printf("Test passed: Variable 'TEST2' with value 'value2' added successfully.\n");
+    } else {
+        printf("Test failed: Variable 'TEST2' was not added correctly.\n");
+    }
+
+    
+    free(var1->name);
+    free(var1->value);
+    free(var1);
+    free(var2->name);
+    free(var2->value);
+    free(var2);
 }
