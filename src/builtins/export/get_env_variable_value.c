@@ -6,11 +6,11 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:39:09 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/31 13:50:54 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:06:37 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 int	is_value_null(char *value)
 {
 	if (value[0] == '\0')

@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env_var_with_name.c                            :+:      :+:    :+:   */
+/*   add_signal_env_var.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 16:09:09 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/31 13:29:09 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/29 18:29:10 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/08/01 15:13:06 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
-t_variables  *get_env_var_with_name(t_adress *env, char *name)
+void add_signal_env_var(t_adress *env) 
 {
-    t_variables  *var;
-    
-    var =  my_first_variable(env);
-    if(!var)
-    {
-        return(NULL);
-    }
-        while(var)
-        {
-            if(ft_same_name(name, var -> name))
-            {
-                return(var);
-            }
-            var =  var -> next;
-        }
-        return(NULL);    
+    t_variables *signal;
+    char *val;
+    char *name;
+
+    name = strdup("?");
+    val = strdup("0");
+    signal = init_variable(name, val, VALUE);
+    add_new_env_variable(env, signal);
 }

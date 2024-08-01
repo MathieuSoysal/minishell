@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_or_create_var.c                             :+:      :+:    :+:   */
+/*   add_new_variable.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 15:38:37 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/23 17:13:46 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/23 11:45:19 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/08/01 15:05:00 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
-void change_or_create_var(t_adress *env,  char *name, char *value, int id)
+void add_new_env_variable(t_adress *env, t_variables *new) 
 {
-    t_variables *var;
+    t_variables *last_var;
 
-    if(variable_exist(env, name))
+    last_var = get_last_env_var(env);
+    if (!last_var) 
     {
-        change_env_value_with_name(env,  name, value);
-        free(name);
-    }
+        env->variable = new;
+    } 
     else
     {
-        var =  init_variable(name, value, id);
-        add_new_env_variable(env, var);
+        last_var->next = new;
+        new->previous = last_var;
     }
+    new->index = (last_var) ? last_var->index + 1 : 0;
+    new->next = NULL;
 }

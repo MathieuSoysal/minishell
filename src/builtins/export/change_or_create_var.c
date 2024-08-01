@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   same_str.c                                         :+:      :+:    :+:   */
+/*   change_or_create_var.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/30 17:14:32 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/30 17:14:56 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/22 15:38:37 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/08/01 15:05:52 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
-
-
-int	same_str(char *first, char *second, int size)
+void change_or_create_var(t_adress *env,  char *name, char *value, int id)
 {
-	int	i;
+    t_variables *var;
 
-	if (size < 0)
-		size = ft_strlen(first);
-	i = 0;
-	while (first[i] && second[i] && i < size)
-	{
-		if (first[i] != second[i])
-			return (0);
-		++i;
-	}
-	if (i == size)
-		return (1);
-	return (0);
+    if(variable_exist(env, name))
+    {
+        change_env_value_with_name(env,  name, value);
+        free(name);
+    }
+    else
+    {
+        var =  init_variable(name, value, id);
+        add_new_env_variable(env, var);
+    }
 }

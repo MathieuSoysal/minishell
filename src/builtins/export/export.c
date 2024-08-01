@@ -6,11 +6,11 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 16:37:06 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/31 13:38:22 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:04:28 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
 int export(t_cmd *cmd,  t_adress *env)
 {

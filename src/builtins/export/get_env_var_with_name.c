@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_chained_var.c                               :+:      :+:    :+:   */
+/*   get_env_var_with_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 18:25:05 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/31 13:55:07 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/22 16:09:09 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/08/01 15:06:28 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
-void create_chained_var(t_adress *env, char **env_variable) 
+t_variables  *get_env_var_with_name(t_adress *env, char *name)
 {
-    int index = 0;
-    char *name;
-    char *value;
-    t_variables *var;
-
-    while (env_variable[index]) {
-        name = my_export_var_name(env_variable[index]);
-        value = take_var_value(env_variable[index]);
-        var = init_variable(name, value, VALUE);
-        add_new_env_variable(env, var);
-        index++;
+    t_variables  *var;
+    
+    var =  my_first_variable(env);
+    if(!var)
+    {
+        return(NULL);
     }
+        while(var)
+        {
+            if(ft_same_name(name, var -> name))
+            {
+                return(var);
+            }
+            var =  var -> next;
+        }
+        return(NULL);    
 }
-
-

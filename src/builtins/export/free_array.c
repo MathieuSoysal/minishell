@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_env_var_value.c                             :+:      :+:    :+:   */
+/*   free_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/30 15:32:27 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/30 15:32:51 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/07/29 18:33:14 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/08/01 15:06:19 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
 
-void	change_env_var_value(t_variables *var, char *new_value)
+void free_array(char **array) 
 {
-	if (var->value)
-		free(var->value);
-	var->value = new_value;
-	var->id = VALUE;
+    int i;
+
+    if (!array)
+        return;
+
+    i = 0;
+    while (array[i]) {
+        free(array[i]);
+        array[i] = NULL;
+        i++;
+    }
+    free(array);
 }
