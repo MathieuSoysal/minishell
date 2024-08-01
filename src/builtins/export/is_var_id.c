@@ -12,11 +12,11 @@
 
 #include "../builtins.h"
 
-int is_var_id(char *value)
+int	is_var_id(char *value)
 {
-    if(!value)
-    {
-        return(NONE_VALUE);
-    }
-        return (VALUE);       
+	if (!value)
+	{
+		return (NONE_VALUE);
+	}
+	return (VALUE);
 }

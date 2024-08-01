@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 18:33:14 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/01 15:06:19 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/08/01 16:01:15 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/08/01 16:02:03 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../builtins.h"
-
+#include "libft.h"
 
 void free_array(char **array) 
 {

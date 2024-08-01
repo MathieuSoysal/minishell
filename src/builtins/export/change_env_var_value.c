@@ -6,12 +6,11 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:32:27 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/01 15:05:43 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:47:54 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtins.h"
-
 
 void	change_env_var_value(t_variables *var, char *new_value)
 {
