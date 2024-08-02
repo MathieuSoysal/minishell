@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 05:26:30 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:04:06 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/02 16:09:34 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char	*apply_strings(char *str)
 	char	string_mode;
 	char	*new_str;
 
+	if (!str)
+		return (NULL);
 	new_str = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
 	string_mode = '\0';
 	i_dest = -1;
