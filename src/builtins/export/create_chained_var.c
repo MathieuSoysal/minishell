@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_chained_var.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:25:05 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/01 15:58:32 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/02 15:49:16 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ void	create_chained_var(t_adress *env, char **env_variable)
 	int			index;
 	t_variables	*var;
 
+	index = 0;
+	var = NULL;
 	while (env_variable[index])
 	{
 		init_all(index, env_variable, env, var);
 		index++;
 	}
-	index = 0;
 }

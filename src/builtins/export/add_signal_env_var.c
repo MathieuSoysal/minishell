@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_signal_env_var.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:29:10 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/01 15:46:27 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/02 15:48:21 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	add_signal_env_var(t_adress *env)
 	char		*val;
 	char		*name;
 
-	name = strdup("?");
-	val = strdup("0");
+	name = ft_strdup("?");
+	val = ft_strdup("0");
 	is_signal(signal, val, name, env);
 }
