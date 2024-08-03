@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 20:53:59 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 11:21:24 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/03 12:11:09 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_syntax_error	check_syntax(const char *command_line)
 
 	mode = SM_START_LINE;
 	i = 0;
-	while (command_line[i])
+	while (command_line && command_line[i])
 	{
 		if (is_unexpected_character(command_line[i], mode))
 		{

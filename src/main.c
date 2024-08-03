@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 18:33:30 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/03 12:48:02 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,17 @@ int	main(int argc, char const *argv[], char const *envp[])
 		error = check_syntax(command_line);
 		if (error != NO_ERROR)
 			print_error(error);
+		else if (command_line == NULL)
+			return (0);
 		else
 		{
 			commands = parse_command_line(command_line, (char **)envp);
-			if (!commands)
-				return (1);
-			i = 0;
-			while (commands[i])
-			{
+			i = -1;
+			while (commands[++i])
 				print_commande(commands[i]);
-				commande_free(commands[i]);
-				i++;
-			}
-			free(commands);
-			commands = NULL;
+			free_commands(commands);
 		}
 		free(command_line);
-		command_line = NULL;
 	}
 	return (0);
 }

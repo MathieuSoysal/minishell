@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:36:50 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 15:41:54 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/03 12:47:45 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,11 @@ void			commande_free(t_commande *commande);
  * @param commande The command to print
  */
 void			print_commande(t_commande *commande);
+
+/**
+ * @brief Free a list of commands
+ * @param commands The list of commands to free
+ */
+void			free_commands(t_commande **commands);
 
 #endif // COMMANDE_H

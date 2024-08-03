@@ -25,6 +25,11 @@
                 "description": "Set Disassembly Flavor to Intel",
                 "text": "-gdb-set disassembly-flavor intel",
                 "ignoreFailures": true
+            },
+            {
+                "description": "Run Valgrind",
+                "text": "target exec valgrind --leak-check=full --track-origins=yes --vgdb=yes --vgdb-error=0 ${workspaceFolder}/build/minishell",
+                "ignoreFailures": true
             }
         ]
     },

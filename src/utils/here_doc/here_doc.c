@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 12:22:41 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/30 15:25:20 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/03 12:45:21 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	heredoc(char *delimiter)
 	{
 		write(1, "heredoc> ", 10);
 		line = ft_get_next_line(0);
+		if (!line)
+			break ;
 		if (ft_strcmp(line, new_delimiter) == 0)
 		{
 			free(new_delimiter);
