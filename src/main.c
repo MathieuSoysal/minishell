@@ -6,16 +6,25 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/03 13:13:51 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/03 14:32:25 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "exec/executor.h"
 #include "structures/commande/commande.h"
 #include "utils/checker/checker.h"
 #include "utils/mini_libft/mini_libft.h"
 #include "utils/parser/parser.h"
 #include <stdlib.h>
 #include <unistd.h>
+
+void	execute_command(t_commande *command, char **envp)
+{
+	if (is_builtin(command))
+		execute_builtin(command, envp);
+	else
+		execute_external(command, envp);
+}
 
 int	main(int argc, char const *argv[], char const *envp[])
 {
