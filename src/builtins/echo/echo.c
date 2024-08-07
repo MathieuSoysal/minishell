@@ -6,38 +6,35 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:40:20 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/01 15:27:01 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/07 19:18:14 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtins.h"
+#include "../../structures/commande/commande.h"
 
-int	check_args(t_cmd *cmd)
+int	check_args(t_commande *cmd)
 {
-	if (!cmd->arg)
+	if (!cmd->args[1])
 	{
-		ft_putstr_fd("\n", cmd->fd_out);
+		ft_putstr_fd("\n", 1);
 		return (0);
 	}
 	else
 	{
-		ft_putstr_fd(cmd->arg, cmd->fd_out);
+		ft_putstr_fd(cmd->args[1], 1);
 		return (1);
 	}
 	return (0);
 }
 
-int	check_flag(t_cmd *cmd)
+int	check_flag(t_commande *cmd)
 {
-	if (!cmd->flags)
-	{
-		ft_putstr_fd("\n", cmd->fd_out);
-		return (0);
-	}
+	//TODO 
 	return (1);
 }
 
-int	echo(t_cmd *cmd)
+int	echo(t_commande *cmd)
 {
 	if (false == check_args(cmd))
 	{

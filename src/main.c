@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/03 14:32:25 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/07 19:34:38 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	execute_command(t_commande *command, char **envp)
-{
-	if (is_builtin(command))
-		execute_builtin(command, envp);
-	else
-		execute_external(command, envp);
-}
 
-int	main(int argc, char const *argv[], char const *envp[])
+int	main(int argc, char const *argv[], char *envp[])
 {
 	char			*command_line;
 	t_syntax_error	error;
@@ -47,7 +40,7 @@ int	main(int argc, char const *argv[], char const *envp[])
 			commands = parse_command_line(command_line, (char **)envp);
 			i = -1;
 			while (commands[++i])
-				print_commande(commands[i]);
+				execute_command(commands[i], envp);
 			free_commands(commands);
 		}
 		free(command_line);

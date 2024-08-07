@@ -6,32 +6,34 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:12:41 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/01 15:25:42 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/07 19:27:13 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtins.h"
 
-char	*take_adresse_of_path(t_adress *adress)
+char	*take_adresse_of_path(void)
 {
-	adress->adress_absolu = getcwd(NULL, 0);
-	if (adress->adress_absolu == NULL)
+	char *res = getcwd(NULL, 0);
+	if (res == NULL)
 		perror("getcwd() Error\n");
-	return (adress->adress_absolu);
+	return (res);
 }
 
-char	*take_adress_of_new_path(t_adress *adress)
+char	*take_adress_of_new_path(char **envp)
 {
-	adress->adress_for_new_path = take_var_for_adress(adress, "PWD");
-	adress->adress_for_path = mem_malloc_str(adress->adress_for_new_path);
-	return (adress->adress_for_path);
+	char * adress_for_new_path;
+	char * adress_for_path;
+	adress_for_new_path = take_var_for_adress(envp, "PWD");
+	adress_for_path = mem_malloc_str(adress_for_new_path);
+	return (adress_for_path);
 }
 
-char	*take_var_for_adress(t_adress *adress, char *name)
+char	*take_var_for_adress(char **envp, char *name)
 {
 	t_variables	*variable;
 
-	variable = take_var_for_next_value(adress, name);
+	variable = take_var_for_next_value(envp, name);
 	if (variable)
 	{
 		return (variable->value);
@@ -39,11 +41,11 @@ char	*take_var_for_adress(t_adress *adress, char *name)
 	return (NULL);
 }
 
-t_variables	*take_var_for_next_value(t_adress *adress, char *name)
+t_variables	*take_var_for_next_value(char ** envp, char *name)
 {
 	t_variables	*variables_env;
 
-	variables_env = adress->variable;
+	variables_env = variables_env->variables;
 	while (variables_env)
 	{
 		if (ft_strcmp(name, variables_env->name) == 0)
@@ -55,11 +57,11 @@ t_variables	*take_var_for_next_value(t_adress *adress, char *name)
 	return (NULL);
 }
 
-void	changing_var_name(t_adress *adresse, char *name, char *value)
+void	changing_var_name(char **envp, char *name, char *value)
 {
 	t_variables	*variable;
 
-	variable = take_var_for_next_value(adresse, name);
+	variable = take_var_for_next_value(envp, name);
 	if (variable)
 	{
 		free(variable->value);
@@ -70,7 +72,7 @@ void	changing_var_name(t_adress *adresse, char *name, char *value)
 		variable = malloc(sizeof(t_variables));
 		variable->name = ft_strdup(name);
 		variable->value = ft_strdup(value);
-		variable->next = adresse->variable;
-		adresse->variable = variable;
+		variable->next = variable ->variables;
+		variable->variables = variable -> variables;
 	}
 }

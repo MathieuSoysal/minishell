@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.h                                         :+:      :+:    :+:   */
+/*   execute_external.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:30:55 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/07 19:28:46 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/08/07 17:52:34 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/08/07 18:28:07 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTOR_H
-# define EXECUTOR_H
+#include "executor.h"
 
-# include "../structures/commande/commande.h"
-# include <stdbool.h>
 
-void	execute_command(t_commande *command, char **envp);
-bool	is_builtin(t_commande *command);
-void	execute_builtin(t_commande *command, char **envp);
-void	execute_external(t_commande *command, char **envp);
-
-#endif // EXECUTOR_H
+void	execute_external(t_commande *command, char **envp)
+{
+    char *temp = get_path(command->name, envp);
+    free(command->name);
+    command->name = temp;
+    if (execve(command->name, command->args, envp) == -1)
+    {
+        ft_putstr_fd(command->name, 2);
+        ft_putstr_fd(": command not found\n", 2);
+        commande_free(command);
+        exit(127);
+    }
+}

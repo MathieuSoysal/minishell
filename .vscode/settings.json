@@ -3,6 +3,9 @@
         "*.c": "c",
         "typeinfo": "c",
         "commande.h": "c",
-        "internal_parser.h": "c"
+        "internal_parser.h": "c",
+        "parser.h": "c",
+        "stdlib.h": "c",
+        "builtins.h": "c"
     }
 }

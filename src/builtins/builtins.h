@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:22:32 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/31 13:52:36 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/07 19:32:48 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
+#include "../structures/commande/commande.h"
+
 
 typedef struct s_line
 {
@@ -52,6 +54,8 @@ typedef struct s_variables
 	char				*value;
 	int					index;
 	int					id;
+	t_variables			variables;
+	
 }						t_variables;
 
 typedef struct s_adress
@@ -64,8 +68,7 @@ typedef struct s_adress
 	int					error_processing;
 	char				**env_vars;
 	t_line				*first_line;
-	t_token				*first_token;
-	t_variables			*variable;
+	t_token				*first_toke;
 
 }						t_adress;
 
@@ -83,10 +86,10 @@ typedef struct s_cmd
 	char				*path;
 }						t_cmd;
 
-int						cd(t_cmd *cmd, t_adress *adress);
+int						cd(t_commande *cmd, char **envp);
 char					*mem_malloc_str(char *tab_for_mlc);
 int						builtins_init(t_adress *env, t_cmd *cmd);
-char					*take_adresse_of_path(t_adress *adress);
+char					*take_adresse_of_path(void);
 char					*take_adress_of_new_path(t_adress *adress);
 void					changing_var_name(t_adress *adresse, char *name,
 							char *value);
@@ -118,10 +121,7 @@ int						same_str(char *first, char *second, int size);
 void					free_array(char **array); 
 void					test_export_built_in(); 
 int						is_blank(char c);
-int						echo(t_cmd *cmd);
-int						check_args(t_cmd *cmd);
-int						check_flag(t_cmd *cmd);
-int						echo(t_cmd *cmd);
+int						echo(t_commande *cmd);
 int						pwd(t_cmd *cmd);
 void					test_export_built_in();
 
