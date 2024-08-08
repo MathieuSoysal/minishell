@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:36:50 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/03 12:47:45 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/08 16:49:16 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,12 @@
 typedef struct s_commande
 {
 	char		*name;
+	char		*path;
 	char		**args;
 	t_infile	**infiles;
+	int			fd_infile;
 	char		**outfile_names;
+	int			fd_outfile;
 }				t_commande;
 
 t_commande		*commande_create(char *name, char **args, t_infile **infiles,
@@ -65,5 +68,12 @@ void			print_commande(t_commande *commande);
  * @param commands The list of commands to free
  */
 void			free_commands(t_commande **commands);
+
+/**
+ * @brief Set the path of a command,
+	if the command is a builtin or path is not found, the path is name
+ * @param commande The command
+ */
+void			commande_set_path(t_commande *commande, char **env);
 
 #endif // COMMANDE_H

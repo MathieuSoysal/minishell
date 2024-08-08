@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:09:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/08 14:23:19 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/08 15:08:08 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static bool	is_all_numeric(char *arg)
 
 int	bultin_exit(t_commande *cmd)
 {
+	write(2, "exit\n", 5);
 	if (cmd->args[1])
 	{
 		if (is_all_numeric(cmd->args[1]))

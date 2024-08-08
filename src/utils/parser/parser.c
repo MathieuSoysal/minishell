@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 09:37:33 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 12:22:42 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/08 16:48:33 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ t_commande	**parse_command_line(char *command_line, char **env)
 	result = (t_commande **)malloc(sizeof(t_commande *) * (commands->size + 1));
 	i = -1;
 	while (commands->size > 0)
+	{
 		result[++i] = (t_commande *)double_linked_list_pop_first(commands);
+		commande_set_path(result[i], env);
+	}
 	result[i + 1] = NULL;
 	free(commands);
 	return (result);

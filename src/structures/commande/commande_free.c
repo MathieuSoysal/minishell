@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 15:45:31 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/03 13:14:09 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/08 16:36:21 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	commande_free(t_commande *commande)
 	free_strings(commande->outfile_names);
 	free(commande->outfile_names);
 	commande->outfile_names = NULL;
+	free(commande->path);
+	commande->path = NULL;
 	free(commande);
 	commande = NULL;
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   executor_builtins.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:43:28 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 14:23:39 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:25:25 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtins/builtins.h"
 #include "../utils/mini_libft/mini_libft.h"
-#include "executor.h"
+#include "executor_internal.h"
 
 bool	is_builtin(t_commande *command)
 {
@@ -33,20 +33,21 @@ bool	is_builtin(t_commande *command)
 	return (false);
 }
 
-void	execute_builtin(t_commande *command, char ***g_env)
+int	execute_builtin(t_commande *command, char ***g_env)
 {
 	if (equals(command->name, "echo"))
-		echo(command);
+		return (echo(command));
 	else if (equals(command->name, "cd"))
-		cd(command, *g_env);
+		return (cd(command, *g_env));
 	else if (equals(command->name, "export"))
-		export(command, g_env);
+		return (export(command, g_env));
 	else if (equals(command->name, "unset"))
-		unset(command, g_env);
+		return (unset(command, g_env));
 	else if (equals(command->name, "env"))
-		env(command, *g_env);
+		return (env(command, *g_env));
 	else if (equals(command->name, "pwd"))
-		pwd(command);
+		return (pwd(command));
 	else if (equals(command->name, "exit"))
-		bultin_exit(command);
+		return (bultin_exit(command));
+	return (0);
 }
