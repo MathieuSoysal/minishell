@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:55:55 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 13:22:32 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/08 17:19:53 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,7 @@ bool	is_option_n(char *arg)
 
 bool	has_option_n(char **args)
 {
-	int	i;
-
-	i = 0;
-	while (args[++i])
-		if (is_option_n(args[i]))
-			return (true);
-	return (false);
+	return (args[1] && is_option_n(args[1]));
 }
 
 static inline void	move_cell(char **array, int i)
@@ -51,17 +45,8 @@ static inline void	move_cell(char **array, int i)
 
 void	remove_option_from_args(char **args)
 {
-	int	i;
-
-	i = 0;
-	while (args[++i])
-	{
-		if (is_option_n(args[i]))
-		{
-			move_cell(args, i);
-			i--;
-		}
-	}
+	while (is_option_n(args[1]))
+		move_cell(args, 1);
 }
 
 void	print_args(char **args)
