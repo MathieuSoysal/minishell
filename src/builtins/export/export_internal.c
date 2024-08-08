@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_internal.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 11:32:54 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 12:09:27 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/08 13:46:29 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	is_valid_identifier(char *arg)
 	if (!arg[i] || !(ft_isalpha(arg[i]) || arg[i] == '_'))
 		return (false);
 	while (arg[++i])
-		if (!(ft_isalnum(arg[i]) || arg[i] == '_'))
+		if (!(ft_isalnum(arg[i]) || arg[i] == '_' || arg[i] == '='))
 			return (false);
 	return (true);
 }
