@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:45:19 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 17:06:14 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/08 12:53:45 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ char	*get_word_until(char const *command_line, size_t *i,
 			char const delimiter);
 char	*get_from_env(char **env, char *word);
 char	*ft_get_next_line(int fd);
+char	**ft_copy_array(char **array);
 
 #endif // MINI_LIBFT_H

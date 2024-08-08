@@ -3,46 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:40:20 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/07 19:18:14 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/08 11:14:20 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../builtins.h"
 #include "../../structures/commande/commande.h"
-
-int	check_args(t_commande *cmd)
-{
-	if (!cmd->args[1])
-	{
-		ft_putstr_fd("\n", 1);
-		return (0);
-	}
-	else
-	{
-		ft_putstr_fd(cmd->args[1], 1);
-		return (1);
-	}
-	return (0);
-}
-
-int	check_flag(t_commande *cmd)
-{
-	//TODO 
-	return (1);
-}
+#include "echo_internal.h"
+#include <unistd.h>
 
 int	echo(t_commande *cmd)
 {
-	if (false == check_args(cmd))
-	{
-		return (0);
-	}
-	if (false == check_flag(cmd))
-	{
-		return (0);
-	}
+	bool	option_n;
+
+	option_n = has_option_n(cmd->args);
+	if (option_n)
+		remove_option_from_args(cmd->args);
+	print_args(cmd->args);
+	if (!option_n)
+		write(1, "\n", 1);
 	return (0);
 }

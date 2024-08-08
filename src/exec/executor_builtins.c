@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor_builtins.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:43:28 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/07 19:23:43 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/08 12:02:55 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,16 @@ bool	is_builtin(t_commande *command)
 	return (false);
 }
 
-void	execute_builtin(t_commande *command, char **envp)
+void	execute_builtin(t_commande *command, char ***g_env)
 {
 	if (equals(command->name, "echo"))
 		echo(command);
 	else if (equals(command->name, "cd"))
-		cd(command, envp);
+		cd(command, *g_env);
+	else if (equals(command->name, "export"))
+		export(command, g_env);
+	else if (equals(command->name, "unset"))
+		unset(command, g_env);
+	else if (equals(command->name, "env"))
+		env(command, *g_env);
 }

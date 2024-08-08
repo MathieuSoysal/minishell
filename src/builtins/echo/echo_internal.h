@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_blank.c                                         :+:      :+:    :+:   */
+/*   echo_internal.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 11:53:04 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/01 16:55:44 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/08/08 10:56:13 by hsoysal           #+#    #+#             */
+/*   Updated: 2024/08/08 11:12:49 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../builtins.h"
+#ifndef ECHO_INTERNAL_H
+# define ECHO_INTERNAL_H
 
-int	is_blank(char c)
-{
-	return (c == ' ' || c == '\t' || c == '\n');
-}
+# include <stdbool.h>
+
+bool	has_option_n(char **args);
+void	remove_option_from_args(char **args);
+void	print_args(char **args);
+
+#endif // ECHO_INTERNAL_H

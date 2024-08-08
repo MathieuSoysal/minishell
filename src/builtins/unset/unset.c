@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_env_value_with_name.c                       :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 15:48:33 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/01 15:47:10 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/08/08 12:06:20 by hsoysal           #+#    #+#             */
+/*   Updated: 2024/08/08 12:11:22 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtins.h"
+#include "../utils/utils.h"
 
-void	change_env_value_with_name(t_adress *env, char *name, char *value)
+int	unset(t_commande *cmd, char ***g_env)
 {
-	t_variables	*var;
+	int	i;
 
-	var = get_env_var_with_name(env, name);
-	if (!var)
-	{
-		return ;
-	}
-	change_env_var_value(var, value);
+	i = 0;
+	while (cmd->args[++i])
+		if (env_contains_var(*g_env, cmd->args[i]))
+			env_remove_var(g_env, cmd->args[i]);
+	return (0);
 }

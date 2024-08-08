@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_var_id.c                                :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 14:58:24 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/29 16:09:58 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/08/08 12:00:18 by hsoysal           #+#    #+#             */
+/*   Updated: 2024/08/08 12:02:44 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../utils/mini_libft/mini_libft.h"
 #include "../builtins.h"
 
-int	is_var_id(char *value)
+int	env(t_commande *cmd, char **envp)
 {
-	if (!value)
+	int	i;
+
+	i = -1;
+	while (envp[++i])
 	{
-		return (NONE_VALUE);
+		ft_putstr_fd(envp[i], 1);
+		ft_putstr_fd("\n", 1);
 	}
-	return (VALUE);
+	return (0);
 }

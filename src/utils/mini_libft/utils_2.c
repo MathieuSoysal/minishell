@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 03:03:27 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 14:44:43 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/08 13:01:49 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,27 @@ char	*concatenate(t_double_linked_list *list)
 
 bool	equals(const char *s1, const char *s2)
 {
-	return (ft_strncmp(s1, s2, ft_strlen(s2)) == 0);
+	return (ft_strncmp(s1, s2, ft_strlen(s2) + 1) == 0);
+}
+
+char	**ft_copy_array(char **array)
+{
+	char	**copy;
+	int		i;
+
+	i = -1;
+	while (array[++i])
+		;
+	copy = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!copy)
+		return (NULL);
+	i = -1;
+	while (array[++i])
+	{
+		copy[i] = ft_strdup(array[i]);
+		if (!copy[i])
+			return (free_array(copy), NULL);
+	}
+	copy[i] = NULL;
+	return (copy);
 }

@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_signal_env_var.c                               :+:      :+:    :+:   */
+/*   export_internal.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 18:29:10 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/02 15:48:21 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/08/08 11:30:18 by hsoysal           #+#    #+#             */
+/*   Updated: 2024/08/08 11:45:19 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../builtins.h"
+#ifndef EXPORT_INTERNAL_H
+# define EXPORT_INTERNAL_H
 
-void	is_signal(t_variables *signal, char *val, char *name, t_adress *env)
-{
-	signal = init_variable(name, val, VALUE);
-	add_new_env_variable(env, signal);
-}
+# include <stdbool.h>
 
-void	add_signal_env_var(t_adress *env)
-{
-	t_variables	*signal;
-	char		*val;
-	char		*name;
+bool	is_valid_identifier(char *arg);
+void	print_invalid_identifier_error(char *arg);
+void	apply_export_for_arg(char *arg, char ***g_env);
 
-	name = ft_strdup("?");
-	val = ft_strdup("0");
-	is_signal(signal, val, name, env);
-}
+#endif // EXPORT_INTERNAL_H

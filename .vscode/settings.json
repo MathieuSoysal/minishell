@@ -6,6 +6,7 @@
         "internal_parser.h": "c",
         "parser.h": "c",
         "stdlib.h": "c",
-        "builtins.h": "c"
+        "builtins.h": "c",
+        "executor.h": "c"
     }
 }

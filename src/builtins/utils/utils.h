@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor_internal.c                                :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/04 22:48:05 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 12:02:57 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/08/07 23:13:03 by hsoysal           #+#    #+#             */
+/*   Updated: 2024/08/08 12:09:22 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "executor.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-void	execute_command(t_commande *command, char ***g_env)
-{
-	if (is_builtin(command))
-		execute_builtin(command, g_env);
-}
+# include <stdbool.h>
+
+void	env_update_var(char **envp, char *name, char *value);
+char	*env_get_var(char **envp, char *name);
+void	env_add_var(char ***envp, char *name, char *value);
+void	env_remove_var(char ***envp, char *name);
+bool	env_contains_var(char **envp, char *name);
+
+#endif // UTILS_H
