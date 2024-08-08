@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor_builtins.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:43:28 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 13:27:54 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/08 14:23:39 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,6 @@ void	execute_builtin(t_commande *command, char ***g_env)
 		env(command, *g_env);
 	else if (equals(command->name, "pwd"))
 		pwd(command);
+	else if (equals(command->name, "exit"))
+		bultin_exit(command);
 }

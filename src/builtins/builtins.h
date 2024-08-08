@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 17:22:32 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/08 13:24:39 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/08 14:22:33 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int	export(t_commande *cmd, char ***g_env);
 int	unset(t_commande *cmd, char ***g_env);
 int	env(t_commande *cmd, char **envp);
 int	pwd(t_commande *cmd);
+int bultin_exit(t_commande *cmd);
 
 #endif
