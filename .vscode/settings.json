@@ -7,6 +7,7 @@
         "parser.h": "c",
         "stdlib.h": "c",
         "builtins.h": "c",
-        "executor.h": "c"
+        "executor.h": "c",
+        "unistd.h": "c"
     }
 }

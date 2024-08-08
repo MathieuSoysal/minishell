@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:43:28 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 12:02:55 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/08 13:27:54 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ bool	is_builtin(t_commande *command)
 		return (true);
 	if (equals(command->name, "exit"))
 		return (true);
+	if (equals(command->name, "pwd"))
+		return (true);
 	return (false);
 }
 
@@ -43,4 +45,6 @@ void	execute_builtin(t_commande *command, char ***g_env)
 		unset(command, g_env);
 	else if (equals(command->name, "env"))
 		env(command, *g_env);
+	else if (equals(command->name, "pwd"))
+		pwd(command);
 }
