@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:06:29 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 03:03:18 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 05:27:21 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,12 @@ bool	ft_append_to_line(char **rest, char **line, char *buf)
 		*line = ft_strdup(buf);
 	else
 		*line = ft_strjoin(*line, buf);
-	if (tmp != NULL && tmp[0] != '\0')
+	if (tmp != NULL)
+	{
 		free(tmp);
-	return (str == NULL && buf[0] != '\0');
+		tmp = NULL;
+	}
+	return (str == NULL);
 }
 
 char	*ft_get_next_line(int fd)
@@ -53,21 +56,23 @@ char	*ft_get_next_line(int fd)
 	int			i;
 	static char	*rest[1024];
 	char		*line;
+	int			can_read;
 
+	line = NULL;
 	if (BUFFER_SIZE < 1 || read(fd, 0, 0) == -1 || fd < 0)
 		return (NULL);
-	line = NULL;
+	can_read = 1;
 	i = 1;
-	while (i != 0)
+	while (can_read && i != 0)
 	{
 		i = read(fd, buf, BUFFER_SIZE);
-		buf[i] = '\0';
-		ft_append_to_line(&rest[fd], &line, buf);
+		if (i > 0)
+		{
+			buf[i] = '\0';
+			can_read = ft_append_to_line(&rest[fd], &line, buf);
+		}
 	}
 	if (line == NULL || ft_strlen(line) > 0)
 		return (line);
-	free(line);
-	if (i == 0)
-		return (NULL);
-	return (ft_strdup("\n"));
+	return (NULL);
 }

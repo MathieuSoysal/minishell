@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 18:39:00 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 03:17:08 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 05:50:46 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	signal_handler_wrapper(int sig, siginfo_t *info, void *ucontext)
 	(void)info;
 	if (sig == SIGINT)
 	{
+		get_exit_status(_EXIT_QUIT);
 		write(1, "\n", 1);
-		write(1, PROMPT, 11);
-		get_exit_status(130);
+		prompt();
 	}
 }
 

@@ -11,6 +11,7 @@
         "unistd.h": "c",
         "executor_internal.h": "c",
         "mini_libft.h": "c",
-        "checker.h": "c"
+        "checker.h": "c",
+        "functional": "c"
     }
 }

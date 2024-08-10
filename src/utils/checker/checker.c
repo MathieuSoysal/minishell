@@ -6,10 +6,11 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 20:53:59 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/03 12:11:09 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 05:55:09 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../minishell.h"
 #include "../mini_libft/mini_libft.h"
 #include "internal_checker.h"
 #include <aio.h>
@@ -58,4 +59,5 @@ void	print_error(t_syntax_error error)
 		ft_putstr_fd("minishell: syntax error near unexpected token `<<'\n", 2);
 	if (error == SE_UNEXPECTED_TOKEN_INFILE)
 		ft_putstr_fd("minishell: syntax error near unexpected token `<'\n", 2);
+	get_exit_status(2);
 }

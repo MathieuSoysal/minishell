@@ -6,11 +6,12 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:09:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/08 15:08:08 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 03:50:29 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/libft.h"
+#include "../../minishell.h"
 #include "../builtins.h"
 #include <stdlib.h>
 
@@ -42,5 +43,5 @@ int	bultin_exit(t_commande *cmd)
 		print_error(cmd->args[1]);
 		exit(2);
 	}
-	exit(0);
+	exit(get_exit_status(0));
 }
