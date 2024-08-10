@@ -6,12 +6,14 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 16:50:06 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 03:18:36 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec/executor.h"
+#include "minishell.h"
 #include "structures/commande/commande.h"
+#include "structures/sigint/sigint.h"
 #include "utils/checker/checker.h"
 #include "utils/mini_libft/mini_libft.h"
 #include "utils/parser/parser.h"
@@ -24,26 +26,29 @@ int	main(int argc, char const *argv[], char *envp[])
 	t_syntax_error	error;
 	t_commande		**commands;
 	int				i;
+	char			***g_env;
 
-	envp = ft_copy_array(envp);
+	setup_sigint();
+	g_env = get_envp(envp);
 	while (1)
 	{
-		write(1, "minishell$ ", 11);
+		write(1, PROMPT, 11);
 		command_line = ft_get_next_line(0);
 		if (command_line == NULL)
-			return (0);
+			return (free_env(*g_env), write(1, "\n", 1), get_exit_status(0));
 		error = check_syntax(command_line);
 		if (error != NO_ERROR)
 			print_error(error);
 		else
 		{
-			commands = parse_command_line(command_line, (char **)envp);
+			commands = parse_command_line(command_line, (char **)g_env);
 			i = -1;
 			while (commands[++i])
-				execute_command(commands[i], &envp);
+				execute_command(commands[i], g_env);
 			free_commands(commands);
 		}
 		free(command_line);
 	}
-	return (0);
+	free_env(*g_env);
+	return (get_exit_status(0));
 }

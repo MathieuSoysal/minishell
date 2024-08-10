@@ -9,6 +9,8 @@
         "builtins.h": "c",
         "executor.h": "c",
         "unistd.h": "c",
-        "executor_internal.h": "c"
+        "executor_internal.h": "c",
+        "mini_libft.h": "c",
+        "checker.h": "c"
     }
 }

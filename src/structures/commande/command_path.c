@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 16:31:47 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 16:38:02 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/09 23:31:27 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*get_path(t_commande *cmd, char **env)
 
 	path_env = env_get_var(env, "PATH");
 	if (path_env == NULL)
-		return (cmd->name);
+		return (ft_strdup(cmd->name));
 	paths_cmd = ft_split(path_env, ':');
 	i = -1;
 	while (paths_cmd[++i])
@@ -60,7 +60,7 @@ static char	*get_path(t_commande *cmd, char **env)
 		}
 		free(path);
 	}
-	return (cmd->name);
+	return (ft_strdup(cmd->name));
 }
 
 void	commande_set_path(t_commande *cmd, char **env)
