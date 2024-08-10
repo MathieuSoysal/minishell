@@ -6,13 +6,13 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 11:46:58 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/30 17:44:28 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 20:24:05 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../here_doc/here_doc.h"
-#include "apply_infiles.h"
 #include "../internal_parser.h"
+#include "apply_infiles.h"
 #include <stdlib.h>
 
 static inline void	move_cell_i_to_last(char **array, int i)
@@ -46,6 +46,8 @@ t_infile	**extract_infiles(char **command_line)
 		else
 			i++;
 	}
+	if (infiles->size == 0)
+		return (free(infiles), NULL);
 	return (double_linked_list_to_array_infiles(infiles));
 }
 

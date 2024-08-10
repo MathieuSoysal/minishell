@@ -6,12 +6,12 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:08:14 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 10:02:40 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 20:24:23 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "apply_outfiles.h"
 #include "../internal_parser.h"
+#include "apply_outfiles.h"
 #include <stdlib.h>
 
 static inline void	move_cell_i_to_last(char **array, int i)
@@ -41,6 +41,8 @@ char	**extract_outfiles(char **command_line)
 		else
 			i++;
 	}
+	if (outfiles->size == 0)
+		return (free(outfiles), NULL);
 	return (double_linked_list_to_array(outfiles));
 }
 

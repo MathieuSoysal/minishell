@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 23:13:31 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 12:09:12 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 19:05:54 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../utils/mini_libft/mini_libft.h"
-#include "utils.h"
+#include "env.h"
 
 void	env_update_var(char **envp, char *name, char *value)
 {

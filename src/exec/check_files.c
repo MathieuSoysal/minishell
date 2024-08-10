@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:57:30 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 15:33:28 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/11 00:03:11 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ bool	all_infiles_exist(t_commande *command)
 	t_infile	*infile;
 
 	i = 0;
+	if (command->infiles == NULL)
+		return (true);
 	while (command->infiles[i])
 	{
 		infile = command->infiles[i];
@@ -41,9 +43,12 @@ bool	all_outfiles_have_permissions(t_commande *command)
 	int	i;
 
 	i = 0;
+	if (command->outfile_names == NULL)
+		return (true);
 	while (command->outfile_names[i])
 	{
-		if (access(command->outfile_names[i], F_OK) == -1)
+		if (access(command->outfile_names[i], F_OK) != -1
+			&& access(command->outfile_names[i], W_OK) == -1)
 		{
 			ft_putstr_fd("minishell: ", 2);
 			ft_putstr_fd(command->outfile_names[i], 2);
@@ -60,6 +65,8 @@ void	create_all_outfiles(t_commande *command)
 	int	i;
 
 	i = 0;
+	if (command->outfile_names == NULL)
+		return ;
 	while (command->outfile_names[i])
 	{
 		if (access(command->outfile_names[i], F_OK) == -1)

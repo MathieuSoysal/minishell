@@ -13,6 +13,7 @@
         "mini_libft.h": "c",
         "checker.h": "c",
         "functional": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "export_internal.h": "c"
     }
 }

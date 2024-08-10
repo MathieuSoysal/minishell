@@ -6,13 +6,13 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:00:54 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/10 18:58:28 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 19:04:47 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/libft.h"
 #include "../../structures/commande/commande.h"
-#include "../utils/utils.h"
+#include "../../structures/env/env.h"
 #include <errno.h>
 #include <fcntl.h>
 #include <stdbool.h>

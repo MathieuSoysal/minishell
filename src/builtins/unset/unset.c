@@ -6,12 +6,12 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 12:06:20 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 12:11:22 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 19:06:05 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtins.h"
-#include "../utils/utils.h"
+#include "../../structures/env/env.h"
 
 int	unset(t_commande *cmd, char ***g_env)
 {

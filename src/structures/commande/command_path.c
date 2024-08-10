@@ -6,12 +6,12 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 16:31:47 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 10:16:26 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/11 00:31:59 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../builtins/utils/utils.h"
 #include "../../libft/libft.h"
+#include "../../structures/env/env.h"
 #include "commande.h"
 
 static char	*add_slash(char *path, char *cmd)
@@ -45,6 +45,8 @@ static char	*get_path(t_commande *cmd, char **env)
 	char	**paths_cmd;
 	int		i;
 
+	if (cmd->name == NULL)
+		return (NULL);
 	path_env = env_get_var(env, "PATH");
 	if (path_env == NULL)
 		return (ft_strdup(cmd->name));

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   export_internal.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 11:32:54 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 13:46:29 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/10 19:05:32 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/libft.h"
-#include "../utils/utils.h"
+#include "../../structures/env/env.h"
 #include "export_internal.h"
 
 bool	is_valid_identifier(char *arg)

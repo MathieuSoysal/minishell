@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:36:50 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 16:49:16 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 23:54:55 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ typedef struct s_commande
 	int			fd_outfile;
 }				t_commande;
 
-t_commande		*commande_create(char *name, char **args, t_infile **infiles,
-					char **outfile_names);
+t_commande		*commande_create(char **args);
 
 /**
  * @brief Check if a command has an infile
@@ -75,5 +74,19 @@ void			free_commands(t_commande **commands);
  * @param commande The command
  */
 void			commande_set_path(t_commande *commande, char **env);
+
+/**
+ * @brief Get the file descriptor of the infile of a command
+ * @param commande The command
+ * @return The file descriptor of the infile
+ */
+int				command_get_fd_infile(t_commande *commande);
+
+/**
+ * @brief Get the file descriptor of the outfile of a command
+ * @param commande The command
+ * @return The file descriptor of the outfile
+ */
+int				command_get_fd_outfile(t_commande *commande);
 
 #endif // COMMANDE_H

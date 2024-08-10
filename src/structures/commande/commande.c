@@ -6,10 +6,14 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:38:26 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 15:45:53 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/11 00:34:39 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../utils/mini_libft/mini_libft.h"
+#include "../../utils/parser/infiles/apply_infiles.h"
+#include "../../utils/parser/internal_parser.h"
+#include "../../utils/parser/outfiles/apply_outfiles.h"
 #include "commande.h"
 #include <fcntl.h>
 #include <stdio.h>
@@ -18,18 +22,22 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-t_commande	*commande_create(char *name, char **args, t_infile **infiles,
-		char **outfile_names)
+t_commande	*commande_create(char **args)
 {
 	t_commande	*new_commande;
 
 	new_commande = (t_commande *)malloc(sizeof(t_commande));
 	if (new_commande == NULL)
 		return (NULL);
-	new_commande->name = name;
+	new_commande->infiles = extract_infiles(args);
+	new_commande->outfile_names = extract_outfiles(args);
+	apply_strings_for_args(args);
 	new_commande->args = args;
-	new_commande->infiles = infiles;
-	new_commande->outfile_names = outfile_names;
+	if (args == NULL || args[0] == NULL)
+		new_commande->name = NULL;
+	else
+		new_commande->name = ft_strdup(args[0]);
+	new_commande->path = NULL;
 	return (new_commande);
 }
 
