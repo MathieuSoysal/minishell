@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 07:36:00 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 09:44:40 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 10:01:41 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*get_git_branch(char *path)
 		return (NULL);
 	branch = ft_substr(inf, ft_strrchr(inf, '/') - inf + 1, ft_strlen(inf));
 	free(inf);
-    branch[ft_strlen(branch) - 1] = '\0';
+	branch[ft_strlen(branch) - 1] = '\0';
 	return (branch);
 }
 
@@ -76,9 +76,13 @@ bool	is_in_git_repo(void)
 		{
 			is_in_git_repo = true;
 			ft_putstr_fd("\033[94m", 1);
-			ft_putstr_fd(get_project_name(path), 1);
+			temp = get_project_name(path);
+			ft_putstr_fd(temp, 1);
+			free(temp);
 			ft_putstr_fd("\033[90;30m git(\033[30;92m", 1);
-			ft_putstr_fd(get_git_branch(path), 1);
+			temp = get_git_branch(path);
+			ft_putstr_fd(temp, 1);
+			free(temp);
 			ft_putstr_fd("\033[90;30m)", 1);
 			free(path);
 			return (true);
