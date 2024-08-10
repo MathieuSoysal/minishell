@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:00:54 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/10 07:44:24 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 18:58:28 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 
 int	cd(t_commande *cmd, char **envp)
 {
+	char	*pwd;
+
 	if (!cmd->args[1])
 		return (0);
 	if (chdir(cmd->args[1]) == -1)
@@ -34,6 +36,8 @@ int	cd(t_commande *cmd, char **envp)
 		ft_putstr_fd(": No such file or directory\n", 2);
 		return (2);
 	}
-	env_update_var(envp, "PWD", getcwd(NULL, 0));
+	pwd = getcwd(NULL, 0);
+	env_update_var(envp, "PWD", pwd);
+	free(pwd);
 	return (0);
 }
