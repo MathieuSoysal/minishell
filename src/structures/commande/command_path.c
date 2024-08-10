@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 16:31:47 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/09 23:31:27 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 10:16:26 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ static char	*get_path(t_commande *cmd, char **env)
 		}
 		free(path);
 	}
+	if (paths_cmd)
+		free_split(paths_cmd);
 	return (ft_strdup(cmd->name));
 }
 
