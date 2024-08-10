@@ -12,6 +12,7 @@
         "executor_internal.h": "c",
         "mini_libft.h": "c",
         "checker.h": "c",
-        "functional": "c"
+        "functional": "c",
+        "stdbool.h": "c"
     }
 }

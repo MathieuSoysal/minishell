@@ -6,14 +6,14 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 07:13:02 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/10 07:34:30 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec/executor.h"
 #include "minishell.h"
 #include "structures/commande/commande.h"
-#include "structures/sigint/sigint.h"
+#include "signals/sigint/sigint.h"
 #include "utils/checker/checker.h"
 #include "utils/mini_libft/mini_libft.h"
 #include "utils/parser/parser.h"

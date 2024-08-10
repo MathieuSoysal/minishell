@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompteur.c                                        :+:      :+:    :+:   */
+/*   internal.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 07:12:41 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 07:13:47 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/08/10 08:20:13 by hsoysal           #+#    #+#             */
+/*   Updated: 2024/08/10 08:21:27 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include <stdbool.h>
-#include <unistd.h>
+#ifndef INTERNAL_H
+# define INTERNAL_H
 
-void	prompt(void)
-{
-	if (get_exit_status(_LAST_STATUS) == 0)
-		write(1, "\033[1;32m", 8);
-	else
-		write(1, "\033[1;31m", 8);
-	write(1, "⇒ ", 5);
-	write(1, "\033[1;30m", 8);
-	write(1, PROMPT, 11);
-}
+# include <stdbool.h>
+
+bool	is_in_git_repo(void);
+
+#endif // INTERNAL_H
