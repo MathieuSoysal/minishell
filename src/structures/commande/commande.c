@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:38:26 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 02:57:19 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/11 06:27:21 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_commande	*commande_create(char **args)
 	if (new_commande == NULL)
 		return (NULL);
 	new_commande->infiles = extract_infiles(args);
-	new_commande->outfile_names = extract_outfiles(args);
+	new_commande->outfiles = extract_outfiles(args);
 	apply_strings_for_args(args);
 	new_commande->args = args;
 	if (args == NULL || args[0] == NULL)
@@ -48,7 +48,7 @@ bool	commande_has_infile(t_commande *commande)
 
 bool	commande_has_outfile(t_commande *commande)
 {
-	return (commande->outfile_names != NULL);
+	return (commande->outfiles != NULL);
 }
 
 int	command_get_fd_infile(t_commande *commande)
@@ -69,11 +69,14 @@ int	command_get_fd_outfile(t_commande *commande)
 {
 	int	i;
 
-	if (commande->outfile_names == NULL)
+	if (commande->outfiles == NULL)
 		return (1);
 	i = 0;
-	while (commande->outfile_names[i + 1] != NULL)
+	while (commande->outfiles[i + 1] != NULL)
 		i++;
-	return (open(commande->outfile_names[i], O_WRONLY | O_CREAT | O_TRUNC,
+	if (commande->outfiles[i]->type == OUTFILE_TYPE_APPEND)
+		return (open(commande->outfiles[i]->file_name,
+				O_WRONLY | O_CREAT | O_APPEND, 0644));
+	return (open(commande->outfiles[i]->file_name, O_WRONLY | O_CREAT | O_TRUNC,
 			0644));
 }

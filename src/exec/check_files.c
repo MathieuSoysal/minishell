@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:57:30 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 00:03:11 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/11 06:38:15 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ bool	all_outfiles_have_permissions(t_commande *command)
 	int	i;
 
 	i = 0;
-	if (command->outfile_names == NULL)
+	if (command->outfiles == NULL)
 		return (true);
-	while (command->outfile_names[i])
+	while (command->outfiles[i])
 	{
-		if (access(command->outfile_names[i], F_OK) != -1
-			&& access(command->outfile_names[i], W_OK) == -1)
+		if (access(command->outfiles[i]->file_name, F_OK) != -1
+			&& access(command->outfiles[i]->file_name, W_OK) == -1)
 		{
 			ft_putstr_fd("minishell: ", 2);
-			ft_putstr_fd(command->outfile_names[i], 2);
+			ft_putstr_fd(command->outfiles[i]->file_name, 2);
 			ft_putstr_fd(": No such file or directory\n", 2);
 			return (false);
 		}
@@ -65,12 +65,19 @@ void	create_all_outfiles(t_commande *command)
 	int	i;
 
 	i = 0;
-	if (command->outfile_names == NULL)
+	if (command->outfiles == NULL)
 		return ;
-	while (command->outfile_names[i])
+	while (command->outfiles[i])
 	{
-		if (access(command->outfile_names[i], F_OK) == -1)
-			open(command->outfile_names[i], O_CREAT | O_WRONLY | O_TRUNC, 0644);
+		if (access(command->outfiles[i]->file_name, F_OK) == -1)
+		{
+			if (command->outfiles[i]->type == OUTFILE_TYPE_APPEND)
+				open(command->outfiles[i]->file_name,
+					O_CREAT | O_WRONLY | O_APPEND, 0644);
+			else
+				open(command->outfiles[i]->file_name,
+					O_CREAT | O_WRONLY | O_TRUNC, 0644);
+		}
 		i++;
 	}
 }

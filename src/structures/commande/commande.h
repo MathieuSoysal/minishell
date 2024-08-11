@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:36:50 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 23:54:55 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/11 06:29:44 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define COMMANDE_H
 
 # include "../../utils/parser/infiles/apply_infiles.h"
+# include "../../utils/parser/outfiles/apply_outfiles.h"
 # include <stdbool.h>
 
 /**
@@ -30,7 +31,7 @@ typedef struct s_commande
 	char		**args;
 	t_infile	**infiles;
 	int			fd_infile;
-	char		**outfile_names;
+	t_outfile	**outfiles;
 	int			fd_outfile;
 }				t_commande;
 

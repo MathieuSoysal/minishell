@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:08:14 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 20:24:23 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/11 06:27:53 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ static inline void	move_cell_i_to_last(char **array, int i)
 		array[i] = array[i + 1];
 }
 
-char	**extract_outfiles(char **command_line)
+t_outfile	**extract_outfiles(char **command_line)
 {
 	int						i;
 	t_double_linked_list	*outfiles;
+	t_outfile				*outfile;
 
 	i = 0;
 	outfiles = double_linked_list_create();
@@ -33,8 +34,13 @@ char	**extract_outfiles(char **command_line)
 	{
 		if (equals(command_line[i], ">") || equals(command_line[i], ">>"))
 		{
-			double_linked_list_add_last(outfiles, apply_strings(command_line[i
-					+ 1]));
+			outfile = malloc(sizeof(t_outfile));
+			if (equals(command_line[i], ">>"))
+				outfile->type = OUTFILE_TYPE_APPEND;
+			else
+				outfile->type = OUTFILE_TYPE_REDIR;
+			outfile->file_name = apply_strings(command_line[i + 1]);
+			double_linked_list_add_last(outfiles, outfile);
 			move_cell_i_to_last(command_line, i);
 			move_cell_i_to_last(command_line, i);
 		}
@@ -43,7 +49,7 @@ char	**extract_outfiles(char **command_line)
 	}
 	if (outfiles->size == 0)
 		return (free(outfiles), NULL);
-	return (double_linked_list_to_array(outfiles));
+	return ((t_outfile **)double_linked_list_to_array(outfiles));
 }
 
 bool	has_outfiles(char **command_line)

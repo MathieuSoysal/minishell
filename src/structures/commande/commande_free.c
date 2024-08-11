@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 15:45:31 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 23:56:21 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/11 06:31:13 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void	free_strings(char **infiles)
+static void	free_outfiles(t_outfile **outfiles)
 {
 	int	i;
 
 	i = -1;
-	if (infiles == NULL)
+	if (outfiles == NULL)
 		return ;
-	while (infiles[++i])
+	while (outfiles[++i])
 	{
-		free(infiles[i]);
-		infiles[i] = NULL;
+		free(outfiles[i]->file_name);
+		outfiles[i]->file_name = NULL;
+		free(outfiles[i]);
+		outfiles[i] = NULL;
+	}
+}
+
+static void	free_strings(char **strings)
+{
+	int	i;
+
+	i = -1;
+	if (strings == NULL)
+		return ;
+	while (strings[++i])
+	{
+		free(strings[i]);
+		strings[i] = NULL;
 	}
 }
 
@@ -40,9 +56,9 @@ void	commande_free(t_commande *commande)
 	commande->name = NULL;
 	free_infiles(commande->infiles);
 	commande->infiles = NULL;
-	free_strings(commande->outfile_names);
-	free(commande->outfile_names);
-	commande->outfile_names = NULL;
+	free_outfiles(commande->outfiles);
+	free(commande->outfiles);
+	commande->outfiles = NULL;
 	free(commande->path);
 	commande->path = NULL;
 	free(commande);
