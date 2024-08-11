@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 04:06:29 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/11 07:00:31 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char const *argv[], char *envp[])
 		error = check_syntax(command_line);
 		if (error != NO_ERROR)
 			print_error(error);
-		else
+		else if (command_line[0] != '\n' && command_line[0] != '\0')
 		{
 			commands = parse_command_line(command_line, *g_env);
 			if (is_single_command(commands))
