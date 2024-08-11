@@ -14,6 +14,9 @@
         "checker.h": "c",
         "functional": "c",
         "stdbool.h": "c",
-        "export_internal.h": "c"
+        "export_internal.h": "c",
+        "stdio.h": "c",
+        "wait.h": "c",
+        "errno.h": "c"
     }
 }

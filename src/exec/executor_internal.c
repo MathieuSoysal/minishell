@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:48:05 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 00:15:40 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/11 04:59:41 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 
 bool	command_can_be_executed(t_commande *command)
 {
+	if (command == NULL || command->name == NULL)
+		return (false);
 	if (all_infiles_exist(command) && all_outfiles_have_permissions(command))
-	{
-		create_all_outfiles(command);
-		return (true);
-	}
+		return (create_all_outfiles(command), true);
 	return (false);
 }
 

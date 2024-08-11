@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:43:28 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 00:13:11 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/11 03:21:04 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,5 @@ int	execute_builtin(t_commande *command, char ***g_env)
 		return (bultin_exit(command));
 	return (0);
 }
+
+
