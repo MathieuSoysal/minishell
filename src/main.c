@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/12 06:20:23 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/15 17:27:47 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char const *argv[], char *envp[])
 		prompt();
 		command_line = readline(" ");
 		if (command_line == NULL)
-			return (free_env(*g_env), write(1, "\n", 1),
+			return (free_env(*g_env), write(1, "exit\n", 6),
 				get_exit_status(_LAST_STATUS));
 		error = check_syntax(command_line);
 		if (error != NO_ERROR)
