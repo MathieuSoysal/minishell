@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 07:12:41 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 01:47:47 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 01:54:20 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ char	*get_prompt(void)
 		append_to_prompt(prompt, "\033[1;32m");
 	else
 		append_to_prompt(prompt, "\033[1;31m");
-	append_to_prompt(prompt, " ▷\033[40;0m");
+	append_to_prompt(prompt, " ▷\033[40;0m ");
 	return (concatenate(prompt));
 }
