@@ -17,6 +17,9 @@
         "export_internal.h": "c",
         "stdio.h": "c",
         "wait.h": "c",
-        "errno.h": "c"
+        "errno.h": "c",
+        "*.tcc": "c",
+        "libft.h": "c",
+        "sigint.h": "c"
     }
 }

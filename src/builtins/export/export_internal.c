@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 11:32:54 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 19:05:32 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/12 06:53:02 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void	apply_export_for_arg(char *arg, char ***g_env)
 			env_update_var(*g_env, key, value);
 		else
 			env_add_var(g_env, key, value);
+		free(key);
 	}
 }

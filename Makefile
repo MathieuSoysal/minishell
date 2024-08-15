@@ -1,6 +1,6 @@
 CFLAGS = -I.
 MAKEFLAGS += --silent
-CC=gcc -g 
+CC=cc -Wall -Wextra -Werror -g3 -lreadline
 
 .PHONY: BUILD TEST RUN  BUILD_RUN  # Main piplines
 .PHONY: RUNTEST  MERGETEST cleantest clean

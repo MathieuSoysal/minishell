@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:50:53 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 12:20:14 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/12 02:18:29 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ char	**double_linked_list_to_array(t_double_linked_list *list)
 {
 	char	**result;
 	size_t	i;
-	t_node	*node;
 
 	result = (char **)malloc(sizeof(char *) * (list->size + 1));
 	if (!result)
@@ -78,8 +77,6 @@ char	**double_linked_list_to_array(t_double_linked_list *list)
 char	**split_by_pipe(char const *command_line)
 {
 	t_double_linked_list	*list;
-	char					**result;
-	char					*tmp;
 	size_t					i;
 
 	list = double_linked_list_create();

@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 00:18:36 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 07:31:04 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/12 02:17:45 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static char	*get_dollar(char const *command_line, size_t *i, t_string_mode mode,
 
 	(*i)++;
 	j = *i;
+	(void)mode;
 	if (command_line[j] == '?')
 	{
 		(*i)++;

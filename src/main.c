@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 07:00:31 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/12 06:20:23 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "utils/checker/checker.h"
 #include "utils/mini_libft/mini_libft.h"
 #include "utils/parser/parser.h"
+#include <readline/readline.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -36,15 +37,16 @@ int	main(int argc, char const *argv[], char *envp[])
 	char			*command_line;
 	t_syntax_error	error;
 	t_commande		**commands;
-	int				i;
 	char			***g_env;
 
+	(void)argc;
+	(void)argv;
 	setup_sigint();
 	g_env = get_envp(envp);
 	while (1)
 	{
 		prompt();
-		command_line = ft_get_next_line(0);
+		command_line = readline(" ");
 		if (command_line == NULL)
 			return (free_env(*g_env), write(1, "\n", 1),
 				get_exit_status(_LAST_STATUS));

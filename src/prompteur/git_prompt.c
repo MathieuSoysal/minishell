@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 07:36:00 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 10:01:41 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/12 06:04:14 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 static bool	is_git_repo(char *path)
 {
-	struct stat	st;
 	char		*full_path;
 
 	full_path = ft_strjoin(path, "/.git/HEAD");
@@ -53,7 +52,6 @@ static char	*get_git_branch(char *path)
 static char	*get_project_name(char *path)
 {
 	char	*project_name;
-	char	*temp;
 
 	project_name = ft_strrchr(path, '/');
 	if (project_name == NULL)

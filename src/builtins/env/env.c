@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 12:00:18 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 12:02:44 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/12 02:16:42 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	env(t_commande *cmd, char **envp)
 	int	i;
 
 	i = -1;
+	(void)cmd;
 	while (envp[++i])
 	{
 		ft_putstr_fd(envp[i], 1);

@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 06:49:12 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 06:54:03 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/12 02:18:04 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_string_mode	update_stringmode(char character, t_string_mode string_mode)
 	{
 		if (string_mode == NO_QUOTE)
 			return (character);
-		else if (string_mode == character)
+		else if ((char)string_mode == character)
 			return (NO_QUOTE);
 	}
 	return (string_mode);
