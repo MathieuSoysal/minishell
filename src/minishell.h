@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 03:13:19 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 03:13:33 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 01:47:38 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@
  */
 int		get_exit_status(int status);
 
-void	prompt(void);
+char	*get_prompt(void);
 
 #endif // MINISHELL_H

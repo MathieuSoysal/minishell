@@ -6,12 +6,13 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 07:36:00 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/12 06:04:14 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 01:46:31 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../minishell.h"
+#include "../utils/mini_libft/mini_libft.h"
+#include "internal.h"
 #include <stdbool.h>
 #include <stdlib.h>
 #include <sys/stat.h>
@@ -19,7 +20,7 @@
 
 static bool	is_git_repo(char *path)
 {
-	char		*full_path;
+	char	*full_path;
 
 	full_path = ft_strjoin(path, "/.git/HEAD");
 	if (access(full_path, O_RDONLY | F_OK) == 0)
@@ -59,12 +60,10 @@ static char	*get_project_name(char *path)
 	return (ft_strdup(project_name + 1));
 }
 
-bool	is_in_git_repo(void)
+char	*get_path_git_repo(void)
 {
-	static bool	is_in_git_repo = false;
-	char		*path;
-	char		*temp;
-	int			i;
+	char	*path;
+	int		i;
 
 	path = getcwd(NULL, 0);
 	i = ft_strlen(path) - 1;
@@ -72,18 +71,7 @@ bool	is_in_git_repo(void)
 	{
 		if (is_git_repo(path))
 		{
-			is_in_git_repo = true;
-			ft_putstr_fd("\033[94m", 1);
-			temp = get_project_name(path);
-			ft_putstr_fd(temp, 1);
-			free(temp);
-			ft_putstr_fd("\033[90;30m git(\033[30;92m", 1);
-			temp = get_git_branch(path);
-			ft_putstr_fd(temp, 1);
-			free(temp);
-			ft_putstr_fd("\033[90;30m)", 1);
-			free(path);
-			return (true);
+			return (path);
 		}
 		while (path[i] != '/' && path[i] != '\0')
 		{
@@ -95,5 +83,22 @@ bool	is_in_git_repo(void)
 		i--;
 	}
 	free(path);
-	return (false);
+	return (NULL);
+}
+
+void	append_git_prompt(void *prompt, char *path)
+{
+	char	*temp;
+
+	append_to_prompt(prompt, "\033[1;34m");
+	temp = get_project_name(path);
+	append_to_prompt(prompt, temp);
+	free(temp);
+	append_to_prompt(prompt, "\033[90;30m git(\033[30;92m");
+	temp = get_git_branch(path);
+	append_to_prompt(prompt, temp);
+	free(temp);
+	append_to_prompt(prompt, "\033[90;30m)");
+	free(path);
+	path = NULL;
 }

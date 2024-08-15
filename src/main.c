@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/15 17:27:47 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 01:48:03 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "utils/checker/checker.h"
 #include "utils/mini_libft/mini_libft.h"
 #include "utils/parser/parser.h"
+#include <readline/history.h>
 #include <readline/readline.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -38,6 +39,7 @@ int	main(int argc, char const *argv[], char *envp[])
 	t_syntax_error	error;
 	t_commande		**commands;
 	char			***g_env;
+	char			*prompt;
 
 	(void)argc;
 	(void)argv;
@@ -45,8 +47,9 @@ int	main(int argc, char const *argv[], char *envp[])
 	g_env = get_envp(envp);
 	while (1)
 	{
-		prompt();
-		command_line = readline(" ");
+		prompt = get_prompt();
+		command_line = readline(prompt);
+		free(prompt);
 		if (command_line == NULL)
 			return (free_env(*g_env), write(1, "exit\n", 6),
 				get_exit_status(_LAST_STATUS));
@@ -55,6 +58,7 @@ int	main(int argc, char const *argv[], char *envp[])
 			print_error(error);
 		else if (command_line[0] != '\n' && command_line[0] != '\0')
 		{
+			add_history(command_line);
 			commands = parse_command_line(command_line, *g_env);
 			if (is_single_command(commands))
 				execute_single_command(commands[0], g_env);

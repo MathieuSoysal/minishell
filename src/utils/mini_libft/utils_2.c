@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 03:03:27 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/08 13:01:49 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 01:29:16 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,16 @@ char	*concatenate(t_double_linked_list *list)
 		return (NULL);
 	while (list->size > 0)
 	{
-		free(new_word);
 		new_word = double_linked_list_pop_first(list);
-		if (!new_word)
+		if (new_word == NULL)
 			return (free(result), NULL);
 		temp = result;
 		result = ft_strjoin(temp, new_word);
+		free(new_word);
 		free(temp);
 		if (!result)
 			return (NULL);
 	}
-	free(new_word);
 	free(list);
 	list = NULL;
 	return (result);

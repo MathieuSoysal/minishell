@@ -6,38 +6,54 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 07:12:41 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/12 04:35:33 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 01:47:47 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../minishell.h"
+#include "../utils/mini_libft/mini_libft.h"
 #include "internal.h"
 #include <stdbool.h>
 #include <unistd.h>
 
-static void	print_pwd(void)
+void	append_to_prompt(void *prompt, char *str)
+{
+	t_double_linked_list	*prompt_list;
+
+	prompt_list = (t_double_linked_list *)prompt;
+	double_linked_list_add_last(prompt_list, ft_strdup(str));
+}
+
+static void	append_pwd_to_prompt(void *prompt)
 {
 	char	*pwd;
 
 	pwd = getcwd(NULL, 0);
+	append_to_prompt(prompt, pwd);
 	ft_putstr_fd(pwd, 1);
 	free(pwd);
 }
 
-void	prompt(void)
+char	*get_prompt(void)
 {
+	t_double_linked_list	*prompt;
+	char					*path;
+
+	prompt = double_linked_list_create();
 	if (get_exit_status(_LAST_STATUS) == 0)
-		write(1, "\033[1;32m", 8);
+		append_to_prompt(prompt, "\033[1;32m");
 	else
-		write(1, "\033[1;31m", 8);
-	write(1, "⇒ ", 5);
-	write(1, "\033[1;30m", 8);
-	if (!is_in_git_repo())
-		print_pwd();
+		append_to_prompt(prompt, "\033[1;31m");
+	append_to_prompt(prompt, "⇒ \033[1;30m");
+	path = get_path_git_repo();
+	if (path != NULL)
+		append_git_prompt(prompt, path);
+	else
+		append_pwd_to_prompt(prompt);
 	if (get_exit_status(_LAST_STATUS) == 0)
-		write(1, "\033[1;32m", 8);
+		append_to_prompt(prompt, "\033[1;32m");
 	else
-		write(1, "\033[1;31m", 8);
-	ft_putstr_fd(" ▷\033[40;0m", 1);
+		append_to_prompt(prompt, "\033[1;31m");
+	append_to_prompt(prompt, " ▷\033[40;0m");
+	return (concatenate(prompt));
 }

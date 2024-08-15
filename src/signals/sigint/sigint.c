@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 18:39:00 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/15 15:36:41 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 01:53:43 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,23 @@
 
 void	signal_handler_wrapper(int sig, siginfo_t *info, void *ucontext)
 {
+	char	*prompt;
+
 	(void)ucontext;
 	(void)info;
 	if (sig == SIGQUIT)
 	{
 		rl_on_new_line();
-		prompt();
 		rl_redisplay();
 	}
 	else if (sig == SIGINT)
 	{
 		get_exit_status(130);
+		prompt = get_prompt();
 		rl_replace_line("", 0);
 		write(1, "\n", 1);
-		prompt();
+		rl_set_prompt(prompt);
+		free(prompt);
 		rl_on_new_line();
 		rl_redisplay();
 	}
