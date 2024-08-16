@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:10:02 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 04:46:24 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 02:22:54 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	execute_single_command(t_commande *command, char ***g_env)
 		else
 			execute_external_command(command, g_env);
 	}
+	else
+		get_exit_status(1);
 }
 
 bool	is_single_command(t_commande **commands)
