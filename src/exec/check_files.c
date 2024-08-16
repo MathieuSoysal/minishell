@@ -6,13 +6,18 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:57:30 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 06:38:15 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 09:02:55 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "executor_internal.h"
 #include <unistd.h>
+
+bool	is_a_directory(char *file_name)
+{
+	return access(file_name, F_OK) == 0 && access(file_name, X_OK) == 0; // a finir
+}
 
 bool	all_infiles_exist(t_commande *command)
 {
@@ -31,6 +36,15 @@ bool	all_infiles_exist(t_commande *command)
 			ft_putstr_fd("minishell: ", 2);
 			ft_putstr_fd(infile->value.file_name_value, 2);
 			ft_putstr_fd(": No such file or directory\n", 2);
+			return (false);
+		}
+		if (infile->type == INFILE_TYPE_STRING
+			&& access(infile->value.file_name_value, F_OK) == 0
+			&& access(infile->value.file_name_value, R_OK) == -1)
+		{
+			ft_putstr_fd("minishell: ", 2);
+			ft_putstr_fd(infile->value.file_name_value, 2);
+			ft_putstr_fd(": Permission denied\n", 2);
 			return (false);
 		}
 		i++;
@@ -52,7 +66,7 @@ bool	all_outfiles_have_permissions(t_commande *command)
 		{
 			ft_putstr_fd("minishell: ", 2);
 			ft_putstr_fd(command->outfiles[i]->file_name, 2);
-			ft_putstr_fd(": No such file or directory\n", 2);
+			ft_putstr_fd(": Permission denied\n", 2);
 			return (false);
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 08:58:35 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 11:24:05 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static char	*read_command_line(void)
 	char	*command_line;
 	char	*prompt;
 
+	g_sigint = 0;
 	prompt = get_prompt();
 	command_line = readline(prompt);
 	free(prompt);

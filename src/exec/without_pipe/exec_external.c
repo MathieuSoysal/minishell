@@ -6,11 +6,12 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:09:48 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 05:03:01 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 11:26:25 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
+#include "../../signals/sigint/sigint.h"
 #include "../../structures/commande/commande.h"
 #include "../../utils/mini_libft/mini_libft.h"
 #include "internal.h"
@@ -52,7 +53,7 @@ void	execute_external_command(t_commande *command, char ***g_env)
 	else if (pid > 0)
 	{
 		waitpid(pid, &status, 0);
-		if (WIFEXITED(status))
+		if (WIFEXITED(status) && g_sigint == 0)
 			get_exit_status(WEXITSTATUS(status));
 	}
 	else
