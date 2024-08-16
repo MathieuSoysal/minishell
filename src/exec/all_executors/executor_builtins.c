@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   executor_builtins.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:43:28 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 20:35:32 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/16 22:10:58 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtins/builtins.h"
-#include "../utils/mini_libft/mini_libft.h"
+#include "../../utils/mini_libft/mini_libft.h"
 #include "executor_internal.h"
 
 bool	is_builtin(t_commande *command)

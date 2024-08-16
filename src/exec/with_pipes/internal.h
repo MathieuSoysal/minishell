@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_cmd.c                                         :+:      :+:    :+:   */
+/*   internal.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 14:25:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/16 22:46:48 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/08/16 21:40:23 by hsoysal           #+#    #+#             */
+/*   Updated: 2024/08/16 22:16:08 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft/libft.h"
-#include "execution.h"
+#ifndef INTERNAL_H
+# define INTERNAL_H
 
-void	exec_cmd(t_commande *command, char ***g_env)
-{
-	int	status;
+# include "execution.h"
 
-	status = execute_command(command, g_env);
-	if (status == -1)
-	{
-		ft_putstr_fd("minishell: command not found: ", 2);
-		exit(127);
-	}
-	// return (status);
-}
+int		ft_fork(pid_t pid);
+void	ft_close(t_commande *commands, char *fd_in_out, int fd_zero_one);
+void	ft_pipe(t_commande *commands);
+
+#endif // INTERNAL_H

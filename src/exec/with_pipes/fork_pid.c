@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   fork_pid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:08:28 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/16 19:36:37 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/16 22:15:48 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "execution.h"
+#include "execution.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-void clear_all(t_commande *commands) 
+void	clear_all(t_commande *commands)
 {
-    if (commands -> fd_infile >= 0)
-        close(commands->fd_infile);
-    if (commands->fd_outfile >= 0)
-        close(commands->fd_outfile);
-//     if (pipex->here_doc)
-//         unlink(HEREDOC);
+	if (commands->fd_infile >= 0)
+		close(commands->fd_infile);
+	if (commands->fd_outfile >= 0)
+		close(commands->fd_outfile);
 }
 
 int	ft_fork(pid_t pid)
@@ -32,7 +32,8 @@ int	ft_fork(pid_t pid)
 	}
 	return (pid);
 }
-void	ft_pid(t_commande *commands)
+
+void	ft_pipe(t_commande *commands)
 {
 	if (-1 == pipe(commands->fd))
 	{
@@ -40,4 +41,3 @@ void	ft_pid(t_commande *commands)
 		exit(1);
 	}
 }
-

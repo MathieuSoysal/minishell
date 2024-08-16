@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   single_exec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:10:02 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 20:43:42 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/16 22:23:20 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ void	execute_single_command(t_commande *command, char ***g_env)
 		if (is_builtin(command))
 			execute_builtins_without_fork(command, g_env);
 		else
-			process_commands(command, g_env);
-				
-			// (np uitliser) execute_external_command(command, g_env);
+			execute_external_command(command, g_env); // utiliser process_command
 	}
 	else
 		get_exit_status(1);
