@@ -6,36 +6,45 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 12:35:15 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/07 17:43:45 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/16 20:39:30 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "execution.h"
 
-void	process_commands(char **av, t_pipex *pipex)
+void	ft_pid(t_commande  *commands)
 {
-	pid_t	pid;
-	int		i;
-
-	pid = -1;
-	i = op_ternary(pipex->here_doc, 3, 2);
-	while (i < (op_ternary(pipex->here_doc, 4, av[i + 1] != NULL)))
+	if (-1 == pipe(commands -> fd))
 	{
-		ft_pid(pipex);
-		if (0 == ft_fork(pid))
-		{
-			if (i != (op_ternary(pipex->here_doc, 3, 2)))
-				ft_dup_two(pipex, "in", -1);
-			if (NULL != av[i + 1])
-				ft_dup_two(pipex, "no", 1);
-			ft_close(pipex, "out", 0);
-			exec_cmd(av[i], pipex);
-		}
-		ft_close(pipex, "in", 1);
-		waitpid(pid, NULL, 0);
-		pipex->fd_in = pipex->p_fd[0];
-		i++;
+		perror("pipe");
+		exit(1);
 	}
-	ft_dup_two(pipex, "in", -1);
-	ft_dup_two(pipex, "out", -1);
-	exec_cmd(av[i], pipex);
+}
+void	process_commands(t_commande  *commands, char ***envp)
+{
+	pid_t  pid;
+	int i;
+	
+	while(commands -> args[i])
+	{
+		ft_pid(commands);
+		if(0 == ft_fork(pid))
+		{
+			if(commands -> args[i + 1] != NULL)
+				ft_dup_two(commands, "no", 1);
+				ft_close(commands, "out", 0);
+				exec_cmd(commands -> args[i], *envp);
+		}
+		else
+		{
+			ft_close(commands, "in", 1);
+			waitpid(pid, NULL, 0);
+			commands ->  fd_infile  =  commands -> fd[0];
+			i ++;
+		}
+		
+	}
+	ft_dup_two(commands, "in", -1);
+	ft_dup_two(commands, "out", -1);
+	// exec_cmd(commands -> args[i], *envp);
 }

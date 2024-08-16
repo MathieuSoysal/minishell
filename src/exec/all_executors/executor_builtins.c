@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   executor_builtins.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:43:28 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 03:21:04 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 20:35:32 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../builtins/builtins.h"
+#include "../../builtins/builtins.h"
 #include "../utils/mini_libft/mini_libft.h"
 #include "executor_internal.h"
 

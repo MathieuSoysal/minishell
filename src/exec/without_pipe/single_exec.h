@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   single_exec.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:09:28 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 03:21:30 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 20:42:57 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@
 
 void	execute_single_command(t_commande *command, char ***g_env);
 bool	is_single_command(t_commande **commands);
+void  execute_external_command(t_commande *command, char ***g_env);
 
 #endif // SINGLE_EXEC_H

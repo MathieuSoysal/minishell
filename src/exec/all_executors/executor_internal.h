@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   executor_internal.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:30:55 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 00:15:22 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 20:42:57 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTOR_INTERNAL_H
 # define EXECUTOR_INTERNAL_H
 
-# include "../structures/commande/commande.h"
+# include "../../structures/commande/commande.h"
 # include <stdbool.h>
 
 

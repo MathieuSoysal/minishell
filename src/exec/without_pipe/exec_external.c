@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_external.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:09:48 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 11:26:25 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 19:34:49 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	execute_external_command_bis(t_commande *command, char ***g_env)
 	exit(status);
 }
 
-void	execute_external_command(t_commande *command, char ***g_env)
+void execute_external_command(t_commande *command, char ***g_env)
 {
 	int	status;
 	int	pid;
@@ -59,6 +59,7 @@ void	execute_external_command(t_commande *command, char ***g_env)
 	else
 	{
 		ft_putstr_fd("minishell: fork failed\n", 2);
-		get_exit_status(1);
+		return(0);
+		// get_exit_status(1);
 	}
 }

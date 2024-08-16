@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   check_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:57:30 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 09:02:55 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 20:42:57 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
-#include "executor_internal.h"
+#include "all_executors/executor_internal.h"
 #include <unistd.h>
 
 bool	is_a_directory(char *file_name)

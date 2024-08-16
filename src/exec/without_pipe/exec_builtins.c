@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtins.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:09:10 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 11:26:27 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 19:33:50 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "../../utils/checker/checker.h"
 #include "../../utils/mini_libft/mini_libft.h"
 #include "../../utils/parser/parser.h"
-#include "../executor.h"
+#include "../all_executors/executor.h"
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
