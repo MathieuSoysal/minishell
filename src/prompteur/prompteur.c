@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 07:12:41 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 01:54:20 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/16 02:29:44 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	append_pwd_to_prompt(void *prompt)
 
 	pwd = getcwd(NULL, 0);
 	append_to_prompt(prompt, pwd);
-	ft_putstr_fd(pwd, 1);
 	free(pwd);
 }
 
