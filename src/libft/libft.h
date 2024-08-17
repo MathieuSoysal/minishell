@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:46:58 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/17 13:14:48 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/17 14:41:36 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,6 @@ void				count_putchar_fd(char c, int *count, int fd);
 char				*malloc_substrcpy(char *origin, int start, int end);
 int					ft_same_name(char *name1, char *name2);
 void				free_array(char **array);
-int					ft_intcmp(int nb);
+int					ft_intcmp(int a);
 
 #endif

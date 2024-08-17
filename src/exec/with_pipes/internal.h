@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.h                                         :+:      :+:    :+:   */
+/*   internal.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 14:30:55 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 22:24:51 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/08/16 21:40:23 by hsoysal           #+#    #+#             */
+/*   Updated: 2024/08/16 22:16:08 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTOR_H
-# define EXECUTOR_H
+#ifndef INTERNAL_H
+# define INTERNAL_H
 
-# include "../../structures/commande/commande.h"
-# include <stdbool.h>
+# include "execution.h"
 
-int		execute_command(t_commande *command, char ***g_env);
-bool	command_can_be_executed(t_commande *command);
-bool	is_builtin(t_commande *command);
-int		execute_builtin(t_commande *command, char ***g_env);
-void	execute_builtins_without_fork(t_commande *command, char ***g_env);
+int		ft_fork(pid_t pid);
+void	ft_close(t_commande *commands, char *fd_in_out, int fd_zero_one);
+void	ft_pipe(t_commande *commands);
 
-#endif // EXECUTOR_H
+#endif // INTERNAL_H

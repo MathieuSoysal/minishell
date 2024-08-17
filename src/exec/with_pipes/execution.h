@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:11:16 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/17 13:43:28 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/17 14:24:21 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include "../../structures/commande/commande.h"
 #include "../without_pipe/single_exec.h"
 #include "../all_executors/executor.h"
-#include "../../libft/libft.h"
 
 void	execute_commands(t_commande **command, char **g_env);
 void	process_commands(t_commande  *commands, char ***envp);

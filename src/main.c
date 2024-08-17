@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 20:31:19 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/17 01:35:48 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec/all_executors/executor.h"
+#include "exec/with_pipes/execution.h"
 #include "exec/without_pipe/single_exec.h"
 #include "minishell.h"
 #include "signals/sigint/sigint.h"
@@ -24,32 +25,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-//1 - definir les commands;
-// typedef struct s_commande
-// {
-// 	char		*name;
-// 	char		*path;
-// 	char		**args;
-// 	t_infile	**infiles;
-// 	int			fd_infile;
-// 	t_outfile	**outfiles;
-// 	int			fd_outfile;
-// }				t_commande;
-
 static void	execute_alll_commands(t_commande **commands, char ***g_env)
 {
-		int i;
-		i =  -1;
-		while(commands[++i])
-		{
-			if(commands[i  + 1])
-				execute_single_command(commands[i], g_env);
-		}
-	//  2 - initialiser le  process;
-	//  3 - relancer le process; 
-	
-	
-	
+	process_commands(commands, g_env);
 }
 
 static bool	is_not_empty(const char *str)
