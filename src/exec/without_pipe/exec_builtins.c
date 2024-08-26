@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtins.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:09:10 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 22:14:28 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/17 20:29:07 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	execute_builtins_without_fork(t_commande *command, char ***g_env)
 	if (fd_in != 0)
 		dup2(fd_in, 0);
 	if (fd_out != 1)
-		dup2(fd_out, 1);
+		dup2(fd_out, 1);	
 	get_exit_status(execute_builtin(command, g_env));
 	if (fd_in != 0)
 		close(fd_in);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompteur.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 07:12:41 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 02:29:44 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/17 20:48:11 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ char	*get_prompt(void)
 	else
 		append_to_prompt(prompt, "\033[1;31m");
 	append_to_prompt(prompt, " ▷\033[40;0m ");
-	return (concatenate(prompt));
+	free(concatenate(prompt));
+	return (ft_strdup("minishell "));
 }

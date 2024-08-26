@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/17 01:35:48 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/20 15:38:50 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,32 @@
 #include "utils/parser/parser.h"
 #include <readline/history.h>
 #include <readline/readline.h>
+#include <sys/wait.h>
 #include <stdlib.h>
 #include <unistd.h>
 
+int command_count(t_commande  **commands)
+{
+	int i;
+	i = 0;
+	while(commands[i] !=  0)
+	{
+		i ++;
+	}
+	return(i);
+}
 static void	execute_alll_commands(t_commande **commands, char ***g_env)
 {
-	process_commands(commands, g_env);
+	int j;
+	t_fd  fds;
+	
+	j  = command_count(commands);
+	process_commands(commands, g_env, &fds);
+	while (j > 0)
+    {
+        waitpid(0, NULL, 0);
+        j --;
+    }
 }
 
 static bool	is_not_empty(const char *str)
@@ -92,10 +112,13 @@ int	main(int argc, char const *argv[], char *envp[])
 			if (is_single_command(commands))
 				execute_single_command(commands[0], g_env);
 			else
+			{
 				execute_alll_commands(commands, g_env);
-			free_commands(commands);
+				free_commands(commands);
+			}
 		}
 		free(command_line);
+		
 	}
 	free_env(*g_env);
 	return (get_exit_status(_LAST_STATUS));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_external.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:09:48 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 22:15:14 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/21 15:37:01 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	execute_external_command(t_commande *command, char ***g_env)
 {
 	int	status;
 	int	pid;
-
+	printf("pass in execute_external_command\n");
 	pid = fork();
 	if (pid == 0)
 		execute_external_command_bis(command, g_env);

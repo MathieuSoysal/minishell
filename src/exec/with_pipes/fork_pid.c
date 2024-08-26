@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:08:28 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/17 14:34:30 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:30:46 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	clear_all(t_commande *commands)
+void	clear_all(t_fd *fds)
 {
-	if (commands->fd_infile >= 0)
-		close(commands->fd_infile);
-	if (commands->fd_outfile >= 0)
-		close(commands->fd_outfile);
+	if (fds->fd_infile >= 0)
+		close(fds->fd_infile);
+	if (fds->fd_outfile >= 0)
+		close(fds->fd_outfile);
 }
 
 int	ft_fork(pid_t pid)
@@ -33,11 +33,12 @@ int	ft_fork(pid_t pid)
 	return (pid);
 }
 
-void	ft_pipe(t_commande *commands)
+void	ft_pipe(int *fd)
 {
-	if (-1 == pipe(commands->fd))
+	if (-1 == pipe(fd))
 	{
 		perror("pipe");
 		exit(1);
 	}
 }
+

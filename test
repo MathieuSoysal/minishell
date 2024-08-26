@@ -1,0 +1,7 @@
+build
+infile
+Makefile
+outfile
+src
+test
+valgrind_ignore

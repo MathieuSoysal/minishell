@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:36:50 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 13:13:36 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:48:30 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,18 @@ typedef struct s_commande
 	char		*path;
 	char		**args;
 	t_infile	**infiles;
-	int			fd_infile;
 	t_outfile	**outfiles;
-	int			fd_outfile;
-	int			fd[2];
+	
+	
 }				t_commande;
+
+typedef struct s_fd
+{
+// 	pid =  -1;
+	int			fd_infile;
+	int			fd_outfile;
+	int fd[2];
+} t_fd;
 
 t_commande		*commande_create(char **args);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   internal.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 21:40:23 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 22:16:08 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/19 17:31:13 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "execution.h"
 
 int		ft_fork(pid_t pid);
-void	ft_close(t_commande *commands, char *fd_in_out, int fd_zero_one);
-void	ft_pipe(t_commande *commands);
+void	ft_pipe(int  *fd);
 
 #endif // INTERNAL_H
