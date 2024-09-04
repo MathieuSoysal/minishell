@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:09:48 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/21 15:37:01 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:15:04 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	execute_external_command(t_commande *command, char ***g_env)
 {
 	int	status;
 	int	pid;
+
 	printf("pass in execute_external_command\n");
 	pid = fork();
 	if (pid == 0)

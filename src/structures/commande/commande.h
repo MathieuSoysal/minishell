@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:36:50 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/19 17:48:30 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:21:25 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 
 # include "../../utils/parser/infiles/apply_infiles.h"
 # include "../../utils/parser/outfiles/apply_outfiles.h"
+# include <errno.h>
 # include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/wait.h>
 
 /**
  * @brief Structure representing a command
@@ -31,17 +36,16 @@ typedef struct s_commande
 	char		**args;
 	t_infile	**infiles;
 	t_outfile	**outfiles;
-	
-	
+	int			g_i;
 }				t_commande;
 
 typedef struct s_fd
 {
-// 	pid =  -1;
 	int			fd_infile;
 	int			fd_outfile;
-	int fd[2];
-} t_fd;
+	int			fd[2];
+	int			i;
+}				t_fd;
 
 t_commande		*commande_create(char **args);
 
@@ -97,5 +101,7 @@ int				command_get_fd_infile(t_commande *commande);
  * @return The file descriptor of the outfile
  */
 int				command_get_fd_outfile(t_commande *commande);
+int				command_count(t_commande **commands);
+void			arg_is_void_and_signt_init(int argc, char const argv[]);
 
 #endif // COMMANDE_H

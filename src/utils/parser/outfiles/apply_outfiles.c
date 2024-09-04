@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   apply_outfiles.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:08:14 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 06:27:53 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/09/04 16:19:30 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ static inline void	move_cell_i_to_last(char **array, int i)
 
 t_outfile	**extract_outfiles(char **command_line)
 {
-	int						i;
 	t_double_linked_list	*outfiles;
 	t_outfile				*outfile;
 
-	i = 0;
+	int (i) = 0;
 	outfiles = double_linked_list_create();
 	while (command_line[i])
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:06:29 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/12 03:45:32 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/09/04 16:32:33 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,14 @@ bool	ft_append_to_line(char **rest, char **line, char *buf)
 
 char	*ft_get_next_line(int fd)
 {
-	char		buf[BUFFER_SIZE + 1] = {0};
+	char		*buf;
 	int			i;
 	static char	*rest[1024];
 	char		*line;
 	int			can_read;
 
 	line = NULL;
+	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (BUFFER_SIZE < 1 || read(fd, 0, 0) == -1 || fd < 0)
 		return (NULL);
 	can_read = 1;

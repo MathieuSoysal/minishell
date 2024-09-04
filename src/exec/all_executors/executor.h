@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:30:55 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 22:24:51 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/09/04 13:22:59 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 # define EXECUTOR_H
 
 # include "../../structures/commande/commande.h"
+# include <errno.h>
 # include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/wait.h>
+# include <unistd.h>
 
 int		execute_command(t_commande *command, char ***g_env);
 bool	command_can_be_executed(t_commande *command);

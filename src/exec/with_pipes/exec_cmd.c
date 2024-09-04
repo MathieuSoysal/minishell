@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:25:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/17 16:21:14 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:19:38 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,10 @@ void	exec_cmd(t_commande *command, char ***g_env)
 		ft_putstr_fd("minishell: command not found: ", 2);
 		exit(127);
 	}
-	// return (status);
+}
+
+void	ft_exec(t_commande **commands, int i, char ***envp)
+{
+	exec_cmd(commands[i], envp);
+	exit(EXIT_FAILURE);
 }

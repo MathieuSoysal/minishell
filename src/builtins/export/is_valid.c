@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export.c                                           :+:      :+:    :+:   */
+/*   is_valid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/20 16:37:06 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/09/03 13:57:10 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/09/03 13:52:16 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/09/03 13:58:26 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../structures/commande/commande.h"
+#include "../../libft/libft.h"
+#include "../../structures/env/env.h"
 #include "export_internal.h"
 
-int	export(t_commande *cmd, char ***g_env)
+bool	is_valid_identifier(char *arg)
 {
 	int	i;
 
-	if (cmd->args[1] == NULL)
-	{
-		print_sorted_env(*g_env);
-		return (0);
-	}
 	i = 0;
-	while (cmd->args[++i])
-	{
-		if (is_valid_identifier(cmd->args[i]))
-			apply_export_for_arg(cmd->args[i], g_env);
-		else
-			print_invalid_identifier_error(cmd->args[i]);
-	}
-	return (0);
+	if (!arg[i] || !(ft_isalpha(arg[i]) || arg[i] == '_'))
+		return (false);
+	while (arg[++i])
+		if (!(ft_isalnum(arg[i]) || arg[i] == '_' || arg[i] == '='))
+			return (false);
+	return (true);
+}
+
+void	print_invalid_identifier_error(char *arg)
+{
+	ft_putstr_fd("export: `", 2);
+	ft_putstr_fd(arg, 2);
+	ft_putstr_fd("': not a valid identifier\n", 2);
 }

@@ -6,11 +6,11 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:03:07 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/07/17 20:06:53 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:22:11 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  FT_PRINTF_H
+#ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
 # include <stdarg.h>
@@ -25,7 +25,7 @@ void	ft_pourcentage(int *lenght);
 void	ft_print_unsigned(unsigned int nb, int *lenght);
 void	ft_print_pointeur(size_t p, int *lenght);
 void	ft_putchar_lenght(char c, int *lenght);
-void    count_putchar_fd(char c, int *count, int fd);
-int     ft_printf_fd(int fd, const char *str, ...);
+void	count_putchar_fd(char c, int *count, int fd);
+int		ft_printf_fd(int fd, const char *str, ...);
 
 #endif

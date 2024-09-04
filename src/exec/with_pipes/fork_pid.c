@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:08:28 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/19 17:30:46 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:20:46 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,11 @@ void	ft_pipe(int *fd)
 	}
 }
 
+void	pipe_fd(int *fd)
+{
+	if (pipe(fd) == -1)
+	{
+		perror("pipe failed");
+		exit(EXIT_FAILURE);
+	}
+}

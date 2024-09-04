@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:57:30 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 20:43:42 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:57:31 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 bool	is_a_directory(char *file_name)
 {
-	return access(file_name, F_OK) == 0 && access(file_name, X_OK) == 0; // a finir
+	return (access(file_name, F_OK) == 0 && access(file_name, X_OK) == 0);
 }
 
 bool	all_infiles_exist(t_commande *command)
@@ -33,19 +33,13 @@ bool	all_infiles_exist(t_commande *command)
 		if (infile->type == INFILE_TYPE_STRING
 			&& access(infile->value.file_name_value, F_OK) == -1)
 		{
-			ft_putstr_fd("minishell: ", 2);
-			ft_putstr_fd(infile->value.file_name_value, 2);
-			ft_putstr_fd(": No such file or directory\n", 2);
-			return (false);
+			no_such_file_or_directory(infile);
 		}
 		if (infile->type == INFILE_TYPE_STRING
 			&& access(infile->value.file_name_value, F_OK) == 0
 			&& access(infile->value.file_name_value, R_OK) == -1)
 		{
-			ft_putstr_fd("minishell: ", 2);
-			ft_putstr_fd(infile->value.file_name_value, 2);
-			ft_putstr_fd(": Permission denied\n", 2);
-			return (false);
+			permisson_denied(infile);
 		}
 		i++;
 	}
@@ -87,10 +81,12 @@ void	create_all_outfiles(t_commande *command)
 		{
 			if (command->outfiles[i]->type == OUTFILE_TYPE_APPEND)
 				open(command->outfiles[i]->file_name,
-					O_CREAT | O_WRONLY | O_APPEND, 0644);
+					O_CREAT | O_WRONLY | O_APPEND,
+					0644);
 			else
 				open(command->outfiles[i]->file_name,
-					O_CREAT | O_WRONLY | O_TRUNC, 0644);
+					O_CREAT | O_WRONLY | O_TRUNC,
+					0644);
 		}
 		i++;
 	}

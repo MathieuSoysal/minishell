@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_internal.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 11:32:54 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/12 06:53:02 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/09/03 13:53:29 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,57 @@
 #include "../../structures/env/env.h"
 #include "export_internal.h"
 
-bool	is_valid_identifier(char *arg)
+void	print_sorted_env(char **env)
 {
-	int	i;
+	int		i;
+	char	**sorted_env;
 
+	sorted_env = copy_env(env);
+	sort_env(sorted_env);
 	i = 0;
-	if (!arg[i] || !(ft_isalpha(arg[i]) || arg[i] == '_'))
-		return (false);
-	while (arg[++i])
-		if (!(ft_isalnum(arg[i]) || arg[i] == '_' || arg[i] == '='))
-			return (false);
-	return (true);
+	while (sorted_env[i])
+	{
+		printf("declare -x %s\n", sorted_env[i]);
+		i++;
+	}
+	free_env(sorted_env);
 }
 
-void	print_invalid_identifier_error(char *arg)
+char	**copy_env(char **env)
 {
-	ft_putstr_fd("export: `", 2);
-	ft_putstr_fd(arg, 2);
-	ft_putstr_fd("': not a valid identifier\n", 2);
+	int		i;
+	int		len;
+	char	**copy;
+
+	len = 0;
+	while (env[len])
+		len++;
+	copy = malloc(sizeof(char *) * (len + 1));
+	if (!copy)
+		return (NULL);
+	i = 0;
+	while (env[i])
+	{
+		copy[i] = strdup(env[i]);
+		i++;
+	}
+	copy[i] = NULL;
+	return (copy);
+}
+
+int	compare_env(const void *a, const void *b)
+{
+	return (strcmp(*(const char **)a, *(const char **)b));
+}
+
+void	sort_env(char **env)
+{
+	int	len;
+
+	len = 0;
+	while (env[len])
+		len++;
+	qsort(env, len, sizeof(char *), compare_env);
 }
 
 void	apply_export_for_arg(char *arg, char ***g_env)
@@ -39,14 +72,19 @@ void	apply_export_for_arg(char *arg, char ***g_env)
 	char	*key;
 	char	*value;
 
-	if (ft_strchr(arg, '=') != NULL)
+	if (strchr(arg, '=') != NULL)
 	{
-		key = ft_substr(arg, 0, ft_strchr(arg, '=') - arg);
-		value = ft_strchr(arg, '=') + 1;
+		key = strndup(arg, strchr(arg, '=') - arg);
+		value = strchr(arg, '=') + 1;
 		if (env_contains_var(*g_env, key))
 			env_update_var(*g_env, key, value);
 		else
 			env_add_var(g_env, key, value);
 		free(key);
+	}
+	else
+	{
+		if (!env_contains_var(*g_env, arg))
+			env_add_var(g_env, arg, NULL);
 	}
 }

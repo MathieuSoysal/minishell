@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 12:22:41 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/03 13:14:39 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/09/04 16:08:43 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	heredoc(char *delimiter)
 	char	*line;
 	char	*new_delimiter;
 
+	printf("heredoc\n");
 	pipe(fd);
 	new_delimiter = ft_strjoin(delimiter, "\n");
 	while (1)

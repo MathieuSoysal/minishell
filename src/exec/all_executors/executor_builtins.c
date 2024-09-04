@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:43:28 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/17 14:32:52 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:05:26 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,3 @@ int	execute_builtin(t_commande *command, char ***g_env)
 		return (bultin_exit(command));
 	return (0);
 }
-
-

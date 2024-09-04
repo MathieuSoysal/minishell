@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   double_linked_list_essentials.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 20:02:42 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 10:15:37 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/09/04 15:38:22 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_double_linked_list	*double_linked_list_create(void)
 }
 
 void	double_linked_list_free(t_double_linked_list *obj,
-		void (*free_content)(void *))
+								void (*free_content)(void *))
 {
 	t_node	*current;
 	t_node	*next;
@@ -45,5 +45,3 @@ void	double_linked_list_free(t_double_linked_list *obj,
 	free(obj);
 	obj = NULL;
 }
-
-
