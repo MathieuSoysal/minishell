@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 12:22:41 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/09/04 16:08:43 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:23:05 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	heredoc(char *delimiter)
 			write(1, "\n", 1);
 		if (!line || ft_strcmp(line, new_delimiter) == 0)
 			break ;
+		//TODO apply dollars
 		write(fd[1], line, ft_strlen(line));
 		free(line);
 	}

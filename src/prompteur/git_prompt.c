@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 07:36:00 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 01:46:31 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/08/17 18:21:27 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,11 @@ void	append_git_prompt(void *prompt, char *path)
 	temp = get_project_name(path);
 	append_to_prompt(prompt, temp);
 	free(temp);
-	append_to_prompt(prompt, "\033[90;30m git(\033[30;92m");
+	append_to_prompt(prompt, "\033[1;36m git(\033[30;92m");
 	temp = get_git_branch(path);
 	append_to_prompt(prompt, temp);
 	free(temp);
-	append_to_prompt(prompt, "\033[90;30m)");
+	append_to_prompt(prompt, "\033[1;36m)");
 	free(path);
 	path = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/09/04 15:57:16 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:21:28 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ static char	*read_command_line(void)
 
 	g_sigint = 0;
 	prompt = get_prompt();
+	rl_readline_name = "minishell";
 	command_line = readline(prompt);
 	free(prompt);
 	if (command_line == NULL)
@@ -107,6 +108,7 @@ int	main(int argc, char const *argv[], char *envp[])
 		}
 		free(command_line);
 	}
+	rl_clear_history();
 	free_env(*g_env);
 	return (get_exit_status(_LAST_STATUS));
 }

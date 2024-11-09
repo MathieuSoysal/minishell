@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompteur.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 07:12:41 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/17 20:48:11 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:22:46 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,19 @@ char	*get_prompt(void)
 
 	prompt = double_linked_list_create();
 	if (get_exit_status(_LAST_STATUS) == 0)
-		append_to_prompt(prompt, "\033[1;32m");
+		append_to_prompt(prompt, "\033[1;32m\0");
 	else
-		append_to_prompt(prompt, "\033[1;31m");
-	append_to_prompt(prompt, "⇒ \033[1;30m");
+		append_to_prompt(prompt, "\033[1;31m\0");
+	append_to_prompt(prompt, "⇒ \033[1;36m\0");
 	path = get_path_git_repo();
 	if (path != NULL)
 		append_git_prompt(prompt, path);
 	else
 		append_pwd_to_prompt(prompt);
 	if (get_exit_status(_LAST_STATUS) == 0)
-		append_to_prompt(prompt, "\033[1;32m");
+		append_to_prompt(prompt, "\033[1;32m\0");
 	else
-		append_to_prompt(prompt, "\033[1;31m");
-	append_to_prompt(prompt, " ▷\033[40;0m ");
-	free(concatenate(prompt));
-	return (ft_strdup("minishell "));
+		append_to_prompt(prompt, "\033[1;31m\0");
+	append_to_prompt(prompt, " ▷ \033[40;0m\0");
+	return (concatenate(prompt));
 }

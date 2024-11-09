@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commande.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:36:50 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/09/04 16:21:25 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:23:15 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_fd
 	int			i;
 }				t_fd;
 
-t_commande		*commande_create(char **args);
+t_commande		*commande_create(char **args, char **env);
 
 /**
  * @brief Check if a command has an infile

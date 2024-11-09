@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commande.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:38:26 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/27 15:43:17 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:23:24 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-t_commande	*commande_create(char **args)
+t_commande	*commande_create(char **args, char **env)
 {
 	t_commande	*new_commande;
 
@@ -32,6 +32,7 @@ t_commande	*commande_create(char **args)
 	new_commande->infiles = extract_infiles(args);
 	new_commande->outfiles = extract_outfiles(args);
 	apply_strings_for_args(args);
+	apply_dollars_for_args(args, env);
 	new_commande->args = args;
 	if (args == NULL || args[0] == NULL)
 		new_commande->name = NULL;

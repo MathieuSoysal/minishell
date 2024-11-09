@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:06:29 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/09/04 16:32:33 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:22:57 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,38 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static char	*cut_buf_and_save_rest(char **rest, char *buf)
+static char	*tronc_buf_and_get_rest(char *buf)
 {
 	char	*str;
+	char	*rest;
 
 	str = ft_strchr(buf, '\n');
+	rest = NULL;
 	if (str)
 	{
 		str++;
 		if (*str != '\0')
-			*rest = ft_strdup(str);
+			rest = ft_strdup(str);
 		*str = '\0';
 	}
-	return (str);
+	return (rest);
 }
 
 bool	ft_append_to_line(char **rest, char **line, char *buf)
 {
-	char	*str;
 	char	*tmp;
 
-	str = cut_buf_and_save_rest(rest, buf);
-	tmp = *line;
+	*rest = tronc_buf_and_get_rest(buf);
 	if (*line == NULL)
 		*line = ft_strdup(buf);
 	else
-		*line = ft_strjoin(*line, buf);
-	if (tmp != NULL)
 	{
+		tmp = *line;
+		*line = ft_strjoin(*line, buf);
 		free(tmp);
 		tmp = NULL;
 	}
-	return (str == NULL);
+	return (rest == NULL);
 }
 
 char	*ft_get_next_line(int fd)

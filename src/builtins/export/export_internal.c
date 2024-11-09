@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   export_internal.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 11:32:54 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/09/03 13:53:29 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:24:09 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../libft/libft.h"
 #include "../../structures/env/env.h"
