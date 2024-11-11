@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/09 15:21:28 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/11 18:36:42 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,8 @@ int	main(int argc, char const *argv[], char *envp[])
 			if (is_single_command(commands))
 				execute_single_command(commands[0], g_env);
 			else
-			{
 				execute_alll_commands(commands, g_env);
-				free_commands(commands);
-			}
+			free_commands(commands);
 		}
 		free(command_line);
 	}

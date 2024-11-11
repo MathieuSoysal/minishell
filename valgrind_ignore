@@ -1,6 +1,24 @@
 {
-    ignore_libreadline_leaks
+    leak readline
     Memcheck:Leak
     ...
-    obj:*/libreadline.so.*
+    fun:readline
+}
+{
+    leak add_history
+   Memcheck:Leak
+    ...
+    fun:add_history
+}
+{
+    leak usrbin
+    Memcheck:Leak
+    ...
+    obj:/usr/bin/*
+}
+{
+    leak binbin
+    Memcheck:Leak
+    ...
+    obj:/bin/*
 }
