@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commande.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:36:50 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/09 15:23:15 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/11 21:11:15 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_commande
 	char		**args;
 	t_infile	**infiles;
 	t_outfile	**outfiles;
+	
 	int			g_i;
 }				t_commande;
 
@@ -103,5 +104,6 @@ int				command_get_fd_infile(t_commande *commande);
 int				command_get_fd_outfile(t_commande *commande);
 int				command_count(t_commande **commands);
 void			arg_is_void_and_signt_init(int argc, char const argv[]);
+void 			commands_free(t_commande *command);
 
 #endif // COMMANDE_H

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/11 18:36:42 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/11 22:56:46 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	main(int argc, char const *argv[], char *envp[])
 	char		*command_line;
 	t_commande	**commands;
 	char		***g_env;
-
+	
 	arg_is_void_and_signt_init(argc, *argv);
 	g_env = get_envp(envp);
 	while (1)
@@ -98,11 +98,15 @@ int	main(int argc, char const *argv[], char *envp[])
 		{
 			add_history(command_line);
 			commands = parse_command_line(command_line, *g_env);
+						
 			if (is_single_command(commands))
+			{
 				execute_single_command(commands[0], g_env);
+			}
 			else
 				execute_alll_commands(commands, g_env);
-			free_commands(commands);
+					free_parsed_commands(commands);
+			 
 		}
 		free(command_line);
 	}
