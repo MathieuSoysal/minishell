@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:25:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/12 01:22:31 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/12 18:31:40 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 #include "../../structures/env/env.h"
 #include "execution.h"
 
+
+char *build_error_message(char *command_name)
+{
+	char *tmp;
+	char *result;
+
+	tmp = ft_strjoin("minishell: ", command_name);
+	result = ft_strjoin(tmp, "command not found\n");
+	free(tmp);
+	return (result);
+}
+
 void	exec_cmd(t_commande **commands, t_commande *command, char ***g_env)
 {
 	int	status;
@@ -22,7 +34,9 @@ void	exec_cmd(t_commande **commands, t_commande *command, char ***g_env)
 	status = execute_command(command, g_env);
 	if (status == -1)
 	{
-		ft_putstr_fd("minishell: command not found: ", 2);
+		char *print = build_error_message(command->name); 
+		ft_putstr_fd(print, 2);
+		free(print);
 		free_commands(commands);
 		free_env(*g_env);
 		exit(127);

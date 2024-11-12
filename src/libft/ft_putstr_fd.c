@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 18:57:21 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/16 19:44:53 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:25:20 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-#include"libft.h"
+
+#include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
@@ -20,8 +20,6 @@ void	ft_putstr_fd(char *s, int fd)
 	if (!s)
 		return ;
 	while (s[i])
-	{
-		ft_putchar_fd(s[i], fd);
 		i++;
-	}
+	write(fd, s, i);
 }
