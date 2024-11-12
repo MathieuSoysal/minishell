@@ -6,14 +6,14 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 12:22:41 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/12 01:35:08 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/12 19:56:55 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../mini_libft/mini_libft.h"
+#include <readline/readline.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <readline/readline.h>
 
 int	heredoc(char *delimiter)
 {
@@ -30,7 +30,7 @@ int	heredoc(char *delimiter)
 			write(1, "\n", 1);
 		if (!line || ft_strcmp(line, new_delimiter) == 0)
 			break ;
-		//TODO apply dollars
+		// TODO apply dollars
 		write(fd[1], line, ft_strlen(line));
 		free(line);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:24:59 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/09/04 16:23:05 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:55:59 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_gnl_strjoin(const char *s1, const char *s2)
 	int		len2;
 	char	*joined;
 
-	int (i) = 0;
-	int (j) = 0;
+	int(i) = 0;
+	int(j) = 0;
 	if (!s1 || !s2)
 		return (NULL);
 	len1 = ft_gnl_strlen(s1);

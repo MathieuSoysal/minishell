@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commande.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:38:26 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/11 23:27:56 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:53:21 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ t_commande	*commande_create(char **args, char **env)
 	new_commande = (t_commande *)malloc(sizeof(t_commande));
 	if (new_commande == NULL)
 		return (NULL);
-	//  printf("Allocated memory for new_commande at %p\n", (void *)new_commande);
-
 	new_commande->infiles = extract_infiles(args);
 	new_commande->outfiles = extract_outfiles(args);
 	apply_strings_for_args(args);
@@ -41,7 +39,6 @@ t_commande	*commande_create(char **args, char **env)
 	else
 		new_commande->name = ft_strdup(args[0]);
 	new_commande->path = NULL;
-	//   printf("Allocated memory for new_commande->name at %p\n", (void *)new_commande->name);
 	return (new_commande);
 }
 

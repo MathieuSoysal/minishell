@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:44:00 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/06 19:44:49 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:49:04 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<ctype.h>
+#include <ctype.h>
 
 int	ft_isdigit(int character)
 {

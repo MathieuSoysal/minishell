@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:30:11 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/25 17:26:43 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:48:37 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <limits.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include"libft.h"
 
 void	*ft_calloc(size_t elementCount, size_t elementSize)
 {

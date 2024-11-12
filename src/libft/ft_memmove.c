@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:10:38 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/11 20:06:54 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:50:39 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_memmove(void *destination, const void *source, size_t size)
@@ -22,7 +23,7 @@ void	*ft_memmove(void *destination, const void *source, size_t size)
 	{
 		while (size > 0)
 		{
-			size --;
+			size--;
 			dest[size] = src[size];
 		}
 	}

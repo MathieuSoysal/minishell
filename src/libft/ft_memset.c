@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:32:11 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/11 19:15:26 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:50:44 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <string.h>
-#include<stdio.h>
 
 void	*ft_memset(void *pointer, int value, size_t count)
 {
@@ -22,7 +22,7 @@ void	*ft_memset(void *pointer, int value, size_t count)
 	{
 		*ptr = value;
 		ptr++;
-		count --;
+		count--;
 	}
 	return (pointer);
 }

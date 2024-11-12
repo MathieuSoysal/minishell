@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:51:13 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/11 21:32:41 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:57:14 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@
  * @return The list of commandes
  */
 t_commande	**parse_command_line(char *command_line, char **env);
-			void free_parsed_commands(t_commande **commands);
 
 #endif // PARSER_H

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:06:22 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/17 19:35:27 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:49:35 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdlib.h>
-#include<stdio.h>
-#include"libft.h"
+
+#include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 t_list	*ft_lstlast(t_list *lst)
 {

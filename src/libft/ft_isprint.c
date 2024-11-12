@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:39:37 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/08 16:25:34 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:49:08 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint( int character)
+int	ft_isprint(int character)
 {
 	if (character >= 32 && character <= 126)
 		return (1);

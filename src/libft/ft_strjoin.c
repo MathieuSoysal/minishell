@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:04:36 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/15 12:51:21 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:51:32 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdlib.h>
-#include"libft.h"
+
+#include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strjoin(char const *tab, char const *sep)
 {

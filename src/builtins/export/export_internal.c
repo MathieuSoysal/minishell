@@ -6,10 +6,9 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 11:32:54 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/09 15:24:09 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/12 19:56:35 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../libft/libft.h"
 #include "../../structures/env/env.h"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:31:05 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/15 16:32:23 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:52:06 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ static char	*find_begin(char const *s1, char const *set)
 	size_t	j;
 	int		in_set;
 
-	in_set = 0;
 	i = 0;
-	j = 0;
 	while (s1[i])
 	{
 		in_set = 0;
@@ -47,9 +45,7 @@ static char	*find_end(char const *s1, char const *set, char const *begin)
 	size_t	j;
 	int		in_set;
 
-	in_set = 0;
 	i = ft_strlen(s1) - 1;
-	j = 0;
 	while (s1 + i >= begin)
 	{
 		in_set = 0;

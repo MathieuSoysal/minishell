@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 09:37:33 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/12 01:20:49 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/12 19:55:21 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,14 @@ static t_double_linked_list	*convert_list_of_args(char *command_line,
 
 	commands_brut = split_by_pipe(command_line);
 	commands = double_linked_list_create();
-	
-	//  printf("Allocated memory for commands list at %p\n", (void *)commands);
 	i = -1;
 	while (commands_brut[++i])
 	{
 		args = split_by_space(commands_brut[i]);
 		apply_dollars_for_args(args, env);
 		commande = commande_create(args, env);
-		//  printf("Created commande at %p\n", (void *)commande);
 		double_linked_list_add_last(commands, commande);
-			
 		free(commands_brut[i]);
-		// printf("Freed commands_brut[%d]\n", i);
 		commands_brut[i] = NULL;
 	}
 	free(commands_brut);
@@ -65,4 +60,3 @@ t_commande	**parse_command_line(char *command_line, char **env)
 	free(commands);
 	return (result);
 }
-
