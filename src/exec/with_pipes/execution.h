@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:11:16 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/09/04 15:20:11 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 00:33:41 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 void	execute_commands(t_commande **command, char **g_env);
 void	process_commands(t_commande **commands, char ***envp, t_fd *fds);
-void	exec_cmd(t_commande *commands, char ***g_env);
+void	exec_cmd(t_commande **commands, t_commande *command, char ***g_env);
 void	ft_dup_two(t_commande *command, char *in_out, int zero_one, t_fd *fds);
 int		ft_fork(pid_t pid);
 void	clear_all(t_fd *fds);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 09:37:33 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/11 23:28:59 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 01:20:49 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,6 @@ static t_double_linked_list	*convert_list_of_args(char *command_line,
 	commands_brut = NULL;
 	return (commands);
 }
-void free_double_linked_list(t_double_linked_list *list)
-{
-    t_node *current;
-    t_node *next;
-
-    if (!list)
-        return;
-    current = list->head;
-    while (current)
-    {
-		printf("Freeing node at %p\n", (void *)current);
-        next = current->next;
-        free(current);
-        current = next;
-    }
-	//  printf("Freeing list at %p\n", (void *)list);
-    free(list);
-}
-
 
 t_commande	**parse_command_line(char *command_line, char **env)
 {
@@ -74,19 +55,14 @@ t_commande	**parse_command_line(char *command_line, char **env)
 
 	commands = convert_list_of_args(command_line, env);
 	result = (t_commande **)malloc(sizeof(t_commande *) * (commands->size + 1));
-	// printf("result adresse parse_command_line =  %p\n", (void *)result);
 	i = -1;
 	while (commands->size > 0)
 	{
 		result[++i] = (t_commande *)double_linked_list_pop_first(commands);
 		commande_set_path(result[i], env);
-	  	// printf("result adresse parse_command_line in while =  %p\n", (void *)result);
-		// printf("result is = %s - adresse of result is %p", *result[i]->args, (void *)result);
 	}
 	result[i + 1] = NULL;
-	
-	free_double_linked_list(commands);
-	// printf("i  value =  %d\n", i);
+	free(commands);
 	return (result);
 }
 

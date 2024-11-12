@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_execute _external_command.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 21:09:37 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/11 23:07:51 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 00:24:29 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "../../structures/commande/commande.h"
 #include "../../utils/mini_libft/mini_libft.h"
 #include"../../structures/env/env.h"
-#include "internal.h"
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>

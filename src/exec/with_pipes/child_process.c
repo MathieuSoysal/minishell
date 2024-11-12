@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:16:23 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/09/04 15:17:36 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 01:24:26 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	else_if_in_child_process(int *infile, t_commande **commands, int i,
 
 void	ft_final_close(t_commande **commands, int i, int *fd)
 {
-	if (commands[i + 1] != NULL)
+	if (commands[i] != NULL && commands[i + 1] != NULL)
 	{
 		close(fd[0]);
 	}
