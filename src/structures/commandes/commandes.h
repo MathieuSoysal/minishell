@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:05:15 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/12 19:55:00 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/13 17:05:12 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void							list_commandes_add(t_list_commandes *commandes,
  * @brief Free the list of commandes and its content
  * @param commandes The list of commandes to free
  */
-void							list_commandes_free(t_list_commandes *commandes);
+void							list_commandes_free(
+									t_list_commandes *commandes);
 
 /**
  * @brief Get the first commande of the list of commandes,
@@ -45,21 +46,24 @@ void							list_commandes_free(t_list_commandes *commandes);
  * @param commandes The list of commandes
  * @return The first commande of the list of commandes
  */
-t_commande						*list_commandes_pop(t_list_commandes *commandes);
+t_commande						*list_commandes_pop(
+									t_list_commandes *commandes);
 
 /**
  * @brief Get the first commande of the list of commandes
  * @param commandes The list of commandes
  * @return The first commande of the list of commandes
  */
-bool							list_commandes_is_empty(t_list_commandes *commandes);
+bool							list_commandes_is_empty(
+									t_list_commandes *commandes);
 
 /**
  * @brief Get the number of commandes in the list of commandes
  * @param commandes The list of commandes
  * @return The number of commandes in the list of commandes
  */
-unsigned int					list_commandes_get_nb_commandes(t_list_commandes *commandes);
+unsigned int					list_commandes_get_nb_commandes(
+									t_list_commandes *commandes);
 
 /**
  * @brief Convert a list of commandes to an array of commandes,
@@ -67,6 +71,7 @@ unsigned int					list_commandes_get_nb_commandes(t_list_commandes *commandes);
  * @param commandes The list of commandes
  * @return The array of commandes
  */
-t_commande						**list_commandes_to_array(t_list_commandes *commandes);
+t_commande						**list_commandes_to_array(
+									t_list_commandes *commandes);
 
 #endif // COMMANDES_H
