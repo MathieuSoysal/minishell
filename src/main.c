@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/12 01:34:11 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/14 07:57:48 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,17 @@ int	main(int argc, char const *argv[], char *envp[])
 	t_commande	**commands;
 	char		***g_env;
 
-	arg_is_void_and_signt_init(argc, *argv);
 	g_env = get_envp(envp);
 	while (1)
 	{
+		arg_is_void_and_signt_init(argc, *argv);
 		command_line = read_command_line();
 		if (is_a_valid_command_line(command_line))
 		{
 			add_history(command_line);
 			commands = parse_command_line(command_line, *g_env);
+			if (commands == NULL)
+				continue ;
 			if (is_single_command(commands))
 				execute_single_command(commands, commands[0], g_env);
 			else
@@ -106,7 +108,6 @@ int	main(int argc, char const *argv[], char *envp[])
 		}
 		free(command_line);
 	}
-	rl_clear_history();
-	free_env(*g_env);
-	return (get_exit_status(_LAST_STATUS));
+	return (rl_clear_history(), free_env(*g_env),
+		get_exit_status(_LAST_STATUS));
 }

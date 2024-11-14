@@ -6,10 +6,11 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:38:26 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/12 19:53:21 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/14 08:10:54 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../signals/sigint/sigint.h"
 #include "../../utils/mini_libft/mini_libft.h"
 #include "../../utils/parser/infiles/apply_infiles.h"
 #include "../../utils/parser/internal_parser.h"
@@ -26,10 +27,13 @@ t_commande	*commande_create(char **args, char **env)
 {
 	t_commande	*new_commande;
 
+	g_sigint = 0;
 	new_commande = (t_commande *)malloc(sizeof(t_commande));
 	if (new_commande == NULL)
 		return (NULL);
 	new_commande->infiles = extract_infiles(args);
+	if (new_commande->infiles == NULL)
+		return (free(new_commande), NULL);
 	new_commande->outfiles = extract_outfiles(args);
 	apply_strings_for_args(args);
 	apply_dollars_for_args(args, env);

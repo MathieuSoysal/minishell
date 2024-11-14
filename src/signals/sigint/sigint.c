@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 18:39:00 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/12 19:52:50 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/14 07:09:09 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,41 @@
 #include <termios.h>
 #include <unistd.h>
 
-void	signal_handler_wrapper(int sig, siginfo_t *info, void *ucontext)
+void	signal_sigquit(int sig)
+{
+	(void)sig;
+	g_sigint = SIGQUIT;
+	get_exit_status(131);
+	rl_on_new_line();
+	rl_redisplay();
+	close(0);
+}
+
+void	signal_sigint(int sig)
 {
 	char	*prompt;
 
+	(void)sig;
+	get_exit_status(130);
+	prompt = get_prompt();
+	rl_set_prompt(prompt);
+	rl_replace_line("", 0);
+	write(1, "\n", 1);
+	free(prompt);
+	rl_on_new_line();
+	rl_redisplay();
+	get_exit_status(130);
+	g_sigint = SIGINT;
+}
+
+void	signal_handler_wrapper(int sig, siginfo_t *info, void *ucontext)
+{
 	(void)ucontext;
 	(void)info;
 	if (sig == SIGQUIT)
-	{
-		g_sigint = SIGQUIT;
-		get_exit_status(131);
-		rl_on_new_line();
-		rl_redisplay();
-		close(0);
-	}
+		signal_sigquit(sig);
 	else if (sig == SIGINT)
-	{
-		g_sigint = SIGINT;
-		get_exit_status(130);
-		prompt = get_prompt();
-		rl_set_prompt(prompt);
-		rl_replace_line("", 0);
-		write(1, "\n", 1);
-		free(prompt);
-		rl_on_new_line();
-		rl_redisplay();
-		get_exit_status(130);
-	}
+		signal_sigint(sig);
 }
 
 void	setup_sigint(void)
@@ -62,4 +70,5 @@ void	setup_sigint(void)
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGINT, &sa, NULL);
 	sigaction(SIGQUIT, &sa, NULL);
+	signal(SIGINT, signal_sigint);
 }
