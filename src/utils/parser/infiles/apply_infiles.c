@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 11:46:58 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/14 07:49:56 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/14 08:48:25 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_infile	**extract_infiles(char **command_line)
 			if (apply_infiles(command_line, i, infiles) == -1)
 			{
 				double_linked_list_free(infiles, (void *)free_infile);
-				return (NULL);
+				return ((t_infile **)ERROR_ADDRESS);
 			}
 		}
 		else
