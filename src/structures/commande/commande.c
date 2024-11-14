@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:38:26 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/14 08:10:54 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/14 08:41:13 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_commande	*commande_create(char **args, char **env)
 		return (NULL);
 	new_commande->infiles = extract_infiles(args);
 	if (new_commande->infiles == NULL)
-		return (free(new_commande), NULL);
+		return (free_split(args), free(new_commande), NULL);
 	new_commande->outfiles = extract_outfiles(args);
 	apply_strings_for_args(args);
 	apply_dollars_for_args(args, env);

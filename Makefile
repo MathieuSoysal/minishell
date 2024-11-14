@@ -158,3 +158,5 @@ fclean: clean
 	@rm -rf $(BUILD_DIR)
 
 re: fclean all
+
+# valgrind -q --leak-check=full --show-leak-kinds=all --suppressions=valgrind_ignore  ./build/minishell

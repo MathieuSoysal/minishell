@@ -5,6 +5,18 @@
     fun:readline
 }
 {
+    leak readline
+    Memcheck:Leak
+    ...
+    fun:_rl_set_screen_size
+}
+{
+    leak readline
+    Memcheck:Leak
+    ...
+    fun:rl_set_prompt
+}
+{
     leak add_history
    Memcheck:Leak
     ...
