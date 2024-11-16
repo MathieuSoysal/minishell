@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:10:02 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 02:22:54 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/12 19:46:49 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #include "../../utils/checker/checker.h"
 #include "../../utils/mini_libft/mini_libft.h"
 #include "../../utils/parser/parser.h"
-#include "../executor.h"
-#include "internal.h"
+#include "../all_executors/executor.h"
+#include "../with_pipes/execution.h"
 #include "single_exec.h"
 #include <errno.h>
 #include <stdio.h>
@@ -27,14 +27,15 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-void	execute_single_command(t_commande *command, char ***g_env)
+void	execute_single_command(t_commande **commands, t_commande *command,
+		char ***g_env)
 {
 	if (command_can_be_executed(command))
 	{
 		if (is_builtin(command))
 			execute_builtins_without_fork(command, g_env);
 		else
-			execute_external_command(command, g_env);
+			execute_external_command(commands, command, g_env);
 	}
 	else
 		get_exit_status(1);

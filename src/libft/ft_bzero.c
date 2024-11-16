@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:12:00 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/09 16:35:35 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:48:33 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stddef.h>
 
 void	ft_bzero(void *s, size_t n)
@@ -21,7 +22,7 @@ void	ft_bzero(void *s, size_t n)
 	while (n)
 	{
 		tab[i] = '\0';
-		i ++;
-		n --;
+		i++;
+		n--;
 	}
 }

@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fork_pid.c                                         :+:      :+:    :+:   */
+/*   executor_internal.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 14:08:28 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/07 17:43:32 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/08/03 14:30:55 by hsoysal           #+#    #+#             */
+/*   Updated: 2024/09/04 13:18:13 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef EXECUTOR_INTERNAL_H
+# define EXECUTOR_INTERNAL_H
 
+# include "../../structures/commande/commande.h"
+# include <stdbool.h>
 
-void clear_all(t_pipex *pipex) {
-    if (pipex->fd_in >= 0)
-        close(pipex->fd_in);
-    if (pipex->fd_out >= 0)
-        close(pipex->fd_out);
-    if (pipex->here_doc)
-        unlink(HEREDOC);
-}
+bool	all_infiles_exist(t_commande *command);
+bool	all_outfiles_have_permissions(t_commande *command);
+void	create_all_outfiles(t_commande *command);
+bool	permisson_denied(t_infile *infile);
+bool	no_such_file_or_directory(t_infile *infile);
 
-int	ft_fork(pid_t pid)
-{
-	pid = fork();
-	if (-1 == pid)
-	{
-		perror("fork");
-		exit(1);
-	}
-	return (pid);
-}
-void	ft_pid(t_pipex *pipex)
-{
-	if (-1 == pipe(pipex->p_fd))
-	{
-		perror("pipe");
-		exit(1);
-	}
-}
-
+#endif // EXECUTOR_INTERNAL_H

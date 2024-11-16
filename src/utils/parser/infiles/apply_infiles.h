@@ -6,12 +6,14 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:04:52 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/07/31 09:45:39 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/14 08:47:51 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef APPLY_INFILES_H
 # define APPLY_INFILES_H
+
+# define ERROR_ADDRESS 0x1
 
 # include "../../../structures/double_linked_list/double_linked_list.h"
 # include <stdbool.h>

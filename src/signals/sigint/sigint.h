@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 19:45:04 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 11:35:06 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/14 07:08:20 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 static int	g_sigint;
 
-void				setup_sigint(void);
+void		setup_sigint(void);
+void		signal_sigquit(int sig);
+void		signal_sigint(int sig);
 
 #endif // SIGINT_H

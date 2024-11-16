@@ -21,6 +21,10 @@
         "*.tcc": "c",
         "libft.h": "c",
         "sigint.h": "c",
-        "double_linked_list.h": "c"
+        "double_linked_list.h": "c",
+        "execution.h": "c",
+        "single_exec.h": "c",
+        "apply_infiles.h": "c",
+        "apply_outfiles.h": "c"
     }
 }

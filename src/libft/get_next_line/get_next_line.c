@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:24:59 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/05/31 21:29:27 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:49:44 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 char	*ft_gnl_strjoin(const char *s1, const char *s2)
-{
+{	
 	int		len1;
 	int		len2;
 	char	*joined;

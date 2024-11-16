@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:45:31 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/11 20:02:40 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:56:25 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stddef.h>
 
 void	*ft_memcpy(void *destination, const void *source, size_t size)
@@ -26,7 +27,7 @@ void	*ft_memcpy(void *destination, const void *source, size_t size)
 	while (size > i)
 	{
 		dest[i] = src[i];
-		i ++;
+		i++;
 	}
 	return (destination);
 }

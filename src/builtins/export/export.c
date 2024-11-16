@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 16:37:06 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/08 11:52:24 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/09/03 13:57:10 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ int	export(t_commande *cmd, char ***g_env)
 {
 	int	i;
 
+	if (cmd->args[1] == NULL)
+	{
+		print_sorted_env(*g_env);
+		return (0);
+	}
 	i = 0;
 	while (cmd->args[++i])
 	{

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:32:38 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/08 14:42:09 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:49:01 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<ctype.h>
-#include<stdio.h>
+#include <ctype.h>
+#include <stdio.h>
 
 int	ft_isascii(int c)
 {

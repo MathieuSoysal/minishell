@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:16:22 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/15 12:42:36 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:51:41 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strlen(const char *str)
 	i = 0;
 	while (str[i])
 	{
-		i ++;
+		i++;
 	}
 	return (i);
 }

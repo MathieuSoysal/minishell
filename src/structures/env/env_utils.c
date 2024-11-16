@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 23:13:31 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/12 06:55:03 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/12 19:44:55 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	*env_get_var(char **envp, char *name)
 void	env_add_var(char ***envp, char *name, char *value)
 {
 	char	**new_envp;
+	char	*tmp;
 	int		i;
 
 	i = -1;
@@ -66,8 +67,9 @@ void	env_add_var(char ***envp, char *name, char *value)
 	i = -1;
 	while ((*envp)[++i])
 		new_envp[i] = (*envp)[i];
-	new_envp[i] = ft_strjoin(name, "=");
-	new_envp[i] = ft_strjoin(new_envp[i], value);
+	tmp = ft_strjoin(name, "=");
+	new_envp[i] = ft_strjoin(tmp, value);
+	free(tmp);
 	new_envp[i + 1] = NULL;
 	free(*envp);
 	*envp = new_envp;

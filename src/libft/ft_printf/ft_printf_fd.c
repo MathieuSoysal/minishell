@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 19:00:55 by ebennace          #+#    #+#             */
-/*   Updated: 2024/07/17 19:34:11 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:47:33 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "ft_printf.h"
+#include "ft_printf.h"
 
 void	count_putstr_fd(char *str, int *count, int fd)
 {

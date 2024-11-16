@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:36:50 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 06:29:44 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/14 08:40:56 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 
 # include "../../utils/parser/infiles/apply_infiles.h"
 # include "../../utils/parser/outfiles/apply_outfiles.h"
+# include <errno.h>
 # include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/wait.h>
 
 /**
  * @brief Structure representing a command
@@ -30,12 +35,20 @@ typedef struct s_commande
 	char		*path;
 	char		**args;
 	t_infile	**infiles;
-	int			fd_infile;
 	t_outfile	**outfiles;
-	int			fd_outfile;
+
+	int			g_i;
 }				t_commande;
 
-t_commande		*commande_create(char **args);
+typedef struct s_fd
+{
+	int			fd_infile;
+	int			fd_outfile;
+	int			fd[2];
+	int			i;
+}				t_fd;
+
+t_commande		*commande_create(char **args, char **env);
 
 /**
  * @brief Check if a command has an infile
@@ -89,5 +102,9 @@ int				command_get_fd_infile(t_commande *commande);
  * @return The file descriptor of the outfile
  */
 int				command_get_fd_outfile(t_commande *commande);
+int				command_count(t_commande **commands);
+void			arg_is_void_and_signt_init(int argc, char const argv[]);
+void			commands_free(t_commande *command);
+void			free_split(char **split);
 
 #endif // COMMANDE_H

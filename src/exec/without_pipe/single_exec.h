@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:09:28 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 03:21:30 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/12 19:46:52 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 # include "../../structures/commande/commande.h"
 
-void	execute_single_command(t_commande *command, char ***g_env);
+void	execute_single_command(t_commande **commands_to_free,
+			t_commande *command, char ***g_env);
 bool	is_single_command(t_commande **commands);
+void	execute_external_command(t_commande **commands_to_free,
+			t_commande *command, char ***g_env);
 
 #endif // SINGLE_EXEC_H

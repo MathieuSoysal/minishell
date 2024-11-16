@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 16:31:47 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/11 00:31:59 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/14 08:40:42 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char	*add_slash(char *path, char *cmd)
 	return (exec);
 }
 
-static void	free_split(char **split)
+void	free_split(char **split)
 {
 	int	i;
 

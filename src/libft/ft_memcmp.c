@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:47:19 by kahoumou          #+#    #+#             */
-/*   Updated: 2023/11/13 17:41:04 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:49:50 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stddef.h>
+
+#include <stddef.h>
 
 int	ft_memcmp(const void *pointer1, const void *pointer2, size_t size)
 {
@@ -24,11 +25,11 @@ int	ft_memcmp(const void *pointer1, const void *pointer2, size_t size)
 	i = 0;
 	if (sz == 0)
 		return (0);
-	while (i < sz -1)
+	while (i < sz - 1)
 	{
 		if (s1[i] != s2[i])
 			return (s1[i] - s2[i]);
-		i ++;
+		i++;
 	}
 	return (s1[i] - s2[i]);
 }

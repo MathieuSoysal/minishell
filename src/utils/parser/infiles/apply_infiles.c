@@ -6,7 +6,7 @@
 /*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 11:46:58 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 20:24:05 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/14 08:48:25 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,25 @@ static inline void	move_cell_i_to_last(char **array, int i)
 		array[i] = array[i + 1];
 }
 
+int	apply_infiles(char **command_line, int i, t_double_linked_list *infiles)
+{
+	int	fd;
+
+	if (equals(command_line[i], "<<"))
+	{
+		fd = heredoc(command_line[i + 1]);
+		if (fd == -1)
+			return (-1);
+		double_linked_list_add_last(infiles, create_infile_with_fd(fd));
+	}
+	else
+		double_linked_list_add_last(infiles,
+			create_infile_with_filename(command_line[i + 1]));
+	move_cell_i_to_last(command_line, i);
+	move_cell_i_to_last(command_line, i);
+	return (0);
+}
+
 t_infile	**extract_infiles(char **command_line)
 {
 	int						i;
@@ -34,14 +53,11 @@ t_infile	**extract_infiles(char **command_line)
 	{
 		if (equals(command_line[i], "<") || equals(command_line[i], "<<"))
 		{
-			if (equals(command_line[i], "<<"))
-				double_linked_list_add_last(infiles,
-					create_infile_with_fd(heredoc(command_line[i + 1])));
-			else
-				double_linked_list_add_last(infiles,
-					create_infile_with_filename(command_line[i + 1]));
-			move_cell_i_to_last(command_line, i);
-			move_cell_i_to_last(command_line, i);
+			if (apply_infiles(command_line, i, infiles) == -1)
+			{
+				double_linked_list_free(infiles, (void *)free_infile);
+				return ((t_infile **)ERROR_ADDRESS);
+			}
 		}
 		else
 			i++;

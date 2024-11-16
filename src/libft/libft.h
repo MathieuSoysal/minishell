@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:46:58 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/08/01 16:03:03 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:52:20 by hsoysal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ void				count_putchar_fd(char c, int *count, int fd);
 char				*malloc_substrcpy(char *origin, int start, int end);
 int					ft_same_name(char *name1, char *name2);
 void				free_array(char **array);
+int					ft_intcmp(int a);
 
 #endif
