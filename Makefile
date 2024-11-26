@@ -38,6 +38,7 @@ SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/utils/mini_libft/utils.c \
 		./src/utils/mini_libft/get_next_line.c \
 		./src/builtins/cd/cd.c \
+		./src/builtins/cd/cd_utils.c\
 		./src/builtins/echo/echo.c \
 		./src/builtins/echo/echo_internal.c \
 		./src/builtins/env/env.c \
@@ -159,4 +160,4 @@ fclean: clean
 
 re: fclean all
 
-# valgrind -q --leak-check=full --show-leak-kinds=all --suppressions=valgrind_ignore  ./build/minishell
+#valgrind -q --leak-check=full --show-leak-kinds=all --trace-children=yes --suppressions=valgrind_ignore  ./build/minishell    

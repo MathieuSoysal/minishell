@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commande.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:36:50 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/14 08:40:56 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/25 22:00:58 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,15 @@ int				command_count(t_commande **commands);
 void			arg_is_void_and_signt_init(int argc, char const argv[]);
 void			commands_free(t_commande *command);
 void			free_split(char **split);
+void			env_update_var_cd(char **envp, const char *var, const char *value);
+void			print_cd_error(char *arg);
+int 			change_directory(char *path, char *oldpwd);
+void 			manage_redirections(t_commande *command, t_commande **commands, char ***g_env);
+void 			handle_input_redirection(t_commande *command, t_commande **commands, char ***g_env);
+void			handle_output_redirection(t_commande *command, t_commande **commands, char ***g_env);
+void 			print_redirection_error(char *cmd_name);
+void 			handle_execve_failure(t_commande **commands, t_commande *command, char ***g_env);
+char 			*get_oldpwd(char **envp);
+char 			*get_newpwd(char **envp);
 
 #endif // COMMANDE_H

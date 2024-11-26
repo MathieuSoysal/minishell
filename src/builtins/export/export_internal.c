@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_internal.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 11:32:54 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/12 19:56:35 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/23 15:48:07 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,25 @@ void	sort_env(char **env)
 	qsort(env, len, sizeof(char *), compare_env);
 }
 
+
 void	apply_export_for_arg(char *arg, char ***g_env)
 {
 	char	*key;
 	char	*value;
+	char	*expanded_value;
 
 	if (strchr(arg, '=') != NULL)
 	{
-		key = strndup(arg, strchr(arg, '=') - arg);
+		key = strndup(arg, strchr(arg, '=') - arg); 
 		value = strchr(arg, '=') + 1;
+
+		expanded_value = expand_variables(value, *g_env);
+
 		if (env_contains_var(*g_env, key))
-			env_update_var(*g_env, key, value);
+			env_update_var(*g_env, key, expanded_value);
 		else
-			env_add_var(g_env, key, value);
+			env_add_var(g_env, key, expanded_value);
+
 		free(key);
 	}
 	else

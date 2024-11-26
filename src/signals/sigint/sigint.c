@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   sigint.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 18:39:00 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/14 07:09:09 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/25 21:24:08 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../libft/libft.h"
 #include "../../minishell.h"
@@ -20,55 +21,52 @@
 #include <termios.h>
 #include <unistd.h>
 
-void	signal_sigquit(int sig)
+void signal_sigquit(int sig)
 {
-	(void)sig;
-	g_sigint = SIGQUIT;
-	get_exit_status(131);
-	rl_on_new_line();
-	rl_redisplay();
-	close(0);
+    (void)sig;
+    g_sigint = SIGQUIT;
+    get_exit_status(131);
+    write(1, "Quit (core dumped)\n", 20); 
 }
 
-void	signal_sigint(int sig)
+void signal_sigint(int sig)
 {
-	char	*prompt;
-
-	(void)sig;
-	get_exit_status(130);
-	prompt = get_prompt();
-	rl_set_prompt(prompt);
-	rl_replace_line("", 0);
-	write(1, "\n", 1);
-	free(prompt);
-	rl_on_new_line();
-	rl_redisplay();
-	get_exit_status(130);
-	g_sigint = SIGINT;
+    (void)sig;
+    g_interrupt = 1; 
+    get_exit_status(130); 
+    write(1, "\n", 1); 
+    rl_replace_line("", 0);
+    rl_done = 1; 
 }
 
-void	signal_handler_wrapper(int sig, siginfo_t *info, void *ucontext)
+void setup_sigint(void)
 {
-	(void)ucontext;
-	(void)info;
-	if (sig == SIGQUIT)
-		signal_sigquit(sig);
-	else if (sig == SIGINT)
-		signal_sigint(sig);
+    struct sigaction sa;
+    struct termios oldt;
+
+   
+    tcgetattr(STDIN_FILENO, &oldt);
+    oldt.c_lflag &= ~(ECHOCTL);
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+
+  
+    sa.sa_flags = 0; 
+    sa.sa_handler = signal_sigint; 
+    sigemptyset(&sa.sa_mask);
+    sigaction(SIGINT, &sa, NULL); 
+
+   
+    sa.sa_handler = signal_sigquit; 
+    sigaction(SIGQUIT, &sa, NULL); 
 }
 
-void	setup_sigint(void)
+void handle_interrupt_in_loop(void)
 {
-	struct sigaction	sa;
-	struct termios		oldt;
-
-	tcgetattr(STDIN_FILENO, &oldt);
-	oldt.c_lflag &= ~(ECHOCTL);
-	tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-	sa.sa_flags = 0;
-	sa.sa_sigaction = signal_handler_wrapper;
-	sigemptyset(&sa.sa_mask);
-	sigaction(SIGINT, &sa, NULL);
-	sigaction(SIGQUIT, &sa, NULL);
-	signal(SIGINT, signal_sigint);
+    if (g_interrupt)
+	{
+        g_interrupt = 0; 
+        char *prompt = get_prompt(); 
+        rl_set_prompt(prompt);
+        free(prompt);
+    }
 }

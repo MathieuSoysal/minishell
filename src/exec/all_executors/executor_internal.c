@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   executor_internal.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:48:05 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 22:43:45 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/25 19:49:39 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor.h"
 #include "executor_internal.h"
+#include "../../minishell.h"
 #include <stdbool.h>
 #include <unistd.h>
 
@@ -26,10 +27,19 @@ bool	command_can_be_executed(t_commande *command)
 
 int	execute_command(t_commande *command, char ***g_env)
 {
+	
 	if (is_builtin(command))
 		return (execute_builtin(command, g_env));
 	else
-		return (execve(command->path, command->args, *g_env));
+	{
+		
+		execve(command->path, command->args, *g_env);
+		if(errno ==  ENOENT)
+			return(_EXIT_SUCCESS);
+		else
+			return(_EXIT_ERROR);
+		
+	}
 	return (2);
 }
 
