@@ -45,7 +45,7 @@ static inline void	move_cell(char **array, int i)
 
 void	remove_option_from_args(char **args)
 {
-	while (is_option_n(args[1]))
+	while (args[1] && is_option_n(args[1]))
 		move_cell(args, 1);
 }
 
