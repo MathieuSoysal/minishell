@@ -26,6 +26,6 @@ bool	no_such_file_or_directory(t_infile *infile)
 {
 	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(infile->value.file_name_value, 2);
-	ft_putstr_fd(": No such file or directory\n", 2);
+	ft_putstr_fd(": command not found\n", 2);
 	return (false);
 }
