@@ -94,9 +94,9 @@ int	main(int argc, char const *argv[], char *envp[])
 	{
 		arg_is_void_and_signt_init(argc, *argv);
 		command_line = read_command_line();
+		add_history(command_line);
 		if (is_a_valid_command_line(command_line))
 		{
-			add_history(command_line);
 			commands = parse_command_line(command_line, *g_env);
 			if (commands == NULL)
 				continue ;

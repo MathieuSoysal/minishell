@@ -35,6 +35,8 @@ t_syntax_error	check_syntax(const char *command_line)
 		update_syntax_mode(&mode, command_line[i]);
 		i++;
 	}
+	if (is_unexpected_character('\n', mode))
+		return (SE_UNEXPECTED_TOKEN_NEWLINE);
 	return (NO_ERROR);
 }
 
