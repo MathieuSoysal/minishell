@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 07:36:00 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/24 18:37:58 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/28 15:55:38 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ char	*get_path_git_repo(void)
 	int		i;
 
 	path = getcwd(NULL, 0);
-	if(path == NULL)
-		return NULL;
+	if (path == NULL)
+		return (NULL);
 	i = ft_strlen(path) - 1;
 	while (path != NULL && path[0] != '\0')
 	{

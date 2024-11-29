@@ -6,15 +6,15 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:25:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/24 17:34:10 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:41:53 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/libft.h"
+#include "../../minishell.h"
+#include "../../signals/sigint/sigint.h"
 #include "../../structures/commande/commande.h"
 #include "../../structures/env/env.h"
-#include "../../signals/sigint/sigint.h"
-#include "../../minishell.h"
 #include "execution.h"
 
 char	*build_error_message(char *command_name)
@@ -32,7 +32,7 @@ void	exec_cmd(t_commande **commands, t_commande *command, char ***g_env)
 {
 	int		status;
 	char	*print;
-	printf("pass in  exec  cmd\n");
+
 	status = execute_command(command, g_env);
 	printf("result status = %d\n", status);
 	if (status == -1)
@@ -49,7 +49,7 @@ void	exec_cmd(t_commande **commands, t_commande *command, char ***g_env)
 	}
 	free_commands(commands);
 	free_env(*g_env);
-		printf("pass in  end\n");
+	printf("pass in  end\n");
 	exit(1);
 }
 

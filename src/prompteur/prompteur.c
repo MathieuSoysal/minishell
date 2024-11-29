@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 07:12:41 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/24 22:50:39 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:03:21 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 #include <readline/readline.h>
 #include <stdbool.h>
 #include <unistd.h>
-
-
-
 
 void	append_to_prompt(void *prompt, char *str)
 {
@@ -33,13 +30,14 @@ static void	append_pwd_to_prompt(void *prompt)
 	char	*pwd;
 
 	pwd = getcwd(NULL, 0);
-	if(pwd != NULL)
+	if (pwd != NULL)
 	{
 		append_to_prompt(prompt, pwd);
 		free(pwd);
 	}
 }
-void append_path_to_prompt(t_double_linked_list *prompt)
+
+void	append_path_to_prompt(t_double_linked_list *prompt)
 {
 	char	*cwd;
 
@@ -57,7 +55,6 @@ void append_path_to_prompt(t_double_linked_list *prompt)
 
 char	*get_prompt(void)
 {
-	
 	t_double_linked_list	*prompt;
 	char					*path;
 

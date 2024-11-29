@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/25 22:20:29 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/11/29 11:37:19 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/11/29 11:43:36 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,26 @@ static void	execute_alll_commands(t_commande **commands, char ***g_env)
 {
 	int		j;
 	t_fd	fds;
-	pid_t result;
-	int status;
+	pid_t	result;
+	int		status;
 
 	j = command_count(commands);
 	process_commands(commands, g_env, &fds);
 	while (j > 0)
 	{
-		result  =  waitpid(0, &status, 0);
-		if(result ==  -1)
+		result = waitpid(0, &status, 0);
+		if (result == -1)
 		{
-			 if (errno == EINTR)
-                continue;
-            perror("waitpid failed");
-            set_exit_status(1);
-            return;
+			if (errno == EINTR)
+				continue ;
+			perror("waitpid failed");
+			set_exit_status(1);
+			return ;
 		}
-		
 		if (WIFEXITED(status) && g_sigint == 0)
 			set_exit_status(WEXITSTATUS(status));
 		j--;
 	}
-	
 }
 
 static bool	is_not_empty(const char *str)
@@ -97,23 +95,15 @@ static char	*read_command_line(void)
 	return (command_line);
 }
 
-
-int	main(int argc, char const *argv[], char *envp[])
+static void	process_commands_loop(char *envp[], char ***g_env)
 {
 	char		*command_line;
 	t_commande	**commands;
-	char		***g_env;
 
-	setup_sigint();
-
-	g_env = get_envp(envp);
+	(void)envp;
 	while (1)
 	{
-		arg_is_void_and_signt_init(argc, *argv);
-		
-		
 		handle_interrupt_in_loop();
-
 		command_line = read_command_line();
 		if (is_a_valid_command_line(command_line))
 		{
@@ -129,7 +119,16 @@ int	main(int argc, char const *argv[], char *envp[])
 		}
 		free(command_line);
 	}
+}
 
+int	main(int argc, char const *argv[], char *envp[])
+{
+	char	***g_env;
+
+	setup_sigint();
+	g_env = get_envp(envp);
+	arg_is_void_and_signt_init(argc, *argv);
+	process_commands_loop(envp, g_env);
 	return (rl_clear_history(), free_env(*g_env),
 		get_exit_status(_LAST_STATUS));
 }

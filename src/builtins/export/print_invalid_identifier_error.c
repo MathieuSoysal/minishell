@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   print_invalid_identifier_error.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 18:53:20 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/28 15:58:09 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/11/28 15:41:14 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/11/28 15:45:37 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int character)
+#include "../../libft/libft.h"
+#include "../../structures/env/env.h"
+#include "export_internal.h"
+
+void	print_invalid_identifier_error(char *arg)
 {
-	if (character >= 'a' && character <= 'z')
-		return (8);
-	else if (character >= 'A' && character <= 'Z')
-		return (8);
-	else if (character >= '0' && character <= '9')
-		return (8);
-	else
-		return (0);
+	ft_putstr_fd("export: `", 2);
+	ft_putstr_fd(arg, 2);
+	ft_putstr_fd("': not a valid identifier\n", 2);
 }

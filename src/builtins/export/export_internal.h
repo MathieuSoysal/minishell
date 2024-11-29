@@ -6,19 +6,19 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 11:30:18 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/23 14:19:08 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:56:37 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXPORT_INTERNAL_H
 # define EXPORT_INTERNAL_H
 
+# include "../../libft/libft.h"
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-#include "../../libft/libft.h"
-#define BUFFER_S 4096
+# define BUFFER_S 4096
 
 bool	is_valid_identifier(char *arg);
 void	apply_export_for_arg(char *arg, char ***g_env);

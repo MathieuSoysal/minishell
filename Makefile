@@ -12,6 +12,7 @@ NC := \033[0m
 SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/exec/without_pipe/exec_external.c \
 		./src/exec/without_pipe/free_execute_external_command.c \
+		./src/exec/without_pipe/exec_external_utils.c\
 		./src/exec/without_pipe/single_exec.c \
 		./src/exec/all_executors/executor_internal.c \
 		./src/exec/all_executors/executor_builtins.c \
@@ -46,6 +47,7 @@ SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/builtins/export/export.c \
 		./src/builtins/export/is_valid.c \
 		./src/builtins/export/export_internal.c \
+		./src/builtins/export/print_invalid_identifier_error.c\
 		./src/builtins/pwd/pwd.c \
 		./src/builtins/unset/unset.c \
 		./src/libft/ft_atoi.c \

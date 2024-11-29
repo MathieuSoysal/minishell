@@ -6,10 +6,9 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 23:11:31 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/25 15:00:43 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:51:59 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../libft/libft.h"
 #include "../../minishell.h"
@@ -54,6 +53,7 @@ void	env_update_var_cd(char **envp, const char *var, const char *value)
 	}
 	env_update_var_cd(envp + 1, var, value);
 }
+
 void	print_cd_error(char *arg)
 {
 	ft_putstr_fd("minishell: cd: ", 2);
@@ -61,28 +61,33 @@ void	print_cd_error(char *arg)
 	ft_putstr_fd(": No such file or directory\n", 2);
 }
 
+int	change_directory(char *path, char *oldpwd)
+{
+	if (chdir(path) == -1)
+	{
+		print_cd_error(path);
+		free(oldpwd);
+		return (-1);
+	}
+	return (0);
+}
 
-int change_directory(char *path, char *oldpwd)
+char	*get_oldpwd(char **envp)
 {
-    if (chdir(path) == -1)
-    {
-        print_cd_error(path);
-        free(oldpwd);
-        return -1;
-    }
-    return 0;
+	char	*oldpwd;
+
+	oldpwd = getcwd(NULL, 0);
+	if (!oldpwd)
+		oldpwd = ft_strdup(env_get_var(envp, "PWD"));
+	return (oldpwd);
 }
-char *get_oldpwd(char **envp)
+
+char	*get_newpwd(char **envp)
 {
-    char *oldpwd = getcwd(NULL, 0);
-    if (!oldpwd)
-        oldpwd = ft_strdup(env_get_var(envp, "PWD"));
-    return oldpwd;
-}
-char *get_newpwd(char **envp)
-{
-    char *newpwd = getcwd(NULL, 0);
-    if (!newpwd)
-        newpwd = ft_strdup(env_get_var(envp, "PWD"));
-    return newpwd;
+	char	*newpwd;
+
+	newpwd = getcwd(NULL, 0);
+	if (!newpwd)
+		newpwd = ft_strdup(env_get_var(envp, "PWD"));
+	return (newpwd);
 }
