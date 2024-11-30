@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 03:03:27 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/16 01:29:16 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/11/30 15:47:47 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ char	*concatenate(t_double_linked_list *list)
 
 bool	equals(const char *s1, const char *s2)
 {
+			if (!s1 || !s2)
+    				return (0);
 	return (ft_strncmp(s1, s2, ft_strlen(s2) + 1) == 0);
 }
 

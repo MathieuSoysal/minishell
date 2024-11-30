@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:10:02 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/24 22:53:19 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/30 16:25:19 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 void	execute_single_command(t_commande **commands, t_commande *command,
 		char ***g_env)
 {
+	printf("pass execute_single_command\n\n");
 	if (command_can_be_executed(command))
 	{
 		if (is_builtin(command))

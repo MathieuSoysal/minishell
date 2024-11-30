@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 18:39:00 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/29 11:33:02 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/30 14:19:00 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	signal_sigquit(int sig)
 	(void)sig;
 	g_sigint = SIGQUIT;
 	get_exit_status(131);
-	write(1, "Quit (core dumped)\n", 20);
 	rl_replace_line("", 0);
 	rl_done = 1;
 }

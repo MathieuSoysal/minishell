@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:18:41 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/29 11:30:07 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/30 17:45:18 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 void	manage_redirections(t_commande *command, t_commande **commands,
 		char ***g_env)
 {
+	printf("pass in  manage redirection\n");
 	handle_input_redirection(command, commands, g_env);
 	handle_output_redirection(command, commands, g_env);
 }
@@ -32,31 +33,49 @@ void	manage_redirections(t_commande *command, t_commande **commands,
 void	handle_input_redirection(t_commande *command, t_commande **commands,
 		char ***g_env)
 {
-	if (command_get_fd_infile(command) != 0)
+	int	fd_in;
+
+	printf("pass in input redirection\n");
+	fd_in = command_get_fd_infile(command);
+	if (fd_in != 0)
 	{
-		if (dup2(command_get_fd_infile(command), 0) == -1)
+		if (dup2(fd_in, STDIN_FILENO) == -1)
 		{
-			print_redirection_error(command->args[0]);
+			perror("dup2");
+			close(fd_in);
 			free_commands(commands);
 			free_env(*g_env);
-			exit(1);
+			exit(EXIT_FAILURE);
 		}
+		close(fd_in);
 	}
 }
 
 void	handle_output_redirection(t_commande *command, t_commande **commands,
 		char ***g_env)
 {
-	if (command_get_fd_outfile(command) != 1)
+	int	fd_out;
+
+	printf("pass in output redirection\n");
+	if (!command->outfiles || !command->outfiles[0])
+		return ;
+	fd_out = command_get_fd_outfile(command);
+	if (fd_out == -1)
 	{
-		if (dup2(command_get_fd_outfile(command), 1) == -1)
-		{
-			print_redirection_error(command->args[0]);
-			free_commands(commands);
-			free_env(*g_env);
-			exit(1);
-		}
+		perror("open");
+		free_commands(commands);
+		free_env(*g_env);
+		exit(EXIT_FAILURE);
 	}
+	if (dup2(fd_out, STDOUT_FILENO) == -1)
+	{
+		perror("dup2");
+		close(fd_out);
+		free_commands(commands);
+		free_env(*g_env);
+		exit(EXIT_FAILURE);
+	}
+	close(fd_out);
 }
 
 void	handle_execve_failure(t_commande **commands, t_commande *command,

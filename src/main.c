@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:37:19 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/29 11:43:36 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/30 14:16:50 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,6 @@ static void	execute_alll_commands(t_commande **commands, char ***g_env)
 	}
 }
 
-static bool	is_not_empty(const char *str)
-{
-	if (str && *str && str[0] != '\n' && str[0] != '\0')
-	{
-		while (*str)
-		{
-			if (*str != ' ' && *str != '\t')
-				return (true);
-			str++;
-		}
-	}
-	return (false);
-}
-
 static bool	is_a_valid_command_line(const char *command_line)
 {
 	t_syntax_error	error;
@@ -100,6 +86,7 @@ static void	process_commands_loop(char *envp[], char ***g_env)
 	char		*command_line;
 	t_commande	**commands;
 
+	command_line = NULL;
 	(void)envp;
 	while (1)
 	{

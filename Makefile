@@ -1,6 +1,7 @@
 NAME = minishell
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
+# CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -g3
 LDFLAGS = -lreadline
 
 # Add color variables
@@ -129,6 +130,7 @@ SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/structures/node.c \
 		./src/command_count.c \
 		./src/main.c \
+		./src/is_not_empty.c\
 		./src/arg_is_void_and_signt_init.c
 
 # Update OBJ to place .o files into $(BUILD_DIR)
@@ -162,4 +164,4 @@ fclean: clean
 
 re: fclean all
 
-#valgrind -q --leak-check=full --show-leak-kinds=all --trace-children=yes --suppressions=valgrind_ignore  ./build/minishell    
+#valgrind -q --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --suppressions=valgrind_ignore  ./build/minishell    

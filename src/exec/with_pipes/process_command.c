@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 12:35:15 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/28 15:49:15 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/11/30 15:40:21 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ void	ft_perror_fork(void)
 
 void	process_commands(t_commande **commands, char ***envp, t_fd *fds)
 {
+	 printf("process command deb\n\n");
 	pid_t	pid;
-
+		
 	fds->i = 0;
 	fds->fd_infile = command_get_fd_infile(commands[fds->i]);
 	while (commands[fds->i] != NULL)
