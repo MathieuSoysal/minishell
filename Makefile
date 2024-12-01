@@ -1,7 +1,6 @@
 NAME = minishell
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror -g3
-CFLAGS = -g3
+CFLAGS = -Wall -Wextra -Werror -g3
 LDFLAGS = -lreadline
 
 # Add color variables
