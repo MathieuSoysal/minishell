@@ -16,16 +16,19 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-bool	command_can_be_executed(t_commande *command)
+bool command_can_be_executed(t_commande *command)
 {
-	if (command == NULL || command->name == NULL)
+	if (command == NULL)
 		return (false);
 	if (all_infiles_exist(command) && all_outfiles_have_permissions(command))
-		return (create_all_outfiles(command), true);
+	{
+		create_all_outfiles(command);
+		return (command->name != NULL);
+	}
 	return (false);
 }
 
-int	execute_command(t_commande *command, char ***g_env)
+int execute_command(t_commande *command, char ***g_env)
 {
 	if (is_builtin(command))
 		return (execute_builtin(command, g_env));
@@ -40,7 +43,7 @@ int	execute_command(t_commande *command, char ***g_env)
 	return (2);
 }
 
-int	execute_command_in_pipe(t_commande *command, char **g_env)
+int execute_command_in_pipe(t_commande *command, char **g_env)
 {
 	return (execute_command(command, &g_env));
 }
