@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:37:19 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/30 14:16:50 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/01 16:21:06 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+
+
+
 static void	execute_alll_commands(t_commande **commands, char ***g_env)
 {
 	int		j;
@@ -41,13 +44,16 @@ static void	execute_alll_commands(t_commande **commands, char ***g_env)
 		if (result == -1)
 		{
 			if (errno == EINTR)
-				continue ;
+					continue ;
+			
 			perror("waitpid failed");
 			set_exit_status(1);
 			return ;
 		}
 		if (WIFEXITED(status) && g_sigint == 0)
-			set_exit_status(WEXITSTATUS(status));
+		{
+				set_exit_status(WEXITSTATUS(status));
+		}
 		j--;
 	}
 }
@@ -90,7 +96,7 @@ static void	process_commands_loop(char *envp[], char ***g_env)
 	(void)envp;
 	while (1)
 	{
-		handle_interrupt_in_loop();
+		 handle_interrupt_in_loop();
 		command_line = read_command_line();
 		if (is_a_valid_command_line(command_line))
 		{
@@ -101,7 +107,11 @@ static void	process_commands_loop(char *envp[], char ***g_env)
 			if (is_single_command(commands))
 				execute_single_command(commands, commands[0], g_env);
 			else
+			{
 				execute_alll_commands(commands, g_env);
+				restore_signals_for_readline();
+				
+			}
 			free_commands(commands);
 		}
 		free(command_line);

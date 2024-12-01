@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:16:23 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/12 01:24:26 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/12/01 15:50:53 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 void	child_process(int infile, int outfile, t_commande **commands,
 		t_fd *fds)
 {
+	 signal(SIGINT, SIG_DFL);
+     signal(SIGQUIT, SIG_DFL);
 	if (fds -> i > 0)
 	{
 		dup_two_infile(infile);
@@ -45,6 +47,9 @@ void	child_process(int infile, int outfile, t_commande **commands,
 void	else_if_in_child_process(int *infile, t_commande **commands, int i,
 		int *fd)
 {
+	signal(SIGINT, SIG_IGN); 
+	signal(SIGQUIT, SIG_DFL);
+	
 	if (*infile > 0)
 	{
 		close(*infile);

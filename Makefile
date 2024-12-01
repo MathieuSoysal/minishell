@@ -115,6 +115,7 @@ SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/prompteur/prompteur.c \
 		./src/signals/exit_status.c \
 		./src/signals/sigint/sigint.c \
+		./src/signals/sigint/restore_signals_for_readline.c\
 		./src/structures/commande/command_path.c \
 		./src/structures/commande/commande_free.c \
 		./src/structures/commande/commande.c \

@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 18:39:00 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/30 14:19:00 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/01 16:08:42 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,17 @@ void	setup_sigint(void)
 	sigaction(SIGQUIT, &sa, NULL);
 }
 
-void	handle_interrupt_in_loop(void)
-{
-	char	*prompt;
 
-	if (g_interrupt)
-	{
-		g_interrupt = 0;
-		prompt = get_prompt();
-		rl_set_prompt(prompt);
-		free(prompt);
-	}
+	void handle_interrupt_in_loop(void)
+{
+    char *prompt;
+
+    if (g_interrupt)
+    {
+        g_interrupt = 0;
+        prompt = get_prompt();
+        rl_set_prompt(prompt);
+        rl_redisplay(); 
+    }
 }
+
