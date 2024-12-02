@@ -48,6 +48,7 @@ SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/builtins/export/is_valid.c \
 		./src/builtins/export/export_internal.c \
 		./src/builtins/export/print_invalid_identifier_error.c\
+		./src/builtins/export/env_add_var_for_export.c\
 		./src/builtins/pwd/pwd.c \
 		./src/builtins/unset/unset.c \
 		./src/libft/ft_atoi.c \

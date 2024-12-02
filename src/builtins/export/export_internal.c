@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 11:32:54 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/28 15:45:07 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:57:51 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ void	apply_export_for_arg(char *arg, char ***g_env)
 		if (env_contains_var(*g_env, key))
 			env_update_var(*g_env, key, expanded_value);
 		else
-			env_add_var(g_env, key, expanded_value);
+			env_add_var_for_export(g_env, key, expanded_value);
 		free(key);
 	}
 	else
 	{
 		if (!env_contains_var(*g_env, arg))
-			env_add_var(g_env, arg, NULL);
+			env_add_var_for_export(g_env, arg, NULL);
 	}
 }
