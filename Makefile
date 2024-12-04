@@ -165,4 +165,4 @@ fclean: clean
 
 re: fclean all
 
-#valgrind -q --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --suppressions=valgrind_ignore  ./build/minishell    
+# valgrind -q --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --suppressions=valgrind_ignore  ./build/minishell    

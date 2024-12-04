@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:09:48 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/30 17:45:12 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:00:33 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	execute_external_command_bis(t_commande **commands, t_commande *command,
 {
 	int	status;
 
-	printf("pass in excute command bis\n");
 	manage_redirections(command, commands, g_env);
 	status = execve(command->path, command->args, *g_env);
 	free_env(*g_env);
@@ -82,15 +81,19 @@ void	execute_external_command(t_commande **commands, t_commande *command,
 {
 	pid_t	pid;
 
-	printf("pass execute_external_command\n");
 	pid = fork();
 	if (pid == 0)
 	{
-		printf("pass in  child cond if in execute_external_command\n");
+		 signal(SIGINT, SIG_DFL);
+     	signal(SIGQUIT, SIG_DFL);
 		execute_external_command_bis(commands, command, g_env);
 	}
 	else if (pid > 0)
+	{
+		signal(SIGINT, SIG_IGN); 
+		signal(SIGQUIT, SIG_DFL);
 		handle_wait(pid);
+	}
 	else
 		handle_fork_error();
 }

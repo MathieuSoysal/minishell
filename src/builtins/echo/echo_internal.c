@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:55:55 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/28 14:52:33 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:10:13 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,17 @@ bool	is_option_n(char *arg)
 	is_option = (ft_strncmp(arg, "-n", 2) == 0);
 	while (is_option && arg[i])
 	{
+		
 		if (arg[i] != 'n')
+		{
 			return (false);
+		}
 		i++;
 	}
 	return (is_option);
 }
+
+
 
 bool	has_option_n(char **args)
 {
@@ -45,7 +50,7 @@ static inline void	move_cell(char **array, int i)
 
 void	remove_option_from_args(char **args)
 {
-	while (is_option_n(args[1]))
+	while (args[1]  &&  is_option_n(args[1]))
 		move_cell(args, 1);
 }
 

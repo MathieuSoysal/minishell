@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:31:46 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/02 11:38:17 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:56:00 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*construct_env_var(const char *key, const char *value)
 
 	if (!key || !value)
 		return (NULL);
+	if(!value || value[0] == '\0')
+			return(strdup(key));
 	new_var = ft_strjoin(key, "=");
 	if (!new_var)
 		return (NULL);

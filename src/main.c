@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:37:19 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/01 16:21:06 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:06:06 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,10 @@ static void	execute_alll_commands(t_commande **commands, char ***g_env)
 			return ;
 		}
 		if (WIFEXITED(status) && g_sigint == 0)
-		{
-				set_exit_status(WEXITSTATUS(status));
-		}
+			set_exit_status(WEXITSTATUS(status));
+		else if (WIFSIGNALED(status))
+			set_exit_status(128 + WTERMSIG(status));
+		
 		j--;
 	}
 }

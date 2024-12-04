@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 11:32:54 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/02 14:57:51 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:56:12 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	sort_env(char **env)
 
 void	apply_export_for_arg(char *arg, char ***g_env)
 {
+	
 	char	*key;
 	char	*value;
 	char	*expanded_value;
