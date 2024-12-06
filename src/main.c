@@ -99,9 +99,9 @@ static void	process_commands_loop(char *envp[], char ***g_env)
 	{
 		 handle_interrupt_in_loop();
 		command_line = read_command_line();
+		add_history(command_line);
 		if (is_a_valid_command_line(command_line))
 		{
-			add_history(command_line);
 			commands = parse_command_line(command_line, *g_env);
 			if (commands == NULL)
 				continue ;
