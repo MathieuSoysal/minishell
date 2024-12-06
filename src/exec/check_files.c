@@ -80,11 +80,11 @@ void	create_all_outfiles(t_commande *command)
 		if (access(command->outfiles[i]->file_name, F_OK) == -1)
 		{
 			if (command->outfiles[i]->type == OUTFILE_TYPE_APPEND)
-				open(command->outfiles[i]->file_name,
-					O_CREAT | O_WRONLY | O_APPEND, 0644);
+				close(open(command->outfiles[i]->file_name,
+							O_CREAT | O_WRONLY | O_APPEND, 0644));
 			else
-				open(command->outfiles[i]->file_name,
-					O_CREAT | O_WRONLY | O_TRUNC, 0644);
+				close(open(command->outfiles[i]->file_name,
+							O_CREAT | O_WRONLY | O_TRUNC, 0644));
 		}
 		i++;
 	}
