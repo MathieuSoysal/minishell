@@ -17,10 +17,7 @@
 bool	is_builtin(t_commande *command)
 {
 	if (equals(command->name, "echo"))
-	{
-		printf("pass in echo\n");
 		return (true);
-	}
 	if (equals(command->name, "cd"))
 		return (true);
 	if (equals(command->name, "export"))
