@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:43:28 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/04 13:35:30 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/06 20:31:31 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 bool	is_builtin(t_commande *command)
 {
-	printf("pass  in  is builtin  begin\n");
 	if (equals(command->name, "echo"))
 	{
 		printf("pass in echo\n");
@@ -34,7 +33,6 @@ bool	is_builtin(t_commande *command)
 		return (true);
 	if (equals(command->name, "pwd"))
 		return (true);
-	printf("pass  in  is builtin  begin end\n");
 	return (false);
 }
 

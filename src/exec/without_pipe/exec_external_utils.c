@@ -25,7 +25,6 @@
 void	manage_redirections(t_commande *command, t_commande **commands,
 		char ***g_env)
 {
-	printf("pass in  manage redirection\n");
 	handle_input_redirection(command, commands, g_env);
 	handle_output_redirection(command, commands, g_env);
 }
@@ -35,7 +34,6 @@ void	handle_input_redirection(t_commande *command, t_commande **commands,
 {
 	int	fd_in;
 
-	printf("pass in input redirection\n");
 	fd_in = command_get_fd_infile(command);
 	if (fd_in != 0)
 	{
@@ -56,7 +54,6 @@ void	handle_output_redirection(t_commande *command, t_commande **commands,
 {
 	int	fd_out;
 
-	printf("pass in output redirection\n");
 	if (!command->outfiles || !command->outfiles[0])
 		return ;
 	fd_out = command_get_fd_outfile(command);
