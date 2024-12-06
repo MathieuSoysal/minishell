@@ -28,13 +28,15 @@ t_syntax_error	check_syntax(const char *command_line)
 		if (is_unexpected_character(command_line[i], mode))
 		{
 			error = get_syntax_error_from_two_chars(command_line[i],
-					command_line[i + 1]);
+													command_line[i + 1]);
 			if (error != NO_ERROR)
 				return (error);
 		}
 		update_syntax_mode(&mode, command_line[i]);
 		i++;
 	}
+	if (is_unexpected_character('\n', mode))
+		return (UN_NEWLINE);
 	return (NO_ERROR);
 }
 
