@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:16:23 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/07 19:52:30 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:11:19 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 void	child_process(int infile, int outfile, t_commande **commands, t_fd *fds)
 {
+	setup_command_signals();
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
 	if (fds->i > 0)

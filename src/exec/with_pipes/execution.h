@@ -6,12 +6,13 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:11:16 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/07 16:15:37 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:11:19 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTION_H
 # define EXECUTION_H
+# include "../../signals/sigint/sigint.h"
 # include "../../structures/commande/commande.h"
 # include "../all_executors/executor.h"
 # include "../without_pipe/single_exec.h"

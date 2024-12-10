@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:37:19 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/10 12:14:13 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:19:21 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ static void	process_commands_loop(char *envp[], char ***g_env)
 
 	command_line = NULL;
 	(void)envp;
-	add_history(command_line);
 	while (1)
 	{
 		restore_signals_for_readline();
@@ -99,6 +98,7 @@ static void	process_commands_loop(char *envp[], char ***g_env)
 		command_line = read_command_line();
 		if (is_a_valid_command_line(command_line))
 		{
+			add_history(command_line);
 			commands = parse_command_line(command_line, *g_env);
 			if (commands == NULL)
 				continue ;
