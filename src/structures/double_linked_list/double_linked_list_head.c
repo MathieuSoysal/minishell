@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   double_linked_list_head.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 20:47:19 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/05/03 13:50:39 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/12/07 16:16:41 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	*double_linked_list_pop_first(t_double_linked_list *obj)
 }
 
 void	double_linked_list_remove_first(t_double_linked_list *obj,
-		void (*free_content)(void *))
+										void (*free_content)(void *))
 {
 	t_node	*head;
 

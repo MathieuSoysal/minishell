@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_execute_external_command.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 21:09:37 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/13 18:59:08 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/12/07 16:15:44 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

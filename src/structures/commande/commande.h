@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:36:50 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/30 14:07:34 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/10 09:56:00 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,18 @@ void			print_cd_error(char *arg);
 int				change_directory(char *path, char *oldpwd);
 void			manage_redirections(t_commande *command, t_commande **commands,
 					char ***g_env);
-void			handle_input_redirection(t_commande *command,
-					t_commande **commands, char ***g_env);
-void			handle_output_redirection(t_commande *command,
-					t_commande **commands, char ***g_env);
+void	handle_input_redirection(t_commande *command,
+								t_commande **commands,
+								char ***g_env);
+void	handle_output_redirection(t_commande *command,
+								t_commande **commands,
+								char ***g_env);
 void			print_redirection_error(char *cmd_name);
-void			handle_execve_failure(t_commande **commands,
-					t_commande *command, char ***g_env);
+void	handle_execve_failure(t_commande **commands,
+							t_commande *command,
+							char ***g_env);
 char			*get_oldpwd(char **envp);
 char			*get_newpwd(char **envp);
+void			free_cmds(t_commande *commande);
 
 #endif // COMMANDE_H

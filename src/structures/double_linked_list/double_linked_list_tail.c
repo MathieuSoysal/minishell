@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   double_linked_list_tail.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:24:39 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/05/03 13:49:03 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/12/07 16:27:48 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	*double_linked_list_pop_last(t_double_linked_list *obj)
 }
 
 void	double_linked_list_remove_last(t_double_linked_list *obj,
-		void (*free_content)(void *))
+									void (*free_content)(void *))
 {
 	t_node	*tail;
 

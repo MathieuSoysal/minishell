@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:09:48 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/04 15:00:33 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:22:03 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ void	execute_external_command(t_commande **commands, t_commande *command,
 	pid = fork();
 	if (pid == 0)
 	{
-		 signal(SIGINT, SIG_DFL);
-     	signal(SIGQUIT, SIG_DFL);
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
 		execute_external_command_bis(commands, command, g_env);
 	}
 	else if (pid > 0)
 	{
-		signal(SIGINT, SIG_IGN); 
+		signal(SIGINT, SIG_IGN);
 		signal(SIGQUIT, SIG_DFL);
 		handle_wait(pid);
 	}

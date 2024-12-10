@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:48:05 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/02 15:36:12 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:15:30 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-bool command_can_be_executed(t_commande *command)
+bool	command_can_be_executed(t_commande *command)
 {
 	if (command == NULL)
 		return (false);
@@ -28,7 +28,7 @@ bool command_can_be_executed(t_commande *command)
 	return (false);
 }
 
-int execute_command(t_commande *command, char ***g_env)
+int	execute_command(t_commande *command, char ***g_env)
 {
 	if (is_builtin(command))
 		return (execute_builtin(command, g_env));
@@ -43,7 +43,7 @@ int execute_command(t_commande *command, char ***g_env)
 	return (2);
 }
 
-int execute_command_in_pipe(t_commande *command, char **g_env)
+int	execute_command_in_pipe(t_commande *command, char **g_env)
 {
 	return (execute_command(command, &g_env));
 }

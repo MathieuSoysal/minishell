@@ -2,7 +2,7 @@ NAME = minishell
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 LDFLAGS = -lreadline
-
+#ftrapv
 # Add color variables
 GREEN := \033[0;32m
 YELLOW := \033[0;33m
@@ -165,4 +165,4 @@ fclean: clean
 
 re: fclean all
 
-# valgrind -q --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --suppressions=valgrind_ignore  ./build/minishell    
+# valgrind -q --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --suppressions=valgrind_ignore  ./build/minishellv    

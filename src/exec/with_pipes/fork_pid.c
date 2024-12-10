@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fork_pid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:08:28 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/12 19:46:27 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/12/07 18:23:39 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../signals/sigint/sigint.h"
 #include "execution.h"
 #include <stdio.h>
 #include <stdlib.h>

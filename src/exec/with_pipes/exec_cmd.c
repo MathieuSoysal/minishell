@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:25:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/29 11:41:53 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:56:47 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ void	exec_cmd(t_commande **commands, t_commande *command, char ***g_env)
 	char	*print;
 
 	status = execute_command(command, g_env);
-	printf("result status = %d\n", status);
 	if (status == -1)
 	{
-		printf("pass in -1 \n");
 		print = build_error_message(command->name);
 		ft_putstr_fd(print, 2);
 		free(print);
@@ -49,7 +47,6 @@ void	exec_cmd(t_commande **commands, t_commande *command, char ***g_env)
 	}
 	free_commands(commands);
 	free_env(*g_env);
-	printf("pass in  end\n");
 	exit(1);
 }
 

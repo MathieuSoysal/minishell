@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:57:30 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/12 19:46:54 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/12/07 16:15:52 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,12 @@ void	create_all_outfiles(t_commande *command)
 		{
 			if (command->outfiles[i]->type == OUTFILE_TYPE_APPEND)
 				close(open(command->outfiles[i]->file_name,
-							O_CREAT | O_WRONLY | O_APPEND, 0644));
+							O_CREAT | O_WRONLY | O_APPEND,
+							0644));
 			else
 				close(open(command->outfiles[i]->file_name,
-							O_CREAT | O_WRONLY | O_TRUNC, 0644));
+							O_CREAT | O_WRONLY | O_TRUNC,
+							0644));
 		}
 		i++;
 	}

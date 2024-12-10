@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   internal.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 21:40:23 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/12 19:46:30 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/12/07 18:56:34 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	child_process(int infile, int outfile, t_commande **commands,
 void	else_if_in_child_process(int *infile, t_commande **commands, int i,
 			int *fd);
 void	ft_final_close(t_commande **commands, int i, int *fd);
+
 void	outfile_fcnlt(int outfile, t_fd *fds);
 int		take_nb(int i);
 #endif // INTERNAL_H

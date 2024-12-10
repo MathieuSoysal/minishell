@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 12:35:15 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/07 15:56:32 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:10:57 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_perror_fork(void)
 void	process_commands(t_commande **commands, char ***envp, t_fd *fds)
 {
 	pid_t	pid;
-		
+
 	fds->i = 0;
 	fds->fd_infile = command_get_fd_infile(commands[fds->i]);
 	while (commands[fds->i] != NULL)
@@ -44,11 +44,10 @@ void	process_commands(t_commande **commands, char ***envp, t_fd *fds)
 		}
 		else if (pid > 0)
 			else_if_in_child_process(&fds->fd_infile, commands, fds->i,
-				fds->fd);
+					fds->fd);
 		else
 			ft_perror_fork();
 		fds->i++;
 	}
 	ft_final_close(commands, fds->i, fds->fd);
-	clear_all(fds);
 }

@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:37:19 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/04 15:06:06 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:14:13 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,22 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-
-
-
-static void	execute_alll_commands(t_commande **commands, char ***g_env)
+static void	execute_alll_commands(t_commande **commands, char ***g_env,
+		t_fd *fds)
 {
 	int		j;
-	t_fd	fds;
 	pid_t	result;
 	int		status;
 
 	j = command_count(commands);
-	process_commands(commands, g_env, &fds);
+	process_commands(commands, g_env, fds);
 	while (j > 0)
 	{
 		result = waitpid(0, &status, 0);
 		if (result == -1)
 		{
 			if (errno == EINTR)
-					continue ;
-			
+				continue ;
 			perror("waitpid failed");
 			set_exit_status(1);
 			return ;
@@ -54,7 +50,6 @@ static void	execute_alll_commands(t_commande **commands, char ***g_env)
 			set_exit_status(WEXITSTATUS(status));
 		else if (WIFSIGNALED(status))
 			set_exit_status(128 + WTERMSIG(status));
-		
 		j--;
 	}
 }
@@ -92,14 +87,16 @@ static void	process_commands_loop(char *envp[], char ***g_env)
 {
 	char		*command_line;
 	t_commande	**commands;
+	t_fd		fds;
 
 	command_line = NULL;
 	(void)envp;
+	add_history(command_line);
 	while (1)
 	{
-		 handle_interrupt_in_loop();
+		restore_signals_for_readline();
+		// handle_interrupt_in_loop();
 		command_line = read_command_line();
-		add_history(command_line);
 		if (is_a_valid_command_line(command_line))
 		{
 			commands = parse_command_line(command_line, *g_env);
@@ -109,9 +106,8 @@ static void	process_commands_loop(char *envp[], char ***g_env)
 				execute_single_command(commands, commands[0], g_env);
 			else
 			{
-				execute_alll_commands(commands, g_env);
+				execute_alll_commands(commands, g_env, &fds);
 				restore_signals_for_readline();
-				
 			}
 			free_commands(commands);
 		}
