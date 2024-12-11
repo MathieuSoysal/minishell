@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:25:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/09 12:56:47 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/11 12:08:13 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ void	exec_cmd(t_commande **commands, t_commande *command, char ***g_env)
 
 void	ft_exec(t_commande **commands, int i, char ***envp)
 {
-	exec_cmd(commands, commands[i], envp);
-	exit(EXIT_FAILURE);
+	if (command_can_be_executed(commands[i]))
+		exec_cmd(commands, commands[i], envp);
+	else if (!commands[i] || !(commands[i]->name))
+		exit(0);
+	else
+		exit(EXIT_FAILURE);
 }
