@@ -25,6 +25,10 @@
         "execution.h": "c",
         "single_exec.h": "c",
         "apply_infiles.h": "c",
-        "apply_outfiles.h": "c"
+        "apply_outfiles.h": "c",
+        "env.h": "c",
+        "minishell.h": "c",
+        "signal.h": "c",
+        "readline.h": "c"
     }
 }
