@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:10:02 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/11 18:29:25 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/11 19:09:53 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,23 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+bool	is_emptyy(char *str)
+{
+	int	i;
+
+	i = -1;
+	if (str == NULL)
+		return (1);
+	while (str[++i])
+		if (str[i] != ' ' && str[i] != '\t')
+			return (0);
+	return (1);
+}
+
 void	execute_single_command(t_commande **commands, t_commande *command,
 		char ***g_env)
 {
-	if (command_can_be_executed(command))
+	if (command_can_be_executed(command) && !is_emptyy(command->name))
 	{
 		if (is_builtin(command))
 		{

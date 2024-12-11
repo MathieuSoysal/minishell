@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:37:19 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/11 18:10:09 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/11 19:00:08 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ static void	process_commands_loop(char ***g_env)
 	{
 		restore_signals_for_readline();
 		command_line = read_command_line();
+		add_history(command_line);
 		if (is_a_valid_command_line(command_line))
 		{
-			add_history(command_line);
 			commands = parse_command_line(command_line, *g_env);
 			if (commands == NULL)
 				continue ;
