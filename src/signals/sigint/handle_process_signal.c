@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signt_for_exec.c                                   :+:      :+:    :+:   */
+/*   handle_process_signal.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 14:04:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/11 15:25:37 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/12/11 15:18:11 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/12/11 16:14:33 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,22 @@
 #include <termios.h>
 #include <unistd.h>
 
-void	signal_command_sigint(int sig)
+void	handle_process_signal(int status)
 {
-	(void)sig;
-	write(1, "\n", 1);
-	exit(130);
-}
+	int	signal;
 
-void	signal_command_sigquit(int sig)
-{
-	(void)sig;
-	write(1, "Quit (core dumped)\n", 19);
-	exit(131);
-}
-
-void	setup_command_signals(void)
-{
-	struct sigaction	sa;
-
-	sa.sa_flags = SA_RESTART;
-	sa.sa_handler = signal_command_sigint;
-	sigemptyset(&sa.sa_mask);
-	sigaction(SIGINT, &sa, NULL);
-	sa.sa_handler = signal_command_sigquit;
-	sigaction(SIGQUIT, &sa, NULL);
+	if (WIFSIGNALED(status))
+	{
+		signal = WTERMSIG(status);
+		if (signal == SIGQUIT)
+		{
+			write(1, "Quit (core dumped)\n", 19);
+			get_exit_status(131);
+		}
+		else if (signal == SIGINT)
+		{
+			write(1, "\n", 1);
+			get_exit_status(130);
+		}
+	}
 }

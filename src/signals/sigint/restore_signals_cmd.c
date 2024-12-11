@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   restore_signals_cmd.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 16:40:20 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/11 17:01:39 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/12/11 15:58:10 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/12/11 16:57:27 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../structures/commande/commande.h"
-#include "echo_internal.h"
-#include <unistd.h>
+#include "sigint.h"
 
-int	echo(t_commande *cmd)
+void	restore_signals_for_cmd(int signal)
 {
-	bool	option_n;
+	struct sigaction	sa;
 
-	option_n = has_option_n(cmd->args);
-	if (option_n)
-		remove_option_from_args(cmd->args);
-	if (cmd->args[1])
-		print_args(cmd->args);
-	if (!option_n)
-		write(1, "\n", 1);
-	return (0);
+	(void)signal;
+	sa.sa_flags = 0;
+	sa.sa_handler = signal_sigint;
+	sigemptyset(&sa.sa_mask);
+	sigaction(SIGINT, &sa, NULL);
+	sa.sa_handler = SIG_IGN;
+	sigaction(SIGQUIT, &sa, NULL);
 }

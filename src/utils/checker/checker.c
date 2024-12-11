@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 20:53:59 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/04 15:56:52 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:54:41 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_syntax_error	check_syntax(const char *command_line)
 		if (is_unexpected_character(command_line[i], mode))
 		{
 			error = get_syntax_error_from_two_chars(command_line[i],
-													command_line[i + 1]);
+					command_line[i + 1]);
 			if (error != NO_ERROR)
 				return (error);
 		}

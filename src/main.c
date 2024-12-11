@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:37:19 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/10 14:19:21 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/11 18:10:09 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,9 @@ static void	execute_alll_commands(t_commande **commands, char ***g_env,
 			set_exit_status(1);
 			return ;
 		}
-		if (WIFEXITED(status) && g_sigint == 0)
-			set_exit_status(WEXITSTATUS(status));
-		else if (WIFSIGNALED(status))
-			set_exit_status(128 + WTERMSIG(status));
 		j--;
 	}
+	error_all_cmd(status);
 }
 
 static bool	is_a_valid_command_line(const char *command_line)
@@ -83,18 +80,16 @@ static char	*read_command_line(void)
 	return (command_line);
 }
 
-static void	process_commands_loop(char *envp[], char ***g_env)
+static void	process_commands_loop(char ***g_env)
 {
 	char		*command_line;
 	t_commande	**commands;
 	t_fd		fds;
 
 	command_line = NULL;
-	(void)envp;
 	while (1)
 	{
 		restore_signals_for_readline();
-		// handle_interrupt_in_loop();
 		command_line = read_command_line();
 		if (is_a_valid_command_line(command_line))
 		{
@@ -107,7 +102,6 @@ static void	process_commands_loop(char *envp[], char ***g_env)
 			else
 			{
 				execute_alll_commands(commands, g_env, &fds);
-				restore_signals_for_readline();
 			}
 			free_commands(commands);
 		}
@@ -122,7 +116,7 @@ int	main(int argc, char const *argv[], char *envp[])
 	setup_sigint();
 	g_env = get_envp(envp);
 	arg_is_void_and_signt_init(argc, *argv);
-	process_commands_loop(envp, g_env);
+	process_commands_loop(g_env);
 	return (rl_clear_history(), free_env(*g_env),
 		get_exit_status(_LAST_STATUS));
 }

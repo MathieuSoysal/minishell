@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:09:48 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/07 16:22:03 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:21:47 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ void	handle_wait(pid_t pid)
 	if (WIFEXITED(status) && g_sigint == 0)
 		set_exit_status(WEXITSTATUS(status));
 	else if (WIFSIGNALED(status))
+	{
+		handle_process_signal(status);
 		set_exit_status(128 + WTERMSIG(status));
+	}
 }
 
 void	handle_fork_error(void)
@@ -91,8 +94,10 @@ void	execute_external_command(t_commande **commands, t_commande *command,
 	else if (pid > 0)
 	{
 		signal(SIGINT, SIG_IGN);
-		signal(SIGQUIT, SIG_DFL);
+		signal(SIGQUIT, SIG_IGN);
 		handle_wait(pid);
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
 	}
 	else
 		handle_fork_error();

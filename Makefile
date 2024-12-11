@@ -44,6 +44,7 @@ SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/builtins/echo/echo_internal.c \
 		./src/builtins/env/env.c \
 		./src/builtins/exit/exit.c \
+		./src/builtins/exit/exit_free.c\
 		./src/builtins/export/export.c \
 		./src/builtins/export/is_valid.c \
 		./src/builtins/export/export_internal.c \
@@ -118,6 +119,8 @@ SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/signals/sigint/sigint.c \
 		./src/signals/sigint/restore_signals_for_readline.c\
 		./src/signals/sigint/signt_for_exec.c\
+		./src/signals/sigint/handle_process_signal.c\
+		./src/signals/sigint/restore_signals_cmd.c\
 		./src/structures/commande/command_path.c \
 		./src/structures/commande/commande_free.c \
 		./src/structures/commande/commande.c \
@@ -132,6 +135,7 @@ SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/structures/node.c \
 		./src/command_count.c \
 		./src/main.c \
+		./src/error_all_cmd.c\
 		./src/is_not_empty.c\
 		./src/arg_is_void_and_signt_init.c
 
@@ -166,4 +170,4 @@ fclean: clean
 
 re: fclean all
 
-# valgrind -q --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --suppressions=valgrind_ignore  ./build/minishellv    
+# valgrind -q --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --suppressions=valgrind_ignore  ./build/minishell    

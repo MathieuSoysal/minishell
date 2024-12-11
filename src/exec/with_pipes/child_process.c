@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:16:23 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/10 14:11:19 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/11 18:10:34 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	else_if_in_child_process(int *infile, t_commande **commands, int i,
 		int *fd)
 {
 	signal(SIGINT, SIG_IGN);
-	signal(SIGQUIT, SIG_DFL);
+	signal(SIGQUIT, SIG_IGN);
 	if (*infile > 0)
 		close(*infile);
 	if (commands[i + 1] != NULL)
@@ -52,21 +52,6 @@ void	ft_final_close(t_commande **commands, int i, int *fd)
 	if (commands[i] != NULL && commands[i + 1] != NULL)
 		close(fd[0]);
 }
-
-// void	ft_final_close(t_commande **commands, int i, int *fds)
-// {
-// 	int	j;
-
-// 	if (commands[i] != NULL && commands[i + 1] != NULL)
-// 		close(fds[0]);
-// 	j = 0;
-// 	while (j < i)
-// 	{
-// 		if (fds[j] > 1)
-// 			close(fds[j]);
-// 		j++;
-// 	}
-// }
 
 void	outfile_fcnlt(int outfile, t_fd *fds)
 {
