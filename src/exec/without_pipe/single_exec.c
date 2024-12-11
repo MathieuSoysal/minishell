@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:10:02 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/10 09:03:52 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/11 18:29:25 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ void	execute_single_command(t_commande **commands, t_commande *command,
 	if (command_can_be_executed(command))
 	{
 		if (is_builtin(command))
+		{
+			if (ft_strcmp(command->name, "exit") == 0)
+				free(commands);
 			execute_builtins_without_fork(command, g_env);
+		}
 		else
 			execute_external_command(commands, command, g_env);
 	}

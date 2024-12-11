@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:09:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/11 17:12:17 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/11 18:26:59 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,19 @@ int	bultin_exit(t_commande *cmd)
 			exit_code = ft_atoi(cmd->args[1]);
 			free_all_resources(NULL);
 			close_all_fds();
-			free_cmds(cmd);
+			commande_free(cmd);
 		}
 		else
 		{
 			print_error(cmd->args[1]);
 			free_all_resources(NULL);
 			close_all_fds();
-			free_cmds(cmd);
+			commande_free(cmd);
 			exit(2);
 		}
 	}
 	free_all_resources(NULL);
 	close_all_fds();
-	free_cmds(cmd);
+	commande_free(cmd);
 	exit(get_exit_status(_LAST_STATUS));
 }
