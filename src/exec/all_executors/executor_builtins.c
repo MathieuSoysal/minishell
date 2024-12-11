@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:43:28 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/10 09:13:14 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/11 18:14:29 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ int	execute_builtin(t_commande *command, char ***g_env)
 	else if (equals(command->name, "pwd"))
 		return (pwd(command));
 	else if (equals(command->name, "exit"))
-		return (bultin_exit(command, g_env));
+		return (bultin_exit(command));
 	return (0);
 }
