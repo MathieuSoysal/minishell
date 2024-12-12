@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:25:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/12 13:10:08 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:13:46 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	exec_cmd(t_commande **commands, t_commande *command, char ***g_env)
 	}
 	free_commands(commands);
 	free_env(*g_env);
-
 	exit(1);
 }
 

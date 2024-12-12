@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 03:13:19 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/11 18:09:50 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/12 16:57:09 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@
  * @param status The status of the process,if is -1,
 	the function will returnpast status
  */
+
 int		get_exit_status(int status);
 void	set_exit_status(int status);
-void	error_all_cmd(int status);
 
 char	*get_prompt(void);
 

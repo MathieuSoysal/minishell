@@ -124,6 +124,7 @@ SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/structures/commande/command_path.c \
 		./src/structures/commande/commande_free.c \
 		./src/structures/commande/commande.c \
+		./src/structures/commande/empty.c\
 		./src/structures/commandes/commandes.c \
 		./src/structures/commandes/commandes_utils.c \
 		./src/structures/double_linked_list/double_linked_list_head.c \
@@ -169,5 +170,3 @@ fclean: clean
 	@rm -rf $(BUILD_DIR)
 
 re: fclean all
-
-# valgrind -q --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --suppressions=valgrind_ignore  ./build/minishell    

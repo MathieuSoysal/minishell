@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:07:37 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/12 12:11:32 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/12 16:55:00 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,22 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-void	error_all_cmd(int status)
+void	error_all_cmd(int status, t_commande *cmd)
 {
 	if (WIFEXITED(status) && g_sigint == 0)
-	{
-	
 		set_exit_status(WEXITSTATUS(status));
+	if (ft_strcmp(cmd->args[0], "sleep") == 0)
+	{
+		set_exit_status(128 + WTERMSIG(status));
+		handle_process_signal(status);
 	}
+	if (WTERMSIG(status) == SIGINT)
+		set_exit_status(0);
+	if (status > 10)
+		set_exit_status(127);
 	else if (WIFSIGNALED(status))
 	{
-		
-			
-		if (WTERMSIG(status) == SIGINT)
-			set_exit_status(0);
-		else
-		{
-			handle_process_signal(status);
-			set_exit_status(128 + WTERMSIG(status));
-		}
+		handle_process_signal(status);
+		set_exit_status(128 + WTERMSIG(status));
 	}
 }

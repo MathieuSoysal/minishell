@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:37:19 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/12 12:22:48 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/12 16:21:56 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	execute_alll_commands(t_commande **commands, char ***g_env,
 		}
 		j--;
 	}
-	error_all_cmd(status);
+	error_all_cmd(status, *commands);
 }
 
 static bool	is_a_valid_command_line(const char *command_line)
