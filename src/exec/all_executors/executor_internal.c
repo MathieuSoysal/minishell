@@ -6,10 +6,11 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 22:48:05 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/11 19:05:21 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:05:23 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../libft/libft.h"
 #include "../../minishell.h"
 #include "executor.h"
 #include "executor_internal.h"
@@ -30,12 +31,16 @@ bool	command_can_be_executed(t_commande *command)
 
 int	execute_command(t_commande *command, char ***g_env)
 {
+	int	status;
+
 	if (is_builtin(command))
 		return (execute_builtin(command, g_env));
 	else
 	{
-		execve(command->path, command->args, *g_env);
-		if (errno == ENOENT)
+		status = execve(command->path, command->args, *g_env);
+		if (status == -1)
+			return (status);
+		else if (errno == ENOENT)
 			return (_EXIT_SUCCESS);
 		else
 			return (_EXIT_ERROR);
