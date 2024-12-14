@@ -30,7 +30,7 @@ void	error_all_cmd(int status, t_commande *cmd)
 {
 	if (WIFEXITED(status) && g_sigint == 0)
 		set_exit_status(WEXITSTATUS(status));
-	if (ft_strcmp(cmd->args[0], "sleep") == 0)
+	if (ft_strcmp(cmd->args[0], "sleep") == 0 && status == 2)
 	{
 		set_exit_status(128 + WTERMSIG(status));
 		handle_process_signal(status);
