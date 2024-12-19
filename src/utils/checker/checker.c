@@ -36,7 +36,7 @@ t_syntax_error	check_syntax(const char *command_line)
 		i++;
 	}
 	if (is_unexpected_character('\n', mode))
-		return (UN_NEWLINE);
+		return (SE_UNEXPECTED_TOKEN_NEWLINE);
 	return (NO_ERROR);
 }
 
