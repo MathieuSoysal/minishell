@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 14:46:57 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/14 07:57:48 by hsoysal          ###   ########.fr       */
+/*   Created: 2024/11/29 11:37:19 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/12/12 16:21:56 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,29 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-static void	execute_alll_commands(t_commande **commands, char ***g_env)
+static void	execute_alll_commands(t_commande **commands, char ***g_env,
+		t_fd *fds)
 {
 	int		j;
-	t_fd	fds;
+	pid_t	result;
+	int		status;
 
 	j = command_count(commands);
-	process_commands(commands, g_env, &fds);
+	process_commands(commands, g_env, fds);
 	while (j > 0)
 	{
-		waitpid(0, NULL, 0);
+		result = waitpid(0, &status, 0);
+		if (result == -1)
+		{
+			if (errno == EINTR)
+				continue ;
+			perror("waitpid failed");
+			set_exit_status(1);
+			return ;
+		}
 		j--;
 	}
-}
-
-static bool	is_not_empty(const char *str)
-{
-	if (str && *str && str[0] != '\n' && str[0] != '\0')
-	{
-		while (*str)
-		{
-			if (*str != ' ' && *str != '\t')
-				return (true);
-			str++;
-		}
-	}
-	return (false);
+	error_all_cmd(status, *commands);
 }
 
 static bool	is_a_valid_command_line(const char *command_line)
@@ -83,16 +80,16 @@ static char	*read_command_line(void)
 	return (command_line);
 }
 
-int	main(int argc, char const *argv[], char *envp[])
+static void	process_commands_loop(char ***g_env)
 {
 	char		*command_line;
 	t_commande	**commands;
-	char		***g_env;
+	t_fd		fds;
 
-	g_env = get_envp(envp);
+	command_line = NULL;
 	while (1)
 	{
-		arg_is_void_and_signt_init(argc, *argv);
+		restore_signals_for_readline();
 		command_line = read_command_line();
 		add_history(command_line);
 		if (is_a_valid_command_line(command_line))
@@ -103,11 +100,23 @@ int	main(int argc, char const *argv[], char *envp[])
 			if (is_single_command(commands))
 				execute_single_command(commands, commands[0], g_env);
 			else
-				execute_alll_commands(commands, g_env);
+			{
+				execute_alll_commands(commands, g_env, &fds);
+			}
 			free_commands(commands);
 		}
 		free(command_line);
 	}
+}
+
+int	main(int argc, char const *argv[], char *envp[])
+{
+	char	***g_env;
+
+	setup_sigint();
+	g_env = get_envp(envp);
+	arg_is_void_and_signt_init(argc, *argv);
+	process_commands_loop(g_env);
 	return (rl_clear_history(), free_env(*g_env),
 		get_exit_status(_LAST_STATUS));
 }

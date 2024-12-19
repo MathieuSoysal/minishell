@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commande.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:38:26 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/14 08:50:05 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/12/12 17:04:56 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_commande	*commande_create(char **args, char **env)
 	new_commande->args = args;
 	if (args == NULL || args[0] == NULL)
 		new_commande->name = NULL;
+	else if (is_empty(args[0]))
+		new_commande->name = ft_strdup("    ");
 	else
 		new_commande->name = ft_strdup(args[0]);
 	new_commande->path = NULL;
@@ -81,7 +83,8 @@ int	command_get_fd_outfile(t_commande *commande)
 		i++;
 	if (commande->outfiles[i]->type == OUTFILE_TYPE_APPEND)
 		return (open(commande->outfiles[i]->file_name,
-				O_WRONLY | O_CREAT | O_APPEND, 0644));
+				O_WRONLY | O_CREAT | O_APPEND,
+				0644));
 	return (open(commande->outfiles[i]->file_name, O_WRONLY | O_CREAT | O_TRUNC,
 			0644));
 }

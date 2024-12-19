@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commande_free.c                                    :+:      :+:    :+:   */
+/*   exit_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 15:45:31 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/07 16:16:11 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/12/11 17:04:50 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/12/11 17:13:24 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "commande.h"
-#include <stdio.h>
+#include "../../exec/with_pipes/execution.h"
+#include "../../libft/libft.h"
+#include "../../minishell.h"
+#include "../../structures/commande/commande.h"
+#include "../../structures/env/env.h"
+#include "../builtins.h"
 #include <stdlib.h>
+#include <unistd.h>
 
-static void	free_outfiles(t_outfile **outfiles)
+static void	free_out_f(t_outfile **outfiles)
 {
 	int	i;
 
@@ -30,7 +35,7 @@ static void	free_outfiles(t_outfile **outfiles)
 	}
 }
 
-static void	free_strings(char **strings)
+static void	free_str(char **strings)
 {
 	int	i;
 
@@ -44,11 +49,11 @@ static void	free_strings(char **strings)
 	}
 }
 
-void	commande_free(t_commande *commande)
+void	free_cmds(t_commande *commande)
 {
 	if (commande == NULL)
 		return ;
-	free_strings(commande->args);
+	free_str(commande->args);
 	free(commande->args);
 	commande->args = NULL;
 	if (commande->name != NULL)
@@ -56,26 +61,11 @@ void	commande_free(t_commande *commande)
 	commande->name = NULL;
 	free_infiles(commande->infiles);
 	commande->infiles = NULL;
-	free_outfiles(commande->outfiles);
+	free_out_f(commande->outfiles);
 	free(commande->outfiles);
 	commande->outfiles = NULL;
 	free(commande->path);
 	commande->path = NULL;
 	free(commande);
 	commande = NULL;
-}
-
-void	free_commands(t_commande **commands)
-{
-	int	i;
-
-	i = -1;
-	if (commands == NULL)
-		return ;
-	while (commands[++i])
-	{
-		commande_free(commands[i]);
-		commands[i] = NULL;
-	}
-	free(commands);
 }

@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_linked_list_optional.c                      :+:      :+:    :+:   */
+/*   empty.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 10:16:24 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/07 16:16:43 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/12/12 17:01:24 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/12/12 17:09:08 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "double_linked_list.h"
+#include "commande.h"
 
-bool	double_linked_list_has_next(t_double_linked_list *obj)
+bool	is_empty(char *str)
 {
-	return (obj->size > 0);
+	int	i;
+
+	i = -1;
+	if (str == NULL)
+		return (1);
+	while (str[++i])
+		if (str[i] != ' ' && str[i] != '\t')
+			return (0);
+	return (1);
 }

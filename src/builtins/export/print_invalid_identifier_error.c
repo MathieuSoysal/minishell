@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_linked_list_optional.c                      :+:      :+:    :+:   */
+/*   print_invalid_identifier_error.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 10:16:24 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/07 16:16:43 by kahoumou         ###   ########.fr       */
+/*   Created: 2024/11/28 15:41:14 by kahoumou          #+#    #+#             */
+/*   Updated: 2024/11/28 15:45:37 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "double_linked_list.h"
+#include "../../libft/libft.h"
+#include "../../structures/env/env.h"
+#include "export_internal.h"
 
-bool	double_linked_list_has_next(t_double_linked_list *obj)
+void	print_invalid_identifier_error(char *arg)
 {
-	return (obj->size > 0);
+	ft_putstr_fd("export: `", 2);
+	ft_putstr_fd(arg, 2);
+	ft_putstr_fd("': not a valid identifier\n", 2);
 }

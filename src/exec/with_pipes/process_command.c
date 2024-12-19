@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 12:35:15 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/11/12 19:46:36 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/12/12 16:38:16 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	process_commands(t_commande **commands, char ***envp, t_fd *fds)
 		if (pid == 0)
 		{
 			child_process(fds->fd_infile, fds->fd_outfile, commands, fds);
-			ft_exec(commands, fds->i, envp);
+			ft_exec(commands, fds->i, envp, fds);
 		}
 		else if (pid > 0)
 			else_if_in_child_process(&fds->fd_infile, commands, fds->i,

@@ -2,7 +2,7 @@ NAME = minishell
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 LDFLAGS = -lreadline
-
+#ftrapv
 # Add color variables
 GREEN := \033[0;32m
 YELLOW := \033[0;33m
@@ -12,6 +12,7 @@ NC := \033[0m
 SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/exec/without_pipe/exec_external.c \
 		./src/exec/without_pipe/free_execute_external_command.c \
+		./src/exec/without_pipe/exec_external_utils.c\
 		./src/exec/without_pipe/single_exec.c \
 		./src/exec/all_executors/executor_internal.c \
 		./src/exec/all_executors/executor_builtins.c \
@@ -38,13 +39,17 @@ SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/utils/mini_libft/utils.c \
 		./src/utils/mini_libft/get_next_line.c \
 		./src/builtins/cd/cd.c \
+		./src/builtins/cd/cd_utils.c\
 		./src/builtins/echo/echo.c \
 		./src/builtins/echo/echo_internal.c \
 		./src/builtins/env/env.c \
 		./src/builtins/exit/exit.c \
+		./src/builtins/exit/exit_free.c\
 		./src/builtins/export/export.c \
 		./src/builtins/export/is_valid.c \
 		./src/builtins/export/export_internal.c \
+		./src/builtins/export/print_invalid_identifier_error.c\
+		./src/builtins/export/env_add_var_for_export.c\
 		./src/builtins/pwd/pwd.c \
 		./src/builtins/unset/unset.c \
 		./src/libft/ft_atoi.c \
@@ -112,9 +117,14 @@ SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/prompteur/prompteur.c \
 		./src/signals/exit_status.c \
 		./src/signals/sigint/sigint.c \
+		./src/signals/sigint/restore_signals_for_readline.c\
+		./src/signals/sigint/signt_for_exec.c\
+		./src/signals/sigint/handle_process_signal.c\
+		./src/signals/sigint/restore_signals_cmd.c\
 		./src/structures/commande/command_path.c \
 		./src/structures/commande/commande_free.c \
 		./src/structures/commande/commande.c \
+		./src/structures/commande/empty.c\
 		./src/structures/commandes/commandes.c \
 		./src/structures/commandes/commandes_utils.c \
 		./src/structures/double_linked_list/double_linked_list_head.c \
@@ -126,6 +136,8 @@ SRC = ./src/exec/without_pipe/exec_builtins.c \
 		./src/structures/node.c \
 		./src/command_count.c \
 		./src/main.c \
+		./src/error_all_cmd.c\
+		./src/is_not_empty.c\
 		./src/arg_is_void_and_signt_init.c
 
 # Update OBJ to place .o files into $(BUILD_DIR)
@@ -158,5 +170,3 @@ fclean: clean
 	@rm -rf $(BUILD_DIR)
 
 re: fclean all
-
-# valgrind -q --leak-check=full --show-leak-kinds=all --suppressions=valgrind_ignore  ./build/minishell

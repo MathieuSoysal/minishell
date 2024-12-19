@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   single_exec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:10:02 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/11/12 19:46:49 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/12/11 19:09:53 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,35 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+bool	is_emptyy(char *str)
+{
+	int	i;
+
+	i = -1;
+	if (str == NULL)
+		return (1);
+	while (str[++i])
+		if (str[i] != ' ' && str[i] != '\t')
+			return (0);
+	return (1);
+}
+
 void	execute_single_command(t_commande **commands, t_commande *command,
 		char ***g_env)
 {
-	if (command_can_be_executed(command))
+	if (command_can_be_executed(command) && !is_emptyy(command->name))
 	{
 		if (is_builtin(command))
+		{
+			if (ft_strcmp(command->name, "exit") == 0)
+				free(commands);
 			execute_builtins_without_fork(command, g_env);
+		}
 		else
 			execute_external_command(commands, command, g_env);
 	}
+	else if (!command || !(command->name))
+		get_exit_status(0);
 	else
 		get_exit_status(1);
 }

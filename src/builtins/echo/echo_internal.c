@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_internal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsoysal <hsoysal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:55:55 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/08/10 19:01:09 by hsoysal          ###   ########.fr       */
+/*   Updated: 2024/12/11 17:02:53 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ bool	is_option_n(char *arg)
 	while (is_option && arg[i])
 	{
 		if (arg[i] != 'n')
+		{
 			return (false);
+		}
 		i++;
 	}
 	return (is_option);
