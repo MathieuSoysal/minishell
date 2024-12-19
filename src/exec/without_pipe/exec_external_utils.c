@@ -22,17 +22,17 @@
 #include <string.h>
 #include <sys/wait.h>
 
-void	manage_redirections(t_commande *command, t_commande **commands,
-		char ***g_env)
+void manage_redirections(t_commande *command, t_commande **commands,
+						 char ***g_env)
 {
 	handle_input_redirection(command, commands, g_env);
 	handle_output_redirection(command, commands, g_env);
 }
 
-void	handle_input_redirection(t_commande *command, t_commande **commands,
-		char ***g_env)
+void handle_input_redirection(t_commande *command, t_commande **commands,
+							  char ***g_env)
 {
-	int	fd_in;
+	int fd_in;
 
 	fd_in = command_get_fd_infile(command);
 	if (fd_in != 0)
@@ -49,13 +49,13 @@ void	handle_input_redirection(t_commande *command, t_commande **commands,
 	}
 }
 
-void	handle_output_redirection(t_commande *command, t_commande **commands,
-		char ***g_env)
+void handle_output_redirection(t_commande *command, t_commande **commands,
+							   char ***g_env)
 {
-	int	fd_out;
+	int fd_out;
 
 	if (!command->outfiles || !command->outfiles[0])
-		return ;
+		return;
 	fd_out = command_get_fd_outfile(command);
 	if (fd_out == -1)
 	{
@@ -75,15 +75,18 @@ void	handle_output_redirection(t_commande *command, t_commande **commands,
 	close(fd_out);
 }
 
-void	handle_execve_failure(t_commande **commands, t_commande *command,
-		char ***g_env)
+void handle_execve_failure(t_commande **commands, t_commande *command,
+						   char ***g_env)
 {
 	(void)g_env;
-	ft_putstr_fd("minishell: ", 2);
-	ft_putstr_fd(command->args[0], 2);
-	ft_putstr_fd(": ", 2);
-	ft_putstr_fd(strerror(errno), 2);
-	ft_putstr_fd("\n", 2);
+	char *tmp;
+	char *error_message;
+
+	tmp = ft_strjoin("minishell: ", command->name);
+	error_message = ft_strjoin(tmp, ": command not found\n");
+	free(tmp);
+	write(1, error_message, ft_strlen(error_message));
+	free(error_message);
 	free_commands(commands);
 	if (errno == EACCES)
 		exit(126);
