@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:18:41 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/12 12:24:25 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:50:35 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@
 #include <string.h>
 #include <sys/wait.h>
 
-void manage_redirections(t_commande *command, t_commande **commands,
-						 char ***g_env)
+void	manage_redirections(t_commande *command, t_commande **commands,
+		char ***g_env)
 {
 	handle_input_redirection(command, commands, g_env);
 	handle_output_redirection(command, commands, g_env);
 }
 
-void handle_input_redirection(t_commande *command, t_commande **commands,
-							  char ***g_env)
+void	handle_input_redirection(t_commande *command, t_commande **commands,
+		char ***g_env)
 {
-	int fd_in;
+	int	fd_in;
 
 	fd_in = command_get_fd_infile(command);
 	if (fd_in != 0)
@@ -49,13 +49,13 @@ void handle_input_redirection(t_commande *command, t_commande **commands,
 	}
 }
 
-void handle_output_redirection(t_commande *command, t_commande **commands,
-							   char ***g_env)
+void	handle_output_redirection(t_commande *command, t_commande **commands,
+		char ***g_env)
 {
-	int fd_out;
+	int	fd_out;
 
 	if (!command->outfiles || !command->outfiles[0])
-		return;
+		return ;
 	fd_out = command_get_fd_outfile(command);
 	if (fd_out == -1)
 	{
@@ -75,13 +75,13 @@ void handle_output_redirection(t_commande *command, t_commande **commands,
 	close(fd_out);
 }
 
-void handle_execve_failure(t_commande **commands, t_commande *command,
-						   char ***g_env)
+void	handle_execve_failure(t_commande **commands, t_commande *command,
+		char ***g_env)
 {
-	(void)g_env;
-	char *tmp;
-	char *error_message;
+	char	*tmp;
+	char	*error_message;
 
+	(void)g_env;
 	tmp = ft_strjoin("minishell: ", command->name);
 	error_message = ft_strjoin(tmp, ": command not found\n");
 	free(tmp);

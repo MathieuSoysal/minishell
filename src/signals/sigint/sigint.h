@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 19:45:04 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/11 16:01:25 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:59:05 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@
 # include <unistd.h>
 
 static int	g_sigint;
-static int	g_interrupt;
 void		setup_sigint(void);
 // void		signal_sigquit(int sig);
 void		signal_command_sigint(int sig);
 void		setup_command_signals(void);
 void		signal_sigint(int sig);
 void		setup_signal_handling(void);
-void		handle_interrupt_in_loop(void);
 void		restore_signals_for_readline(void);
 void		handle_process_signal(int status);
 void		restore_signals_for_cmd(int signal);

@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 18:39:00 by hsoysal           #+#    #+#             */
-/*   Updated: 2024/12/12 11:48:20 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:59:52 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	signal_sigquit(int sig)
 void	signal_sigint(int sig)
 {
 	(void)sig;
-	g_interrupt = 1;
 	get_exit_status(130);
 	write(1, "\n", 1);
 	rl_on_new_line();
@@ -55,17 +54,4 @@ void	setup_sigint(void)
 	sigaction(SIGINT, &sa, NULL);
 	sa.sa_handler = signal_sigquit;
 	sigaction(SIGQUIT, &sa, NULL);
-}
-
-void	handle_interrupt_in_loop(void)
-{
-	char	*prompt;
-
-	if (g_interrupt)
-	{
-		g_interrupt = 0;
-		prompt = get_prompt();
-		rl_set_prompt(prompt);
-		rl_redisplay();
-	}
 }
