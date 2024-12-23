@@ -35,8 +35,8 @@ t_commande	*commande_create(char **args, char **env)
 	if (new_commande->infiles == (t_infile **)ERROR_ADDRESS)
 		return (free_split(args), free(new_commande), NULL);
 	new_commande->outfiles = extract_outfiles(args);
-	apply_strings_for_args(args);
 	apply_dollars_for_args(args, env);
+	apply_strings_for_args(args);
 	new_commande->args = args;
 	if (args == NULL || args[0] == NULL)
 		new_commande->name = NULL;
