@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:09:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/11 18:26:59 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:47:27 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,25 +62,15 @@ static void	free_all_resources(t_commande **commands)
 
 int	bultin_exit(t_commande *cmd)
 {
-	int	exit_code;
-
 	write(2, "exit\n", 5);
 	if (cmd->args[1])
 	{
 		if (is_numeric_argument(cmd->args[1]))
-		{
-			exit_code = ft_atoi(cmd->args[1]);
-			free_all_resources(NULL);
-			close_all_fds();
-			commande_free(cmd);
-		}
+			get_exit_status(ft_atoi(cmd->args[1]));
 		else
 		{
 			print_error(cmd->args[1]);
-			free_all_resources(NULL);
-			close_all_fds();
-			commande_free(cmd);
-			exit(2);
+			get_exit_status(2);
 		}
 	}
 	free_all_resources(NULL);

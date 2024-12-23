@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 18:07:37 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/14 12:45:08 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:01:24 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	error_all_cmd(int status, t_commande *cmd)
 	}
 	if (WTERMSIG(status) == SIGINT)
 		set_exit_status(0);
-	if (status > 10)
-		set_exit_status(127);
 	else if (WIFSIGNALED(status))
 	{
 		handle_process_signal(status);
