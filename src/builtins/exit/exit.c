@@ -6,7 +6,7 @@
 /*   By: kahoumou <kahoumou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:09:55 by kahoumou          #+#    #+#             */
-/*   Updated: 2024/12/23 15:47:27 by kahoumou         ###   ########.fr       */
+/*   Updated: 2024/12/24 13:50:28 by kahoumou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ static void	print_error(char *arg)
 
 static bool	is_numeric_argument(const char *arg)
 {
+	int	i;
+
+	i = 0;
 	if (!arg || !*arg)
 		return (false);
 	if (*arg == '+' || *arg == '-')
@@ -36,7 +39,10 @@ static bool	is_numeric_argument(const char *arg)
 	{
 		if (!ft_isdigit(*arg))
 			return (false);
+		if (i > 20)
+			return (false);
 		arg++;
+		i++;
 	}
 	return (true);
 }
@@ -62,9 +68,16 @@ static void	free_all_resources(t_commande **commands)
 
 int	bultin_exit(t_commande *cmd)
 {
-	write(2, "exit\n", 5);
-	if (cmd->args[1])
+	if (cmd->args[1] && cmd->args[2] != 0)
 	{
+		ft_putstr_fd("exit: ", 2);
+		ft_putstr_fd("too many arguments\n", 2);
+		get_exit_status(1);
+	}
+	if (cmd->args[1] && !cmd->args[2])
+	{
+		if (ft_atoi(cmd->args[1]) > 255)
+			get_exit_status(0);
 		if (is_numeric_argument(cmd->args[1]))
 			get_exit_status(ft_atoi(cmd->args[1]));
 		else
@@ -73,6 +86,7 @@ int	bultin_exit(t_commande *cmd)
 			get_exit_status(2);
 		}
 	}
+	write(2, "exit\n", 5);
 	free_all_resources(NULL);
 	close_all_fds();
 	commande_free(cmd);
